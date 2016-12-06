@@ -7,6 +7,7 @@ import javax.persistence.*;
  * Date  : 2016/12/6 18:11
  */
 @Table(name="tb_sysuser")
+@Entity
 public class SysUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

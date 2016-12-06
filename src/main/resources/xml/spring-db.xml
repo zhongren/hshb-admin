@@ -2,9 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xmlns:context="http://www.springframework.org/schema/context"
-	   xmlns:aop="http://www.springframework.org/schema/aop" 
+	   xmlns:aop="http://www.springframework.org/schema/aop"
 	   xmlns:tx="http://www.springframework.org/schema/tx"
 	   xmlns:task="http://www.springframework.org/schema/task"
+	   xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	     http://www.springframework.org/schema/beans/spring-beans.xsd
 	     http://www.springframework.org/schema/context
@@ -14,7 +15,7 @@
 	     http://www.springframework.org/schema/task
     	 http://www.springframework.org/schema/task/spring-task.xsd
 	     http://www.springframework.org/schema/tx
-	     http://www.springframework.org/schema/tx/spring-tx.xsd">
+	     http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 	<!-- 数据源配置,使用应用内的DBCP数据库连接池 -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
@@ -46,6 +47,8 @@
 		<property name="filters" value="stat" />
 
 	</bean>
+	<!-- Spring Data Jpa配置 -->
+	<jpa:repositories base-package="com.lebao.dao"  transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory"/>
 	<!-- Declare a JPA entityManagerFactory -->
 	<bean id="entityManagerFactory"
 		  class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
