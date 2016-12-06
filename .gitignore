@@ -1,0 +1,42 @@
+/target/
+
+**.pyc
+*.pyc
+npm-debug.log*
+/.settings
+/.classpath
+/.project
+/.mvn
+/.externalToolBuilders
+/bin/
+/node_modules/
+/src/main/webapp/public/dist/
+/src/main/webapp/views/
+/javac-services.0.log
+
+.vscode
+
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+

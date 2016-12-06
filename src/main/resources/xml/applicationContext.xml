@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+    http://www.springframework.org/schema/beans/spring-beans.xsd    
+    http://www.springframework.org/schema/tx    
+    http://www.springframework.org/schema/tx/spring-tx.xsd   
+    http://www.springframework.org/schema/context   
+    http://www.springframework.org/schema/context/spring-context.xsd   
+    http://www.springframework.org/schema/mvc   
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task.xsd">
+	<!-- 激活@Controller模式 -->
+	<mvc:annotation-driven />
+	<!-- scanner redis properties -->
+	<context:property-placeholder location="classpath:properties/db.properties" />
+
+
+
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">   
+        <property name="basenames">  
+            <list>  
+                <value>classpath:properties/message</value>
+            </list>  
+        </property> 
+     </bean>
+	<!-- 对包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 需要更改 -->
+	<context:component-scan base-package="com.lebao.*" />
+	<!-- 完成请求和注解POJO的映射 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+	<!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/WEB-INF/" p:suffix=".jsp" p:contentType="text/html; charset=utf-8" />
+	<!-- 引入同文件夹下的redis属性配置文件 -->
+	<import resource="spring-*.xml" />
+	
+	<task:executor id="taskExecutor" pool-size="5" queue-capacity="25" />
+	<task:scheduler id="taskScheduler" pool-size="5" />
+	<task:annotation-driven  executor="taskExecutor" scheduler="taskScheduler" />
+	<mvc:resources mapping="/staticAdmin/**" location="/static/admin/"/>
+	<mvc:resources mapping="/staticKindEditor/**" location="/static/kindeditor/"/>
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<!-- id="multipartResolver"必须是multipartResolver
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		 maxUploadSize:文件上传的最大值以byte为单位
+		<property name="maxUploadSize" value="1024000"></property>
+	</bean>
+		-->
+	<!-- 支持上传文件
+	<bean id="multipartResolver"
+		  class="com.lebao.file.CommonsMultiparResolver"></bean>-->
+
+
+	<!-- 定义文件上传解析器 -->
+	<bean id="multipartResolver"
+		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设定默认编码 -->
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<!-- 设定文件上传的最大值5MB，5*1024*1024 -->
+		<property name="maxUploadSize" value="5242880"></property>
+	</bean>
+
+	<bean id="appSetting" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="locations">
+			<list>
+				<value>classpath:properties/application.properties</value>
+			</list>
+		</property>
+	</bean>
+
+<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+ <property name="properties" ref="appSetting"/>
+</bean>
+</beans>
