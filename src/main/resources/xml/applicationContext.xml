@@ -16,7 +16,7 @@
     http://www.springframework.org/schema/task/spring-task.xsd">
 	<!-- 激活@Controller模式 -->
 	<mvc:annotation-driven />
-	<!-- scanner redis properties -->
+	<!-- scanner db properties -->
 	<context:property-placeholder location="classpath:properties/db.properties" />
 
 
@@ -45,7 +45,7 @@
 	<task:annotation-driven  executor="taskExecutor" scheduler="taskScheduler" />
 	<mvc:resources mapping="/staticAdmin/**" location="/static/admin/"/>
 	<mvc:resources mapping="/staticKindEditor/**" location="/static/kindeditor/"/>
-	<mvc:annotation-driven></mvc:annotation-driven>
+
 	<!-- id="multipartResolver"必须是multipartResolver
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		 maxUploadSize:文件上传的最大值以byte为单位

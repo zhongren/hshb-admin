@@ -4,7 +4,7 @@ import com.lebao.bean.SearchParam;
 import com.lebao.bean.SysUserBean;
 import com.lebao.common.dbhelp.DbHelper;
 import com.lebao.common.dbhelp.page.Page;
-import com.lebao.common.utils.CommonUtils;
+import com.lebao.common.utils.CommonUtil;
 import com.lebao.common.utils.Sequence;
 import com.lebao.common.utils.TimeUtil;
 import com.lebao.modules.BaseDao;
@@ -29,9 +29,9 @@ public class UserDao extends BaseDao{
         String p_user_name = ue.getP_user_name();
         String p_account = ue.getP_account();
         String p_user_phone = ue.getP_user_phone();
-        String p_password = CommonUtils.encryptPassword(ue.getP_password());
-        String p_invitation_code1 = CommonUtils.getVerifyCode();
-        String p_invitation_code2 = CommonUtils.getVerifyCode();
+        String p_password = CommonUtil.encryptPassword(ue.getP_password());
+        String p_invitation_code1 = CommonUtil.getVerifyCode();
+        String p_invitation_code2 = CommonUtil.getVerifyCode();
         if (StringUtils.isBlank(ue.getP_regist_code())) {
             ue.setP_regist_code("00000000");
         }
@@ -82,7 +82,7 @@ public class UserDao extends BaseDao{
     public void addSysUser(SysUserEntity sue) throws SQLException {
         String p_id = sue.getP_id();
         String p_account = sue.getP_account();
-        String p_password = CommonUtils.encryptPassword(sue.getP_password());
+        String p_password = CommonUtil.encryptPassword(sue.getP_password());
         String p_phone = sue.getP_phone();
         String p_email = sue.getP_email();
         String p_real_name = sue.getP_real_name();

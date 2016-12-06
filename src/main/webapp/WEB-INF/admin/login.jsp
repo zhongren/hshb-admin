@@ -32,7 +32,7 @@
 <div class="container" >
 
     <form class="form-signin" action="${ctx}/login/deal" method="post" accept-charset="utf-8">
-        <h2 class="form-signin-heading">乐堡后台管理系统</h2>
+        <h2 class="form-signin-heading">和顺环保后台管理系统</h2>
         <div class="login-wrap">
             <c:if test="${msg != null}">
                 <span style="color: red"><c:out value="${msg }"/></span>

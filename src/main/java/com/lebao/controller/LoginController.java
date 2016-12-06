@@ -23,8 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class LoginController {
 
-    @Autowired
-    private SysUserService sysUserService;
+
 
     @RequestMapping("")
     public String loginPre(){

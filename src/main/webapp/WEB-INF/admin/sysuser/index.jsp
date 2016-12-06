@@ -9,7 +9,7 @@
     <jsp:include page="../common/css.jsp"></jsp:include>
     <jsp:include page="../common/js.jsp"></jsp:include>
 
-    <script src="${ctx}/staticAdmin/modlue/user/sysuser.js"></script>
+    <script src="${ctx}/staticAdmin/modlue/sysuser/sysuser.js"></script>
 </head>
 <body>
 <div>
@@ -34,25 +34,15 @@
                     <div class="panel-body">
                         <div class="form-inline">
                             <div class="form-group">
-                                <label for="phone">手机号：</label>
-                                <input name="s_phone" type="text" class="form-control" id="phone" placeholder="请输入电话号码">
+                                <label for="userPhone">用户名：</label>
+                                <input name="s_name" type="text" class="form-control" id="userPhone"
+                                       placeholder="请输入电话号码">
                             </div>
-                            <div class="form-group">
-                                <label for="realName">姓名：</label>
-                                <input name="s_realName" type="text" class="form-control" id="realName"
-                                       placeholder="请输入用户姓名">
-                            </div>
-                            <div class="form-group">
-                                <label for="account">账号：</label>
-                                <input name="s_account" type="text" class="form-control" id="account"
-                                       placeholder="请输入用户账号">
-                            </div>
-
                             <div class="form-group" style="padding-top: 22px;padding-left: 2px">
                                 <button onclick="doSearch()" class="btn btn-primary">查询</button>
                             </div>
-                            <div class="form-group pull-right" style="padding-top: 22px;"> <a class="btn btn-info" href="${ctx}/sysUser/preAdd" target="main">
-                                添加 <i class="icon-plus"></i></a>
+                            <div class="form-group" style="padding-top: 22px;padding-left: 2px">
+                                <button onclick="preAdd()" class="btn btn-info">添加用户</button>
                             </div>
                         </div>
 
@@ -88,7 +78,6 @@
         <!-- page end-->
     </section>
 </div>
-
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
@@ -97,7 +86,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"
                         aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">员工删除</h4>
+                <h4 class="modal-title" id="myModalLabel">添加用户</h4>
             </div>
             <div class="modal-body">
                 <div class="col-lg-12">
@@ -105,21 +94,28 @@
                         <div class="panel-body">
                             <form role="form">
                                 <div class="form-group">
-                                    <span>确认删除?</span>
+                                    <label for="m_name">用户名：</label><span></span>
+                                    <input type="text" class="form-control" id="m_name" placeholder="请输入用户名">
+                                </div>
+                                <div class="form-group">
+                                    <label for="m_password">密码：</label> <span></span>
+                                    <input type="password" id="m_password" placeholder="请输入密码" class="form-control">
                                 </div>
                             </form>
                         </div>
                     </section>
                 </div>
             </div>
-            <div class="modal-footer" >
-                <button type="button" class="btn btn-default" data-dismiss="modal">否</button>
-                <button id="del" type="button" onclick="" class="btn btn-danger">是</button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" onclick="addUser()" class="btn btn-primary">确认添加</button>
             </div>
         </div>
         <!-- /.modal-content -->
     </div>
     <!-- /.modal -->
 </div>
+
 </body>
 </html>

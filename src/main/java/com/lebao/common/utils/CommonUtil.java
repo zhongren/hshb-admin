@@ -10,7 +10,7 @@ import org.apache.commons.lang.StringUtils;
 import com.google.gson.Gson;
 import com.lebao.common.utils.auth.Hash;
 
-public class CommonUtils {
+public class CommonUtil {
 	public  static  String UNSET = "<font color=\"red\">未设置</font>"; 
 	public static boolean isEmpty( List<?> list ){
 		return list == null || list.size() == 0 ;

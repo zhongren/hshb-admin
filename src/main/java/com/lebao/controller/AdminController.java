@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.lebao.bean.SysMenuBean;
 import com.lebao.bean.SysUserBean;
 import com.lebao.common.Constant;
-import com.lebao.service.i.ISysService;
+
 import org.apache.log4j.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +19,7 @@ import java.util.List;
 
 @Controller
 public class AdminController  {
-	@Autowired
-	ISysService sysService;
+
 	private Logger logger = Logger.getLogger(AdminController.class);
 	@RequestMapping("/home")
 	public ModelAndView home(HttpServletRequest request) {

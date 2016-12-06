@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="img/favicon.html">
-    <title>游乐堡后台管理系统</title>
+    <title>和顺环保后台管理系统</title>
     <jsp:include page="common/css.jsp"/>
 </head>
 <body>
@@ -115,32 +115,6 @@
                         <li>
                             <p class="red">You have 5 new messages</p>
                         </li>
-                        <!--
-                        <li><a href="#"> <span class="photo"><img
-                                alt="avatar" src="img/avatar-mini.jpg"></span> <span
-                                class="subject"> <span class="from">Jonathan
-											Smith</span> <span class="time">Just now</span>
-								</span> <span class="message"> Hello, this is an example msg. </span>
-                        </a></li>
-                        <li><a href="#"> <span class="photo"><img
-                                alt="avatar" src="img/avatar-mini2.jpg"></span> <span
-                                class="subject"> <span class="from">Jhon Doe</span> <span
-                                class="time">10 mins</span>
-								</span> <span class="message"> Hi, Jhon Doe Bhai how are you ? </span>
-                        </a></li>
-                        <li><a href="#"> <span class="photo"><img
-                                alt="avatar" src="img/avatar-mini3.jpg"></span> <span
-                                class="subject"> <span class="from">Jason Stathum</span>
-										<span class="time">3 hrs</span>
-								</span> <span class="message"> This is awesome dashboard. </span>
-                        </a></li>
-                        <li><a href="#"> <span class="photo"><img
-                                alt="avatar" src="img/avatar-mini4.jpg"></span> <span
-                                class="subject"> <span class="from">Jondi Rose</span> <span
-                                class="time">Just now</span>
-								</span> <span class="message"> Hello, this is metrolab </span>
-                        </a></li>
-                        -->
 
                         <li><a href="#">See all messages</a></li>
                     </ul>
@@ -215,9 +189,17 @@
         <div id="sidebar" class="nav-collapse " tabindex="5000" style="overflow: hidden; outline: none;">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
-                <li class="active"><a class="active" href="${ctx}/home" target="main"> <i
-                        class="icon-dashboard"></i> <span>游乐堡</span>
+                <li class="active"><a class="active" href="${ctx}/sysUser/index" target="main"> <i
+                        class="icon-dashboard"></i> <span>用户管理</span>
                 </a></li>
+                <li class="sub-menu dcjq-parent-li">
+                    <a href="javascript:;" class="dcjq-parent">
+                        <span>新闻管理</span></a>
+                    <ul class="sub">
+                        <li><a class="" href="${ctx}/${f.p_url}/list" target="main">类型管理</a></li>
+                        <li><a class="" href="${ctx}/${f.p_url}/list" target="main">内容管理</a></li>
+                        </ul>
+                    </li>
                 <c:forEach items="${sysMenus}" var="s">
                     <li class="sub-menu dcjq-parent-li">
                                 <c:if test="${not empty s.p_url}">
@@ -241,6 +223,7 @@
                         </c:if>
                     </li>
                 </c:forEach>
+
             </ul>
             <!-- sidebar menu end-->
         </div>

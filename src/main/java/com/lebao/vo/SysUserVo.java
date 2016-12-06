@@ -1,15 +1,9 @@
-package com.lebao.po;
-
-import javax.persistence.*;
+package com.lebao.vo;
 
 /**
- * Author: zr
- * Date  : 2016/12/6 18:11
+ * Created by ZR on 2016/12/6.
  */
-@Table(name="tb_sysuser")
-public class SysUser {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class SysUserVo {
     private Long id;
     private String name;
     private String password;

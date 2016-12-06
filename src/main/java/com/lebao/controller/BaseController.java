@@ -14,7 +14,7 @@ import java.util.*;
 public class BaseController {
 	@Autowired
 	private MessageSource msgSource ;
-	private Logger logger = Logger.getLogger(BaseController.class);
+	//private Logger logger = Logger.getLogger(BaseController.class);
 
 
 	protected DataTableVo parseData4DT(HttpServletRequest request) {
