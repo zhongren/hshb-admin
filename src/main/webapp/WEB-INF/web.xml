@@ -13,10 +13,6 @@
         <param-value>classpath:xml/applicationContext.xml</param-value>
     </context-param>
 
-    <!-- 配置log4j.xml监听器 -->
-    <listener>
-        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-    </listener>
     <!-- 配置shiro的核心拦截器
     <filter>
         <filter-name>shiroFilter</filter-name>

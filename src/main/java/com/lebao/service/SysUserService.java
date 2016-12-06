@@ -1,21 +1,17 @@
 package com.lebao.service;
 
-import com.lebao.bean.NewsBean;
-import com.lebao.bean.NewsSearchParam;
+
 import com.lebao.common.beans.SearchBean;
 import com.lebao.common.dbhelp.page.Page;
 import com.lebao.converter.SysUserConverter;
 import com.lebao.dao.sysuser.SysUserDao;
-import com.lebao.dao.sysuser.SysUserRepo;
-import com.lebao.modules.news.entity.NewsEntity;
 import com.lebao.po.SysUser;
 import com.lebao.vo.SysUserVo;
-import org.springframework.beans.BeanUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
