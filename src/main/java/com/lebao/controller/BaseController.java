@@ -73,7 +73,7 @@ public class BaseController {
 	 * @return
 	 */
 	protected String buildFailMessage( String code , int msgType){
-		return buildMessage( ResultModal.FAIL , code , null , msgType ) ;
+		return buildMessage( ResultModal.FAIL ,ResultModal.FAIL_CODE, code , null , msgType ) ;
 	}
 	/**
 	 * Build a success message
@@ -83,7 +83,7 @@ public class BaseController {
 	 * @return
 	 */
 	protected String buildSuccessMessage(String code, int msgType) {
-		return buildMessage(ResultModal.SUCCESS, code, null, msgType);
+		return buildMessage(ResultModal.SUCCESS,ResultModal.SUCCESS_CODE, code, null, msgType);
 	}
 	
 	/**
@@ -163,6 +163,8 @@ public class BaseController {
 	public class ResultModal{
 		public static final String SUCCESS = "success" ; 
 		public static final String FAIL = "fail" ;
+		public static final String FAIL_CODE = "-1" ;
+		public static final String SUCCESS_CODE = "200" ;
 		public static final int DIALOG = 0 ;
 		public static final int MESSAGE = 1 ;
 		public static final int DATA = 2 ;
@@ -222,10 +224,10 @@ public class BaseController {
 	 * @param msgType
 	 * @return
 	 */
-	protected String buildMessage( String status , String code ,  Object data , int msgType ){
+	protected String buildMessage( String status ,String code ,String msg ,  Object data , int msgType ){
 		StringWriter writer = new StringWriter() ;
 		try{
-			String msg = msgSource.getMessage(code, null , code , Locale.CHINA) ; 
+			 msg = msgSource.getMessage(msg, null , msg , Locale.CHINA) ;
 			ResultModal resultModal = new ResultModal( status , code , msg , data , msgType );
 			ObjectMapper mapper = new ObjectMapper() ;
 			mapper.writeValue(writer, resultModal);

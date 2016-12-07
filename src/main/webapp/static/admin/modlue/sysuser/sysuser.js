@@ -94,6 +94,10 @@ function save() {
         }
     });
 }
+
+var user = {
+    name: null
+};
 /**
  * 显示更新窗口
  * @param id
@@ -107,8 +111,8 @@ function preUpdate(id) {
             id: id
         },
         success: function (data) {
-            var json=$.parseJSON(data);
-            console(json);
+            user=$.parseJSON(data.data);
+            console(user.name);
         }
     });
     $("#myModal").modal("show").css({

@@ -118,7 +118,7 @@ public class SysUserController extends BaseController{
     public String queryUser(@RequestParam(value = "id", required = true) Long id) {
         try {
            SysUserVo sysUserVo= sysUserService.findOne(id);
-            return this.buildMessage(ResultModal.SUCCESS,"用户获取成功",sysUserVo,
+            return this.buildMessage(ResultModal.SUCCESS,ResultModal.SUCCESS_CODE,"用户获取成功",sysUserVo,
                     ResultModal.DATA);
         } catch (Exception e) {
             return this.buildFailMessage("用户获取失败", ResultModal.MESSAGE);
