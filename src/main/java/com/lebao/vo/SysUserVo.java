@@ -1,7 +1,6 @@
 package com.lebao.vo;
 
-import org.codehaus.jackson.annotate.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * Created by ZR on 2016/12/6.
  */

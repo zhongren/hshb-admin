@@ -46,6 +46,6 @@ public class SysUserDao {
         sysUserRepo.delete(sysUser);
     }
     public SysUser findOne(Long id) {
-        sysUserRepo.findOne(id);
+        return sysUserRepo.findOne(id);
     }
 }

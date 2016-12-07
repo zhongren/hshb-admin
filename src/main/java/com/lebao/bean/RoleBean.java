@@ -1,7 +1,6 @@
 package com.lebao.bean;
 
-import org.codehaus.jackson.annotate.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 public class RoleBean {
 	@JsonProperty("id")
 	private  String  p_id = null;	// 表字段名称为:p_id 相应注释为:ID。

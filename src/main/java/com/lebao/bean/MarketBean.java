@@ -1,6 +1,6 @@
 package com.lebao.bean;
 
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MarketBean {
     @JsonProperty("user_id")
