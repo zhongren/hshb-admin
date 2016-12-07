@@ -218,17 +218,17 @@ public class BaseController {
 	}
 	/**
 	 * Build message
-	 * @param status
+	 * @param state
 	 * @param code
 	 * @param data
 	 * @param msgType
 	 * @return
 	 */
-	protected String buildMessage( String status ,String code ,String msg ,  Object data , int msgType ){
+	protected String buildMessage( String state ,String code ,String msg ,  Object data , int msgType ){
 		StringWriter writer = new StringWriter() ;
 		try{
 			 msg = msgSource.getMessage(msg, null , msg , Locale.CHINA) ;
-			ResultModal resultModal = new ResultModal( status , code , msg , data , msgType );
+			ResultModal resultModal = new ResultModal( state , code , msg , data , msgType );
 			ObjectMapper mapper = new ObjectMapper() ;
 			mapper.writeValue(writer, resultModal);
 			writer.flush();
