@@ -9,9 +9,7 @@ $(document)
                     "bSortable": true,// 排序
                     "sClass": "center",
                     "sWidth": "5%"
-
-                }
-                ,
+                },
                 {
                     "sTitle": "<center>用户名</center>", // 显示标题
                     "mData": "name", // 属性

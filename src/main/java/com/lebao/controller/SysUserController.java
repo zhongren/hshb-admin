@@ -113,14 +113,15 @@ public class SysUserController extends BaseController{
             return  this.buildFailMessage("用户更新失败", ResultModal.MESSAGE);
         }
     }
-    @RequestMapping(value = "/queryById",produces="plain/text; charset=UTF-8")
     @ResponseBody
-    public AjaxResult queryUser(@RequestParam(value = "id", required = true) Long id) {
+    @RequestMapping(value = "/queryById",produces="plain/text; charset=UTF-8")
+    public String queryUser(@RequestParam(value = "id", required = true) Long id) {
         try {
            SysUserVo sysUserVo= sysUserService.findOne(id);
-            return AjaxResult.ok(sysUserVo);
+            return this.buildMessage(ResultModal.SUCCESS,"用户获取成功",sysUserVo,
+                    ResultModal.DATA);
         } catch (Exception e) {
-            return AjaxResult.build(500,"获取用户失败",null);
+            return this.buildFailMessage("用户获取失败", ResultModal.MESSAGE);
         }
     }
     /**

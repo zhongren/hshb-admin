@@ -165,6 +165,7 @@ public class BaseController {
 		public static final String FAIL = "fail" ;
 		public static final int DIALOG = 0 ;
 		public static final int MESSAGE = 1 ;
+		public static final int DATA = 2 ;
 		public static final int NO_MESSAGE = -1 ;
 		private int msgType ;		
 		private String state ;		
@@ -221,7 +222,7 @@ public class BaseController {
 	 * @param msgType
 	 * @return
 	 */
-	private String buildMessage( String status , String code ,  Object data , int msgType ){
+	protected String buildMessage( String status , String code ,  Object data , int msgType ){
 		StringWriter writer = new StringWriter() ;
 		try{
 			String msg = msgSource.getMessage(code, null , code , Locale.CHINA) ; 
