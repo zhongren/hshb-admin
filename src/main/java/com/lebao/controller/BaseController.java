@@ -234,6 +234,7 @@ public class BaseController {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		System.out.println(writer.toString());
 		return writer.toString() ;
 	}
 	/**
