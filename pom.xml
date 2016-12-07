@@ -46,7 +46,6 @@
             <artifactId>tajin-framework-all</artifactId>
             <version>3.9</version>
         </dependency>
-        <!-- config redis data and client jar -->
 
         <dependency>
             <groupId>com.google.code.gson</groupId>

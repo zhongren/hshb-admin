@@ -2,10 +2,6 @@ package com.lebao.po;
 
 import javax.persistence.*;
 
-/**
- * Author: zr
- * Date  : 2016/12/6 18:11
- */
 @Entity
 @Table(name="tb_sysuser")
 public class SysUser {

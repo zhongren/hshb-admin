@@ -15,9 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by ZR on 2016/12/6.
- */
 @Repository
 public class SysUserDao {
     @Autowired
