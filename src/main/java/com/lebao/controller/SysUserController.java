@@ -83,7 +83,7 @@ public class SysUserController extends BaseController{
      * @param sysUserVo
      * @return
      */
-    @RequestMapping("/save")
+    @RequestMapping(value = "/save",produces="plain/text; charset=UTF-8")
     @ResponseBody
     public String save(SysUserVo sysUserVo) {
         try {
@@ -100,7 +100,7 @@ public class SysUserController extends BaseController{
      * @param sysUserVo
      * @return
      */
-    @RequestMapping("/update")
+    @RequestMapping(value = "/update",produces="plain/text; charset=UTF-8")
     @ResponseBody
     public String update(SysUserVo sysUserVo) {
         try {
