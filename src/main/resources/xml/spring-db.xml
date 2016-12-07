@@ -37,7 +37,7 @@
         </property>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="databasePlatform" value="${hibernate.dialect}"/>
+                <property name="databasePlatform" value="${database.jdbc.platform}"/>
             </bean>
         </property>
         <property name="jpaProperties">
