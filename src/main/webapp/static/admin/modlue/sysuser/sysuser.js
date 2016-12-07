@@ -27,7 +27,7 @@ $(document)
                     "sClass": "center",
                     "sWidth": "2%",
                     "mRender": function (data, style, obj) {
-                        var xqDom = "<a class=\"btn btn-round btn-info btn-xs\" href=\"/user/preUpdate/" + obj.id + "\" >修改</a>";
+                        var xqDom = "<a class=\"btn btn-round btn-info btn-xs\" onclick=\"preUpdate("+obj.id+")\" >修改</a>";
                         var delDom = "<button class=\"btn btn-round btn-danger btn-xs\" onclick=\"\" >删除</button>";
                         return xqDom + "&nbsp;&nbsp;&nbsp;&nbsp;"
                             + delDom;
@@ -66,6 +66,8 @@ function doSearch() {
  * 显示添加窗口
  */
 function preSave() {
+    $("#m_name").empty();
+    $("#m_password").empty();
     $("#myModal").modal("show").css({
         'top': '60px'
     });
@@ -94,6 +96,27 @@ function save() {
         }
     });
 }
+function preUpdate(id) {
+    $.ajaxInvoke({
+        url: G_CTX_ROOT + "/sysUser/save",
+        type: "post",
+        datatype: "json",
+        data: {
+            name: name,
+            password: password
+        },
+        success: function (data) {
+            $("#myModal").modal("hide");
+            msgBox(data.state, data.msg);
+            dataTable.fnDraw();
+        }
+    });
+    $("#myModal").modal("show").css({
+        'top': '60px'
+    });
+}
+
+
 function updUser() {
 
     var id = $("#m_id").val();
