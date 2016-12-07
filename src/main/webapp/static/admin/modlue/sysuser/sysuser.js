@@ -105,7 +105,8 @@ function preUpdate(id) {
             id: id
         },
         success: function (data) {
-            console(data);
+            var json=JSON.stringify(data);
+            console(json);
         }
     });
     $("#myModal").modal("show").css({
