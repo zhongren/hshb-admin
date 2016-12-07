@@ -25,7 +25,7 @@ $(document)
                     "sClass": "center",
                     "sWidth": "2%",
                     "mRender": function (data, style, obj) {
-                        var xqDom = "<a class=\"btn btn-round btn-info btn-xs\" onclick=\"preUpdate("+obj.id+")\" >修改</a>";
+                        var xqDom = "<a class=\"btn btn-round btn-info btn-xs\" onclick=\"preUpdate("+obj.user_id+")\" >修改</a>";
                         var delDom = "<button class=\"btn btn-round btn-danger btn-xs\" onclick=\"\" >删除</button>";
                         return xqDom + "&nbsp;&nbsp;&nbsp;&nbsp;"
                             + delDom;
@@ -94,6 +94,10 @@ function save() {
         }
     });
 }
+/**
+ * 显示更新窗口
+ * @param id
+ */
 function preUpdate(id) {
     $.ajaxInvoke({
         url: G_CTX_ROOT + "/sysUser/queryById",
