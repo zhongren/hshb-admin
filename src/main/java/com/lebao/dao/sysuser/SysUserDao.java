@@ -24,7 +24,7 @@ public class SysUserDao {
 
     public Page<SysUser> getPage(SearchBean searchBean) throws SQLException {
         String sql = " SELECT * from tb_sysuser where tb_sysuser.type >0  ";
-        List<Object> list = new ArrayList<Object>();
+        List<Object> list = new ArrayList<>();
         Map<Object, Object> map = searchBean.getParamMap();
         if (map.containsKey("name")) {
             sql += " and tb_sysuser.name like ? ";
