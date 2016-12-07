@@ -98,17 +98,14 @@ function save() {
 }
 function preUpdate(id) {
     $.ajaxInvoke({
-        url: G_CTX_ROOT + "/sysUser/save",
+        url: G_CTX_ROOT + "/sysUser/queryById",
         type: "post",
         datatype: "json",
         data: {
-            name: name,
-            password: password
+            id: id
         },
         success: function (data) {
-            $("#myModal").modal("hide");
-            msgBox(data.state, data.msg);
-            dataTable.fnDraw();
+            console(data);
         }
     });
     $("#myModal").modal("show").css({
