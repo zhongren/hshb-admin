@@ -25,6 +25,10 @@ public class SysUserController extends BaseController{
     @Autowired
     SysUserService sysUserService;
 
+    /**
+     * 页面入口
+     * @return
+     */
     @RequestMapping("/index")
     public ModelAndView index() {
         ModelAndView view = new ModelAndView();
@@ -33,6 +37,11 @@ public class SysUserController extends BaseController{
         return view;
     }
 
+    /**
+     * 分页数据查询
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/query",produces="plain/text; charset=UTF-8")
     @ResponseBody
     public String query(HttpServletRequest request) {
@@ -52,6 +61,10 @@ public class SysUserController extends BaseController{
             if (StringUtils.isNotBlank(name)) {
                 s.getParamMap().put("name",name);
             }
+            if(dt.getSortField().equals("user_id")){
+                s.setSortField("id");
+            }
+            s.setSortType(dt.getSortType());
             s.setCurrentPage(curPage);
             s.setPageSize(length);
             Page<SysUserVo> pages =sysUserService.getPage(s);
@@ -65,15 +78,54 @@ public class SysUserController extends BaseController{
         return json;
     }
 
-    @RequestMapping("/add")
+    /**
+     * 添加用户
+     * @param sysUserVo
+     * @return
+     */
+    @RequestMapping("/save")
     @ResponseBody
-    public String add(SysUserVo sysUserVo) {
+    public String save(SysUserVo sysUserVo) {
         try {
             sysUserService.save(sysUserVo);
             return this.buildSuccessMessage("用户添加成功",
                     ResultModal.MESSAGE);
         } catch (Exception e) {
             return  this.buildFailMessage("用户添加失败", ResultModal.MESSAGE);
+        }
+    }
+
+    /**
+     * 更新用户
+     * @param sysUserVo
+     * @return
+     */
+    @RequestMapping("/update")
+    @ResponseBody
+    public String update(SysUserVo sysUserVo) {
+        try {
+            sysUserService.update(sysUserVo);
+            return this.buildSuccessMessage("用户更新成功",
+                    ResultModal.MESSAGE);
+        } catch (Exception e) {
+            return  this.buildFailMessage("用户更新失败", ResultModal.MESSAGE);
+        }
+    }
+
+    /**
+     * 删除用户
+     * @param sysUserVo
+     * @return
+     */
+    @RequestMapping("/delete")
+    @ResponseBody
+    public String delete(SysUserVo sysUserVo) {
+        try {
+            sysUserService.delete(sysUserVo);
+            return this.buildSuccessMessage("用户删除成功",
+                    ResultModal.MESSAGE);
+        } catch (Exception e) {
+            return  this.buildFailMessage("用户删除失败", ResultModal.MESSAGE);
         }
     }
 }

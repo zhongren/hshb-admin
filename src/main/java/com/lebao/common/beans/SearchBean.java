@@ -18,7 +18,7 @@ public class SearchBean {
     private int currentPage = 0;
     private String sortField;
     private String sortType;
-    private Map<Object,Object> paramMap=new HashMap<>();
+    private Map<Object,Object> paramMap=new HashMap<Object,Object>();
     public String getName() {
         return name;
     }

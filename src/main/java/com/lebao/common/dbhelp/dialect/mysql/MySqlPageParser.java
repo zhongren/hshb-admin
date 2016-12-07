@@ -20,15 +20,18 @@ public class MySqlPageParser implements PageSqlParser {
 
     public String getPageSql(String sql, boolean hasOffset) {
         if (hasOffset) {
+            System.out.println(sql);
             return sql + " limit ?, ?";
         } else {
+            System.out.println(sql);
             return sql + " limit ?";
         }
     }
 
 
     public String getCountingSql(String sql) {
-        return "select count(1) from ( " + clearFiled(sql) + ") as __tc";
+       // return "select count(1) from ( " + clearFiled(sql) + ") as __tc";
+        return "select count(1) from ( " + sql + ") as __tc";
     }
     
     /**

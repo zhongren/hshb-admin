@@ -6,8 +6,8 @@ import javax.persistence.*;
  * Author: zr
  * Date  : 2016/12/6 18:11
  */
-@Table(name="tb_sysuser")
 @Entity
+@Table(name="tb_sysuser")
 public class SysUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,5 +46,15 @@ public class SysUser {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "SysUser{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", type=" + type +
+                '}';
     }
 }

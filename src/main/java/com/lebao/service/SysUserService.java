@@ -1,8 +1,10 @@
 package com.lebao.service;
 
 
+import com.lebao.common.Constant;
 import com.lebao.common.beans.SearchBean;
 import com.lebao.common.dbhelp.page.Page;
+import com.lebao.common.utils.Sequence;
 import com.lebao.converter.SysUserConverter;
 import com.lebao.dao.sysuser.SysUserDao;
 import com.lebao.po.SysUser;
@@ -36,13 +38,15 @@ public class SysUserService {
         pageCount = sysUserPage.getPageCount();
         curPage = sysUserPage.getCurPage();
         myPageSize = sysUserPage.getPageSize();
-        Page<SysUserVo> pageBean = new Page<>(myPageSize, list, curPage, pageCount, recordCount);
+        Page<SysUserVo> pageBean = new Page<SysUserVo>(myPageSize, list, curPage, pageCount, recordCount);
         return pageBean;
     }
 
     public void save(SysUserVo vo) {
+        vo.setType(Constant.USER_ADMIN);
         SysUser sysUser = sysUserConverter.convert2P(vo);
         sysUserDao.save(sysUser);
+        System.out.println(sysUser.toString());
     }
 
     public void update(SysUserVo vo) {

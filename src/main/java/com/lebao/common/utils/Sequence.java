@@ -22,6 +22,7 @@ public class Sequence  {
 							Thread.currentThread();
 							Thread.sleep(1);
 						} catch (java.lang.InterruptedException e) {
+							e.printStackTrace();
 						}
 						continue;
 					} else {

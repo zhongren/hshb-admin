@@ -190,7 +190,7 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
                 <li class="active"><a class="active" href="${ctx}/sysUser/index" target="main"> <i
-                        class="icon-dashboard"></i> <span>用户管理</span>
+                        class=""></i> <span>用户管理</span>
                 </a></li>
                 <li class="sub-menu dcjq-parent-li">
                     <a href="javascript:;" class="dcjq-parent">

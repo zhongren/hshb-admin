@@ -2,7 +2,7 @@ package com.lebao.bean;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import javax.validation.constraints.NotNull;
+
 /**
  * Created by Server on 2016/3/30.
  */
@@ -13,7 +13,6 @@ public class GoodsBean {
     private String  p_type_id;//bigint(20) NOT NULL type_id
 
     @JsonProperty("name")
-    @NotNull
     private String p_name;//varchar(20) NULL 商品名称
     @JsonProperty("server")
     private String p_server;
@@ -22,16 +21,16 @@ public class GoodsBean {
     @JsonProperty("photo2")
     private String p_photo2;//varchar(20) NULL 图片名称
     @JsonProperty("price")
-    @NotNull
+
     private Float p_price;//float(15,2) NOT NULL 价格
     @JsonProperty("score")
-    @NotNull
+
     private Float p_score;//float(15,2) NOT 点券(游戏币)<->充值单价,兑换比率
     @JsonProperty("rate_base_user")
-    @NotNull
+
     private Float p_rate_base_user;//float(15,2) NOT NULL普通会员充值折扣(比率)
     @JsonProperty("rate_hy_user")
-    @NotNull
+
     private Float p_rate_hy_user;//float(15,2) NOT NULL  付费会员充值折扣(比率)
     @JsonProperty("url")
     private String p_url;//varchar(20) NULL 链接

@@ -4,6 +4,8 @@ package com.lebao.common;
  * Created by Server on 2016/5/4.
  */
 public class Constant {
+    public static final int USER_ADMIN = 1 ;
+
     /**
      * User is locked
      */

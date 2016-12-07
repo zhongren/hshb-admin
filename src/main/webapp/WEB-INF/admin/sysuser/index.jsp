@@ -42,7 +42,7 @@
                                 <button onclick="doSearch()" class="btn btn-primary">查询</button>
                             </div>
                             <div class="form-group" style="padding-top: 22px;padding-left: 2px">
-                                <button onclick="preAdd()" class="btn btn-info">添加用户</button>
+                                <button onclick="preSave()" class="btn btn-info">添加用户</button>
                             </div>
                         </div>
 
@@ -109,7 +109,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                 </button>
-                <button type="button" onclick="addUser()" class="btn btn-primary">确认添加</button>
+                <button type="button" onclick="save()" class="btn btn-primary">确认添加</button>
             </div>
         </div>
         <!-- /.modal-content -->

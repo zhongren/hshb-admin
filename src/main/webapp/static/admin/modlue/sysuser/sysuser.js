@@ -5,7 +5,7 @@ $(document)
             setting.aoColumns = [
                 {
                     "sTitle": "<center>用户编号</center>", // 显示标题
-                    "mData": "id", // 属性
+                    "mData": "user_id", // 属性
                     "bSortable": true,// 排序
                     "sClass": "center",
                     "sWidth": "5%"
@@ -33,7 +33,7 @@ $(document)
                             + delDom;
                     }
                 }];
-            setting.aaSorting = [[1, "desc"]];
+            setting.aaSorting = [[0, "desc"]];
             setting.bStateSave = false;
             dataTable = $('#datatable_tabletools').dataTable(setting);
             var rule = {
@@ -56,29 +56,36 @@ $(document)
             };
             validator.init(rule);
         });
+/**
+ * 查询
+ */
 function doSearch() {
     dataTable.fnDraw();
 }
-function preAdd() {
+/**
+ * 显示添加窗口
+ */
+function preSave() {
     $("#myModal").modal("show").css({
         'top': '60px'
     });
 }
-
-function addUser() {
+/**
+ * 发送添加请求
+ * @returns {boolean}
+ */
+function save() {
     var name = $("#m_name").val();
     var password = $("#m_password").val();
     if (!validator.validate())
         return false;
     $.ajaxInvoke({
-        url: G_CTX_ROOT + "/sysUser/add",
+        url: G_CTX_ROOT + "/sysUser/save",
         type: "post",
         datatype: "json",
         data: {
-            p_user_name: name,
-            p_account: account,
-            p_user_phone: phoneNumber,
-            p_password: password
+            name: name,
+            password: password
         },
         success: function (data) {
             $("#myModal").modal("hide");

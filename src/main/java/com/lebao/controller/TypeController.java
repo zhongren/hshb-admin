@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
+
 import java.util.Map;
 
 /**
@@ -78,7 +78,7 @@ public class TypeController extends BaseController {
 
     @RequestMapping("/add")
     @ResponseBody
-    public String add(@Valid TypeBean tb) {
+    public String add( TypeBean tb) {
         try {
             typeService.addType(tb);
             return this.buildSuccessMessage("shoper_add_success",
@@ -106,7 +106,7 @@ public class TypeController extends BaseController {
 
     @RequestMapping("/update")
     @ResponseBody
-    public String update(@Valid TypeBean tb) {
+    public String update( TypeBean tb) {
         try {
             typeService.updType(tb);
             return this.buildSuccessMessage("shoper_update_success",

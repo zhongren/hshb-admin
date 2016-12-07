@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
+
 import java.util.List;
 import java.util.Map;
 
@@ -97,7 +97,7 @@ public class NewsController extends BaseController {
     }
     @RequestMapping("/add")
     @ResponseBody
-    public String add(@Valid  NewsBean newsBean, BindingResult result) {
+    public String add(  NewsBean newsBean, BindingResult result) {
         try {
             //System.out.println(goodsBean.toString());
             newsBean.setP_status("1");
@@ -129,7 +129,7 @@ public class NewsController extends BaseController {
     }
     @RequestMapping("/update")
     @ResponseBody
-    public String update(@Valid  NewsBean newsBean) {
+    public String update(  NewsBean newsBean) {
         newsBean.setP_status("1");
         try {
             newsService.update(newsBean);

@@ -1,12 +1,18 @@
 package com.lebao.vo;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 /**
  * Created by ZR on 2016/12/6.
  */
 public class SysUserVo {
+    @JsonProperty("user_id")
     private Long id;
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("password")
     private String password;
+    @JsonProperty("type")
     private Integer type;
 
     public Long getId() {
