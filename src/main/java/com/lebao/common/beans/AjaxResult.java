@@ -1,15 +1,16 @@
-package com.lebao.common.utils;
+package com.lebao.common.beans;
 
-
-import org.codehaus.jackson.map.ObjectMapper;
 
 import java.util.List;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 /**
  * 淘淘商城自定义响应结构
  */
-public class TaotaoResult {
+public class AjaxResult {
 
     // 定义jackson对象
     private static final ObjectMapper MAPPER = new ObjectMapper();
@@ -23,33 +24,33 @@ public class TaotaoResult {
     // 响应中的数据
     private Object data;
 
-    public static TaotaoResult build(Integer status, String msg, Object data) {
-        return new TaotaoResult(status, msg, data);
+    public static AjaxResult build(Integer status, String msg, Object data) {
+        return new AjaxResult(status, msg, data);
     }
 
-    public static TaotaoResult ok(Object data) {
-        return new TaotaoResult(data);
+    public static AjaxResult ok(Object data) {
+        return new AjaxResult(data);
     }
 
-    public static TaotaoResult ok() {
-        return new TaotaoResult(null);
+    public static AjaxResult ok() {
+        return new AjaxResult(null);
     }
 
-    public TaotaoResult() {
+    public AjaxResult() {
 
     }
 
-    public static TaotaoResult build(Integer status, String msg) {
-        return new TaotaoResult(status, msg, null);
+    public static AjaxResult build(Integer status, String msg) {
+        return new AjaxResult(status, msg, null);
     }
 
-    public TaotaoResult(Integer status, String msg, Object data) {
+    public AjaxResult(Integer status, String msg, Object data) {
         this.status = status;
         this.msg = msg;
         this.data = data;
     }
 
-    public TaotaoResult(Object data) {
+    public AjaxResult(Object data) {
         this.status = 200;
         this.msg = "OK";
         this.data = data;
@@ -84,16 +85,16 @@ public class TaotaoResult {
     }
 
     /**
-     * 将json结果集转化为TaotaoResult对象
+     * 将json结果集转化为AjaxResult对象
      * 
      * @param jsonData json数据
-     * @param clazz TaotaoResult中的object类型
+     * @param clazz AjaxResult中的object类型
      * @return
      */
-    public static TaotaoResult formatToPojo(String jsonData, Class<?> clazz) {
+    public static AjaxResult formatToPojo(String jsonData, Class<?> clazz) {
         try {
             if (clazz == null) {
-                return MAPPER.readValue(jsonData, TaotaoResult.class);
+                return MAPPER.readValue(jsonData, AjaxResult.class);
             }
             JsonNode jsonNode = MAPPER.readTree(jsonData);
             JsonNode data = jsonNode.get("data");
@@ -118,9 +119,9 @@ public class TaotaoResult {
      * @param json
      * @return
      */
-    public static TaotaoResult format(String json) {
+    public static AjaxResult format(String json) {
         try {
-            return MAPPER.readValue(json, TaotaoResult.class);
+            return MAPPER.readValue(json, AjaxResult.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -134,7 +135,7 @@ public class TaotaoResult {
      * @param clazz 集合中的类型
      * @return
      */
-    public static TaotaoResult formatToList(String jsonData, Class<?> clazz) {
+    public static AjaxResult formatToList(String jsonData, Class<?> clazz) {
         try {
             JsonNode jsonNode = MAPPER.readTree(jsonData);
             JsonNode data = jsonNode.get("data");

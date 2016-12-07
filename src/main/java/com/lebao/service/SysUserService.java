@@ -58,4 +58,9 @@ public class SysUserService {
         sysUserDao.delete(sysUser);
     }
 
+    public SysUserVo findOne(Long id) {
+        SysUser sysUser=sysUserDao.findOne(id);
+        SysUserVo sysUserVo = sysUserConverter.convert2V(sysUser);
+       return sysUserVo;
+    }
 }
