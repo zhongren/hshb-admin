@@ -50,22 +50,21 @@
         </property>
     </bean>
 
-    <bean id="dbHelper" class="com.lebao.common.dbhelp.DbHelper">
-        <constructor-arg ref="transactionAwareDataSourceProxy"/>
-        <property name="dialect" value="mysql"/>
-    </bean>
 
+
+
+    <!-- Jpa 事务配置 -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
     <bean id="transactionAwareDataSourceProxy"
           class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy">
         <constructor-arg ref="dataSource"/>
     </bean>
-
-    <!-- 事务管理器 -->
-    <bean id="transactionManager"
-          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"></property>
+    <bean id="dbHelper" class="com.lebao.common.dbhelp.DbHelper">
+        <constructor-arg ref="transactionAwareDataSourceProxy"/>
+        <property name="dialect" value="mysql"/>
     </bean>
-
     <tx:annotation-driven transaction-manager="transactionManager"/>
     <!-- Spring Data Jpa配置 -->
     <jpa:repositories base-package="com.lebao.dao" transaction-manager-ref="transactionManager"
