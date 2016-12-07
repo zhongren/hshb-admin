@@ -31,9 +31,7 @@ public class SysUserDao {
             list.add("%" + map.get("name") + "%");
         }
         sql += " order by " + searchBean.getSortField() + "  " + searchBean.getSortType() + " ";
-
         return dbHelper.getPage(sql, SysUser.class, searchBean.getCurrentPage(), searchBean.getPageSize(),list.toArray());
-
     }
 
     public void save(SysUser sysUser) {
