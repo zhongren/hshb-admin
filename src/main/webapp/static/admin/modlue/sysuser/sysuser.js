@@ -21,7 +21,7 @@ $(document)
                 {
                     "sTitle": "<center>操作</center>", // 显示标题
                     "bSortable": false,// 排序
-                    "mData": "id", // 属性
+                    "mData": "user_id", // 属性
                     "sClass": "center",
                     "sWidth": "2%",
                     "mRender": function (data, style, obj) {
