@@ -105,7 +105,7 @@ function preUpdate(id) {
             id: id
         },
         success: function (data) {
-            var json=JSON.stringify(data);
+            var json=JSON.parseJSON(data);
             console(json);
         }
     });
