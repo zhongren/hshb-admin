@@ -15,10 +15,17 @@
 </head>
 <body>
 <div id="timepickerdemo">
-    <input size="16" type="text" value="2012-06-15" readonly class="form_datetime" data-date-format="yyyy-mm-dd">
+    <input size="16" type="text" readonly class="form_datetime" data-date-format="yyyy-mm-dd">
 
     <script type="text/javascript">
-        $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd',minView:'month'});
+        $(".form_datetime").val(moment().format("YYYY-MM-DD"));
+        $(".form_datetime").datetimepicker(
+                {
+                    format: 'yyyy-mm-dd',
+                    minView: 'month',
+                    startDate: new Date(),
+                    language: 'zh-CN',
+                });
     </script>
 </div>
 </body>
