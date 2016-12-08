@@ -40,7 +40,7 @@ public class NewsType {
 
     @Override
     public String toString() {
-        return "NewsType{" +
+        return "newstype{" +
                 "id=" + id +
                 ", fid=" + fid +
                 ", name='" + name + '\'' +

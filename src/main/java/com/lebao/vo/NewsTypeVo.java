@@ -37,7 +37,7 @@ public class NewsTypeVo {
 
     @Override
     public String toString() {
-        return "NewsType{" +
+        return "newstype{" +
                 "id=" + id +
                 ", fid=" + fid +
                 ", name='" + name + '\'' +
