@@ -27,7 +27,7 @@ $(document)
                     "mRender": function (data, style, obj) {
                        // console.log(obj);
                         var xqDom = "<a class=\"btn btn-round btn-info btn-xs\" onclick=\"preUpdate("+obj.user_id+")\" >修改</a>";
-                        var delDom ="<a class=\"btn btn-round btn-danger btn-xs\" onclick=\"preDel("+obj.user_id+",obj.name)\" >删除</a>";
+                        var delDom ="<a class=\"btn btn-round btn-danger btn-xs\" onclick=\"preDel("+obj.user_id+")\" >删除</a>";
                         return xqDom + "&nbsp;&nbsp;&nbsp;&nbsp;"
                             + delDom;
                     }
@@ -116,7 +116,7 @@ function preUpdate(id) {
              console.log(user);
         }
     });
-    $("#updateButton").replaceWith("<button type=\"button\" onclick=\"update("+user_id+")\" class=\"btn btn-primary\" id=\"updateButton\">确认修改</button>");
+    $("#updateButton").replaceWith("<button type=\"button\" onclick=\"update("+user_id+")\" class=\"btn btn-info\" id=\"updateButton\">确认修改</button>");
     $("#updateModal").modal("show").css({
         'top': '60px'
     });
@@ -148,10 +148,8 @@ function update(id) {
 /**
  * 显示删除窗口
  */
-function preDel(id,name) {
-    $("#uid").replaceWith("<label  id=\"uid\">用户编号："+id+"</label><span></span>");
-    $("#uname").replaceWith("<label  id=\"uname\">用户名："+name+"</label><span></span>");
-    $("#deleteButton").replaceWith("<button type=\"button\" onclick=\"del("+id+")\" class=\"btn btn-primary\" id=\"deleteButton\">确认删除</button>");
+function preDel(id) {
+    $("#deleteButton").replaceWith("<button type=\"button\" onclick=\"del("+id+")\" class=\"btn btn-danger\" id=\"deleteButton\">确认删除</button>");
     $("#deleteModal").modal("show").css({
         'top': '60px'
     });

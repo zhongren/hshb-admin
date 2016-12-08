@@ -109,7 +109,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                 </button>
-                <button type="button" onclick="save()" class="btn btn-primary">确认添加</button>
+                <button type="button" onclick="save()" class="btn btn-info">确认添加</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -162,21 +162,10 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"
                         aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="deleteModalLabel">添加用户</h4>
+                <h4 class="modal-title" id="deleteModalLabel">删除用户</h4>
             </div>
             <div class="modal-body">
-                <div class="col-lg-12">
-                    <section class="panel">
-                        <div class="panel-body">
-                            <form role="form">
-                                <div class="form-group">
-                                    <label  id="uid">用户编号：</label><span></span>
-                                    <label  id="uname">用户编号：</label><span></span>
-                                </div>
-                            </form>
-                        </div>
-                    </section>
-                </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
