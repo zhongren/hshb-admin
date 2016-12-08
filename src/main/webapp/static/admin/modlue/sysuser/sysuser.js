@@ -154,7 +154,10 @@ function preDel(id) {
         'top': '60px'
     });
 }
-
+/**
+ * 发送删除请求
+ * @param id
+ */
 function del(id) {
     $.ajaxInvoke({
         url: G_CTX_ROOT + "/sysUser/delete",
