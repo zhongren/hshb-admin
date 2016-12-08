@@ -38,12 +38,28 @@
                                 <input name="s_name" type="text" class="form-control" id="userPhone"
                                        placeholder="请输入用户名">
                             </div>
+                            <div class="form-group">
+                                <label for="date">日期：</label>
+                                <input size="16" type="text" class="form_datetime form-control"
+                                       data-date-format="yyyy-mm-dd" placeholder="日期" id="date">
+                                <span class="add-on"><i class="icon-th"></i></span>
+                                <script type="text/javascript">
+                                    $("#date").val(moment().format("YYYY-MM-DD"));
+                                    $("#date").datetimepicker(
+                                            {
+                                                format: 'yyyy-mm-dd',
+                                                minView: 'month',
+                                                language: 'zh-CN',
+                                            });
+                                </script>
+                            </div>
                             <div class="form-group" style="padding-top: 22px;padding-left: 2px">
                                 <button onclick="doSearch()" class="btn btn-primary">查询</button>
                             </div>
                             <div class="form-group" style="padding-top: 22px;padding-left: 2px">
                                 <button onclick="preSave()" class="btn btn-info">添加</button>
                             </div>
+
                         </div>
 
                     </div>
@@ -147,7 +163,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                 </button>
-                <button  id="updateButton">确认修改</button>
+                <button id="updateButton">确认修改</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -170,7 +186,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                 </button>
-                <button  id="deleteButton">确认删除</button>
+                <button id="deleteButton">确认删除</button>
             </div>
         </div>
         <!-- /.modal-content -->
