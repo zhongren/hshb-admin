@@ -32,7 +32,7 @@ public class NewsTypeController extends BaseController{
     @RequestMapping("/index")
     public ModelAndView index() {
         ModelAndView view = new ModelAndView();
-        view.addObject("title","新闻管理>>新闻类型查询");
+        view.addObject("title","文章管理>>类型查询");
         view.setViewName("admin/news/typeindex");
         return view;
     }

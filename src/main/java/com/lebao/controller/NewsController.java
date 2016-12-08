@@ -1,57 +1,53 @@
 package com.lebao.controller;
 
-import com.lebao.bean.NewsBean;
-import com.lebao.bean.NewsSearchParam;
-import com.lebao.bean.TypeBean;
-import com.lebao.common.dbhelp.page.Page;
 
-import com.lebao.service.i.INewsService;
-import com.lebao.service.i.ITypeService;
+import com.lebao.common.beans.SearchBean;
+import com.lebao.common.dbhelp.page.Page;
+import com.lebao.service.NewsService;
+import com.lebao.vo.NewsVo;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-
-import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Server on 2016/3/29.
+ * Created by ZR on 2016/12/6.
  */
 @Controller
 @RequestMapping(value="news")
-public class NewsController extends BaseController {
-    private int NEWS_TYPE=1;
-    private Logger logger = Logger.getLogger(NewsController.class) ;
+public class NewsController extends BaseController{
     @Autowired
-    private INewsService newsService;
-    @Autowired
-    private ITypeService typeService;
+    NewsService newsService;
 
-
-
-    @RequestMapping("/list")
-    public ModelAndView list() {
-
+    /**
+     * 页面入口
+     * @return
+     */
+    @RequestMapping("/index")
+    public ModelAndView index() {
         ModelAndView view = new ModelAndView();
-        //	initSideMenu(view,"会员列表");
-        view.addObject("title","新闻管理>>新闻查询");
-        view.setViewName("admin/news/list");
+        view.addObject("title","文章管理>>文章查询");
+        view.setViewName("admin/news/newsindex");
         return view;
     }
+
+    /**
+     * 分页数据查询
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/query",produces="plain/text; charset=UTF-8")
     @ResponseBody
     public String query(HttpServletRequest request) {
         Map<String, Object> obj = this.getParametersStartWidth(request,
                 "s_");
-        String title = (String) obj.get("title");
+        String name = (String) obj.get("name");
         DataTableVo dt = this.parseData4DT(request);
         int start = dt.getiDisplayStart();
         int length = dt.getiDisplayLength();
@@ -61,96 +57,111 @@ public class NewsController extends BaseController {
         }
         String json = null;
         try {
-            NewsSearchParam s = new NewsSearchParam();
-            if (StringUtils.isNotBlank(title)) {
-                s.setTitle(title.trim());
+            SearchBean s = new SearchBean();
+            if (StringUtils.isNotBlank(name)) {
+                s.getParamMap().put("name",name);
             }
-            s.setCurPage(curPage);
+            if(dt.getSortField().equals("id")){
+                s.setSortField("id");
+            }
+            s.setSortType(dt.getSortType());
+            s.setCurrentPage(curPage);
             s.setPageSize(length);
-            Page<NewsBean> pages =newsService.getNews(s);
+            Page<NewsVo> pages =newsService.getPage(s);
             dt.setData(pages.getData());
             dt.setiTotalRecords(dt.getiTotalRecords());
             dt.setiTotalRecords(pages.getRecordCount());
             json = formateData2DT(dt);
         } catch (Exception e) {
-            logger.error("topicList exception:" + e.getMessage(), e);
+           e.printStackTrace();
         }
         return json;
-
     }
-    @RequestMapping(value = "/preAdd")
-    public ModelAndView preAdd(HttpServletRequest request) {
+    /**
+     * 页面入口
+     * @return
+     */
+    @RequestMapping("/preSave")
+    public ModelAndView preSave() {
         ModelAndView view = new ModelAndView();
-        view.addObject("title","新闻管理>>新闻添加");
-        List<TypeBean> list=null;
-        try {
-            list=   typeService.getTypes();
-            for (int i = 0; i <list.size() ; i++) {
-               // System.out.println(list.get(i).toString());
-            }
-            view.addObject("newsTypeList",list);
-        }catch (Exception e){
-
-        }
-        view.setViewName("admin/news/add");
+        view.addObject("title","文章管理>>文章添加");
+        view.setViewName("admin/news/newssave");
         return view;
     }
-    @RequestMapping("/add")
+    /**
+     * 添加类型
+     * @param newsVo
+     * @return
+     */
+    @RequestMapping(value = "/save",produces="plain/text; charset=UTF-8")
     @ResponseBody
-    public String add(  NewsBean newsBean, BindingResult result) {
+    public String save(NewsVo newsVo) {
         try {
-            //System.out.println(goodsBean.toString());
-            newsBean.setP_status("1");
-            newsService.add(newsBean);
-            return this.buildSuccessMessage("news_add_success",
+            newsService.save(newsVo);
+            return this.buildSuccessMessage("文章添加成功",
                     ResultModal.MESSAGE);
         } catch (Exception e) {
-            logger.error("添加新闻失败", e);
-            return  this.buildFailMessage("news_add_fail", ResultModal.MESSAGE);
+            return  this.buildFailMessage("文章添加失败", ResultModal.MESSAGE);
         }
     }
-    @RequestMapping(value = "/preUpdate/{id}")
-    public ModelAndView preUpdate(HttpServletRequest request, @PathVariable String  id) {
-        ModelAndView view = new ModelAndView();
-        view.addObject("title","新闻管理>>新闻详情");
-        List<TypeBean> list=null;
-        NewsBean newsBean=null;
-        try {
-            newsBean=newsService.getNews(id);
-            System.out.println(newsBean.toString());
-            list=   typeService.getTypes();
-            view.addObject("news",newsBean);
-            view.addObject("newsTypeList",list);
-        }catch (Exception e){
 
-        }
-        view.setViewName("admin/news/update");
-        return view;
-    }
-    @RequestMapping("/update")
+    /**
+     * 更新类型
+     * @param id
+     * @param name
+     * @return
+     */
+    @RequestMapping(value = "/update",produces="plain/text; charset=UTF-8")
     @ResponseBody
-    public String update(  NewsBean newsBean) {
-        newsBean.setP_status("1");
+    public String update(  @RequestParam(value = "id", required = true) Long id,
+                           @RequestParam(value = "typeId", required = true) Long typeId,
+                           @RequestParam(value = "name", required = true) String name,
+                           @RequestParam(value = "content", required = true) String content,
+                           @RequestParam(value = "author", required = true) String author,
+                           @RequestParam(value = "createTime", required = true) String createTime,
+                           @RequestParam(value = "createTime", required = true) String updateTime
+                          ) {
         try {
-            newsService.update(newsBean);
-            return this.buildSuccessMessage("news_update_success",
+            NewsVo newsVo=newsService.findOne(id);
+            newsVo.setTypeId(typeId);
+            newsVo.setName(name);
+            newsVo.setContent(content);
+            newsVo.setAuthor(author);
+            newsVo.setCreateTime(createTime);
+            newsVo.setUpdateTime(updateTime);
+            newsService.update(newsVo);
+            return this.buildSuccessMessage("文章更新成功",
                     ResultModal.MESSAGE);
         } catch (Exception e) {
-            logger.error("更新新闻失败", e);
-            return  this.buildFailMessage("news_update_fail", ResultModal.MESSAGE);
+            return  this.buildFailMessage("文章更新失败", ResultModal.MESSAGE);
         }
     }
+    @ResponseBody
+    @RequestMapping(value = "/queryById",produces="plain/text; charset=UTF-8")
+    public String queryUser(@RequestParam(value = "id", required = true) Long id) {
+        try {
+            NewsVo newsVo= newsService.findOne(id);
+            return this.buildMessage(ResultModal.SUCCESS,ResultModal.SUCCESS_CODE,"文章获取成功",newsVo,
+                    ResultModal.DATA);
+        } catch (Exception e) {
+            return this.buildFailMessage("文章获取失败", ResultModal.MESSAGE);
+        }
+    }
+
+    /**
+     * 删除类型
+     * @param id
+     * @return
+     */
     @RequestMapping("/delete")
     @ResponseBody
-    public String delete(HttpServletRequest request) {
-        String p_id=request.getParameter("p_id");
+    public String delete(@RequestParam(value = "id", required = true) Long id) {
         try {
-            newsService.delete(p_id);
-            return this.buildSuccessMessage("news_delete_success",
+            newsService.delete(id);
+            return this.buildSuccessMessage("文章删除成功",
                     ResultModal.MESSAGE);
         } catch (Exception e) {
-            logger.error("删除新闻品失败", e);
-            return  this.buildFailMessage("news_delete_fail", ResultModal.MESSAGE);
+            return  this.buildFailMessage("文章删除失败", ResultModal.MESSAGE);
         }
     }
 }

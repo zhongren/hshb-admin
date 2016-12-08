@@ -190,14 +190,15 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
                 <li class="active"><a class="active" href="${ctx}/sysUser/index" target="main"> <i
-                        class=""></i> <span>用户管理</span>
+                        class="icon-user"></i> <span>用户管理</span>
                 </a></li>
                 <li class="sub-menu dcjq-parent-li">
                     <a href="javascript:;" class="dcjq-parent">
-                        <span>新闻管理</span></a>
+                        <i class="icon-th"></i>
+                        <span>文章管理</span></a>
                     <ul class="sub">
                         <li><a class="" href="${ctx}/newsType/index" target="main">类型管理</a></li>
-                        <li><a class="" href="${ctx}/${f.p_url}/list" target="main">内容管理</a></li>
+                        <li><a class="" href="${ctx}/news/index" target="main">文章管理</a></li>
                         </ul>
                     </li>
                 <c:forEach items="${sysMenus}" var="s">

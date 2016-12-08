@@ -9,7 +9,7 @@
     <jsp:include page="../common/css.jsp"></jsp:include>
     <jsp:include page="../common/js.jsp"></jsp:include>
 
-    <script src="${ctx}/staticAdmin/modlue/sysuser/sysuser.js"></script>
+    <script src="${ctx}/staticAdmin/modlue/news/news.js"></script>
 </head>
 <body>
 <div>
@@ -34,15 +34,17 @@
                     <div class="panel-body">
                         <div class="form-inline">
                             <div class="form-group">
-                                <label for="userPhone">用户名：</label>
-                                <input name="s_name" type="text" class="form-control" id="userPhone"
-                                       placeholder="请输入用户名">
+
+                                <label for="type">文章名：</label>
+                                <input name="s_name" type="text" class="form-control" id="type"
+                                       placeholder="请输入文章名">
+
                             </div>
                             <div class="form-group" style="padding-top: 22px;padding-left: 2px">
                                 <button onclick="doSearch()" class="btn btn-primary">查询</button>
                             </div>
-                            <div class="form-group" style="padding-top: 22px;padding-left: 2px">
-                                <button onclick="preSave()" class="btn btn-info">添加</button>
+                            <div class="form-group" style="padding-top: 22px;"> <a class="btn btn-info" href="${ctx}/news/preSave" target="main">
+                                添加</a>
                             </div>
                         </div>
 
@@ -86,7 +88,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"
                         aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="saveModalLabel">添加用户</h4>
+                <h4 class="modal-title" id="saveModalLabel">添加类型</h4>
             </div>
             <div class="modal-body">
                 <div class="col-lg-12">
@@ -94,12 +96,8 @@
                         <div class="panel-body">
                             <form role="form">
                                 <div class="form-group">
-                                    <label for="m_name">用户名：</label><span></span>
-                                    <input type="text" class="form-control" id="m_name" placeholder="请输入用户名">
-                                </div>
-                                <div class="form-group">
-                                    <label for="m_password">密码：</label> <span></span>
-                                    <input type="password" id="m_password" placeholder="请输入密码" class="form-control">
+                                    <label for="m_name">类型名：</label><span></span>
+                                    <input type="text" class="form-control" id="m_name" placeholder="请输入类型名">
                                 </div>
                             </form>
                         </div>
