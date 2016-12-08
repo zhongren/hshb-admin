@@ -36,7 +36,7 @@
                             <div class="form-group">
                                 <label for="userPhone">用户名：</label>
                                 <input name="s_name" type="text" class="form-control" id="userPhone"
-                                       placeholder="请输入电话号码">
+                                       placeholder="请输入用户名">
                             </div>
                             <div class="form-group" style="padding-top: 22px;padding-left: 2px">
                                 <button onclick="doSearch()" class="btn btn-primary">查询</button>
@@ -78,15 +78,15 @@
         <!-- page end-->
     </section>
 </div>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+<!-- 添加模态框（Modal） -->
+<div class="modal fade" id="saveModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"
                         aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">添加用户</h4>
+                <h4 class="modal-title" id="saveModalLabel">添加用户</h4>
             </div>
             <div class="modal-body">
                 <div class="col-lg-12">
@@ -116,6 +116,77 @@
     </div>
     <!-- /.modal -->
 </div>
-
+<!-- 更新模态框（Modal） -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="updateModalLabel">修改用户</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <div class="panel-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="m_name">用户名：</label><span></span>
+                                    <input type="text" class="form-control" id="m_name1" placeholder="请输入用户名">
+                                </div>
+                                <div class="form-group">
+                                    <label for="m_password">密码：</label> <span></span>
+                                    <input type="password" id="m_password1" placeholder="请输入密码" class="form-control">
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button  id="updateButton">确认修改</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+<!-- 删除模态框（Modal） -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="deleteModalLabel">添加用户</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <div class="panel-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label  id="uid">用户编号：</label><span></span>
+                                    <label  id="uname">用户编号：</label><span></span>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button  id="deleteButton">确认删除</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
 </body>
 </html>

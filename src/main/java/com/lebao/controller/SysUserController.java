@@ -99,13 +99,20 @@ public class SysUserController extends BaseController{
 
     /**
      * 更新用户
-     * @param sysUserVo
+     * @param id
+     * @param name
+     * @param password
      * @return
      */
     @RequestMapping(value = "/update",produces="plain/text; charset=UTF-8")
     @ResponseBody
-    public String update(SysUserVo sysUserVo) {
+    public String update(  @RequestParam(value = "id", required = true) Long id,
+                           @RequestParam(value = "name", required = true) String name,
+                           @RequestParam(value = "password", required = true) String password) {
         try {
+            SysUserVo sysUserVo=sysUserService.findOne(id);
+            sysUserVo.setPassword(password);
+            sysUserVo.setName(name);
             sysUserService.update(sysUserVo);
             return this.buildSuccessMessage("用户更新成功",
                     ResultModal.MESSAGE);
@@ -124,16 +131,17 @@ public class SysUserController extends BaseController{
             return this.buildFailMessage("用户获取失败", ResultModal.MESSAGE);
         }
     }
+
     /**
      * 删除用户
-     * @param sysUserVo
+     * @param id
      * @return
      */
     @RequestMapping("/delete")
     @ResponseBody
-    public String delete(SysUserVo sysUserVo) {
+    public String delete(@RequestParam(value = "id", required = true) Long id) {
         try {
-            sysUserService.delete(sysUserVo);
+            sysUserService.delete(id);
             return this.buildSuccessMessage("用户删除成功",
                     ResultModal.MESSAGE);
         } catch (Exception e) {

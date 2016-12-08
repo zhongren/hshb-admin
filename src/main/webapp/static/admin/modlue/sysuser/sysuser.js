@@ -25,8 +25,9 @@ $(document)
                     "sClass": "center",
                     "sWidth": "2%",
                     "mRender": function (data, style, obj) {
+                       // console.log(obj);
                         var xqDom = "<a class=\"btn btn-round btn-info btn-xs\" onclick=\"preUpdate("+obj.user_id+")\" >修改</a>";
-                        var delDom = "<button class=\"btn btn-round btn-danger btn-xs\" onclick=\"\" >删除</button>";
+                        var delDom ="<a class=\"btn btn-round btn-danger btn-xs\" onclick=\"preDel("+obj.user_id+",obj.name)\" >删除</a>";
                         return xqDom + "&nbsp;&nbsp;&nbsp;&nbsp;"
                             + delDom;
                     }
@@ -64,9 +65,9 @@ function doSearch() {
  * 显示添加窗口
  */
 function preSave() {
-    $("#m_name").empty();
-    $("#m_password").empty();
-    $("#myModal").modal("show").css({
+    $("#m_name").val("");
+    $("#m_password").val("");
+    $("#saveModal").modal("show").css({
         'top': '60px'
     });
 }
@@ -88,21 +89,19 @@ function save() {
             password: password
         },
         success: function (data) {
-            $("#myModal").modal("hide");
+            $("#saveModal").modal("hide");
             msgBox(data.state, data.msg);
             dataTable.fnDraw();
         }
     });
 }
 
-var user = {
-    name: null
-};
 /**
  * 显示更新窗口
  * @param id
  */
 function preUpdate(id) {
+    var user_id=id;
     $.ajaxInvoke({
         url: G_CTX_ROOT + "/sysUser/queryById",
         type: "post",
@@ -111,42 +110,63 @@ function preUpdate(id) {
             id: id
         },
         success: function (data) {
-            user=$.parseJSON(data.data);
-            console(user.name);
+            var user=data;
+             $("#m_name1").val(user.data.name);
+             $("#m_password1").val(user.data.password);
+             console.log(user);
         }
     });
-    $("#myModal").modal("show").css({
+    $("#updateButton").replaceWith("<button type=\"button\" onclick=\"update("+user_id+")\" class=\"btn btn-primary\" id=\"updateButton\">确认修改</button>");
+    $("#updateModal").modal("show").css({
+        'top': '60px'
+    });
+}
+/**
+ * 发送更新请求
+ * @param id
+ */
+function update(id) {
+    var name = $("#m_name1").val();
+    var password = $("#m_password1").val();
+    console.log(id);
+    $.ajaxInvoke({
+        url: G_CTX_ROOT + "/sysUser/update",
+        type: "post",
+        datatype: "json",
+        data: {
+            id:id,
+            name: name,
+            password: password
+        },
+        success: function (data) {
+            $("#updateModal").modal("hide");
+            msgBox(data.state, data.msg);
+            dataTable.fnDraw();
+        }
+    });
+}
+/**
+ * 显示删除窗口
+ */
+function preDel(id,name) {
+    $("#uid").replaceWith("<label  id=\"uid\">用户编号："+id+"</label><span></span>");
+    $("#uname").replaceWith("<label  id=\"uname\">用户名："+name+"</label><span></span>");
+    $("#deleteButton").replaceWith("<button type=\"button\" onclick=\"del("+id+")\" class=\"btn btn-primary\" id=\"deleteButton\">确认删除</button>");
+    $("#deleteModal").modal("show").css({
         'top': '60px'
     });
 }
 
-
-function updUser() {
-
-    var id = $("#m_id").val();
-    var phone = $("#m_phone").val();
-    var real_name = $("#m_real_name").val();
-    var account = $("#m_account").val();
-    var email = $("#m_email").val();
-    var role_id = $("#m_role_id").val();
-
-    var lebi = $("#m_lebi").val();
-
+function del(id) {
     $.ajaxInvoke({
-        url: G_CTX_ROOT + "/user/update",
+        url: G_CTX_ROOT + "/sysUser/save",
         type: "post",
         datatype: "json",
         data: {
-            p_lebi: lebi,
-            p_id: id,
-            p_role_id: role_id,
-            p_phone: phone,
-            p_real_name: real_name,
-            p_account: account,
-            p_email: email
+            id: id
         },
         success: function (data) {
-            $("#myModal").modal("hide");
+            $("#deleteModal").modal("hide");
             msgBox(data.state, data.msg);
             dataTable.fnDraw();
         }

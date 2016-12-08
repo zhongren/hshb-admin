@@ -235,7 +235,10 @@
 </section>
 <!-- js placed at the end of the document so the pages load faster -->
 <jsp:include page="common/js.jsp"/>
-
+<div class="row">
+    <div class="col-lg-12">
+        欢迎登陆
+    </div></div>
 <script>
     //owl carousel
     document.getElementById("main-content").style.height = (document.documentElement.clientHeight - 5) + "px";

@@ -53,7 +53,8 @@ public class SysUserService {
         SysUser sysUser = sysUserConverter.convert2P(vo);
         sysUserDao.save(sysUser);
     }
-    public void delete(SysUserVo vo) {
+    public void delete(Long id) {
+        SysUserVo vo=findOne(id);
         SysUser sysUser = sysUserConverter.convert2P(vo);
         sysUserDao.delete(sysUser);
     }
