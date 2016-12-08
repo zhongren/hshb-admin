@@ -45,6 +45,7 @@ public class NewsTypeController extends BaseController{
     @RequestMapping(value = "/query",produces="plain/text; charset=UTF-8")
     @ResponseBody
     public String query(HttpServletRequest request) {
+        System.out.println("查询");
         Map<String, Object> obj = this.getParametersStartWidth(request,
                 "s_");
         String name = (String) obj.get("name");

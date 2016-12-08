@@ -11,7 +11,7 @@ $(document)
                     "sWidth": "5%"
                 },
                 {
-                    "sTitle": "<center>用户名</center>", // 显示标题
+                    "sTitle": "<center>类型名</center>", // 显示标题
                     "mData": "name", // 属性
                     "bSortable": false,// 排序
                     "sClass": "center",
