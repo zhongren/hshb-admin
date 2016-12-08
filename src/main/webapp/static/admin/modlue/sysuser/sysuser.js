@@ -157,7 +157,7 @@ function preDel(id) {
 
 function del(id) {
     $.ajaxInvoke({
-        url: G_CTX_ROOT + "/sysUser/save",
+        url: G_CTX_ROOT + "/sysUser/delete",
         type: "post",
         datatype: "json",
         data: {
