@@ -5,7 +5,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
     <script src="${ctx}/staticAdmin/js/jquery.js"></script>
     <script src="${ctx}/staticAdmin/js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="${ctx}/staticAdmin/js/jquery.dcjqaccordion.2.7.js"></script>
+   <%-- <script class="include" type="text/javascript" src="${ctx}/staticAdmin/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="${ctx}/staticAdmin/js/jquery.scrollTo.min.js"></script>
     <script src="${ctx}/staticAdmin/js/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="${ctx}/staticAdmin/js/jquery.sparkline.js" type="text/javascript"></script>
@@ -27,7 +27,8 @@
     <script src="${ctx}/static/global.js"></script>
 
  <script src="${ctx}/staticAdmin/js/common.js"></script>
-<script src="${ctx}/staticAdmin/js/jquery.datetimepicker.full.js"></script>
+<script src="${ctx}/staticAdmin/js/jquery.datetimepicker.full.js"></script>--%>
+ <script src="${ctx}/staticAdmin/assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 
 
 

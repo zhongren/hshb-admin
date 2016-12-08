@@ -17,7 +17,8 @@
     <link href="${ctx}/staticAdmin/assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
 	<link rel="stylesheet" href="${ctx}/staticAdmin/assets/data-tables/DT_bootstrap.css" />
 	<link href="${ctx}/staticAdmin/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
-<link href="${ctx}/staticAdmin/css/jquery.datetimepicker.css" rel="stylesheet">
+<link href="${ctx}/staticAdmin/css/jquery.datetimepicker.css" rel="stylesheet" />
+ <link href="${ctx}/staticAdmin/assets/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet">
 
 
 
