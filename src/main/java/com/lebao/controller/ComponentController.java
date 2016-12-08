@@ -16,6 +16,7 @@ public class ComponentController {
      */
     @RequestMapping("/index")
     public ModelAndView index() {
+
         ModelAndView view = new ModelAndView();
         view.addObject("title","系统管理>>用户查询");
         view.setViewName("admin/component");
