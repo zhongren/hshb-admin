@@ -3,23 +3,24 @@
  */
 KindEditor.ready(function () {
     //创建富文本编辑器
-    editor = LB.createEditor("#editor");
-    LB.init();
+    editor = KE.createEditor("#editor");
+    KE.init();
 });
 
 
-var LB = {
+var KE = {
     kingEditorParams: {
         //指定上传文件参数名称
         filePostName: "uploadFile",
         //指定上传文件请求的url。
+        //uploadJson: '/testUpload',
         uploadJson: '/testUpload',
         //上传类型，分别为image、flash、media、file
         dir: "image"
     },
 
     createEditor: function (select) {
-        return KindEditor.create(select, LB.kingEditorParams);
+        return KindEditor.create(select, KE.kingEditorParams);
     },
 
     init: function () {
@@ -31,7 +32,7 @@ var LB = {
         $(".uploadPicture").each(function (i, e) {
             $(e).click(function () {
                 var id = $(e).attr("name");
-                KindEditor.editor(LB.kingEditorParams).loadPlugin('image', function () {
+                KindEditor.editor(KE.kingEditorParams).loadPlugin('image', function () {
                     this.plugin.imageDialog({
                         showRemote: false,
                         clickFn: function (url, title, width, height, border, align) {

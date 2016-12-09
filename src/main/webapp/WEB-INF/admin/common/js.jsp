@@ -33,6 +33,11 @@
  <script src="${ctx}/staticAdmin/assets/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
  <script src="${ctx}/staticAdmin/js/moment-with-locales.min.js"></script>
 
+ <!--KindEditor-->
+ <script src="${ctx}/staticKindEditor/kindeditor-all.js"></script>
+ <script src="${ctx}/staticKindEditor/lang/zh-CN.js"></script>
+ <script src="${ctx}/staticKindEditor/common.js"></script>
+
 
 
 

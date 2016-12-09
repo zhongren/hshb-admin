@@ -1,10 +1,14 @@
 package com.lebao.controller;
 
-import com.lebao.file.AppConfig;
+import com.google.gson.Gson;
+import com.lebao.common.beans.AjaxResult;
+import com.lebao.common.beans.UploadResult;
 import com.lebao.file.UploadUtil;
+import com.lebao.service.AppConfig;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,6 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 @Controller
@@ -23,8 +30,67 @@ public class UploadController extends BaseController {
     @Autowired
     private UploadUtil uploadUtil;
 
+
     @Autowired
     private AppConfig appConfig;
+
+
+
+
+    @RequestMapping("/upload")
+    @ResponseBody
+    public String upload(MultipartFile uploadFile) {
+        System.out.println("开始上传");
+        try {
+            boolean result = false;
+            //取得可上传的文件类型
+            List<String> fileTypes = this.getAllowFiles(appConfig.IMAGE_ALLOW_TYPE);
+            //获取文件名
+            String fileName = uploadFile.getOriginalFilename();
+            // 获取上传文件类型的扩展名,先得到.的位置，再截取从.的下一个位置到文件的最后，最后得到扩展名
+            String ext = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length());
+            // 对扩展名进行小写转换
+            ext = ext.toLowerCase();
+            if(!fileTypes.contains(ext)){
+                return UploadResult.fail("不是合法的格式");
+            }
+            // 新的图片文件名
+            String newFileName = new SimpleDateFormat("yyyyMMddHHmmssms").format(new Date())
+                    + (int) (Math.random() * 10000) + "." + ext;
+            String imgFolderName = video_base_path;
+            String floderName = new SimpleDateFormat("yyyyMMdd").format(new Date());
+            File file = this.creatFolder(imgFolderName, floderName, newFileName);
+            String folderNameYear = floderName.substring(0, 4);
+            String folderNameMonth = floderName.substring(4, 6);
+            String folderNameDay = floderName.substring(6, 8);
+            FileCopyUtils.copy(uploadFile.getInputStream(), new FileOutputStream(file));
+            String returnImgUrl = folderNameYear + "/" + folderNameMonth + "/" + folderNameDay + "/" + newFileName;
+            returnImgUrl = returnImgUrl.replaceAll("\\\\", "/");
+            result = true;
+            if (!result) {
+                return JinTongResult.fail("视频上传失败");
+            }
+            return JinTongResult.build(JinTongResult.SUCCESS, "视频上传成功", video_download_uri+returnImgUrl);
+        } catch (Exception e) {
+            return JinTongResult.fail("视频上传发生异常");
+        }
+    }
+
+
+    /**
+     * 获取可以上传的文件类型
+     * @param allowFiles
+     * @return
+     */
+    public List<String> getAllowFiles(String allowFiles) {
+        List<String> fileTypes = new ArrayList<String>();
+        String types[] = allowFiles.split(",");
+        for (int i = 0; i < types.length; i++) {
+            String type=types[i].toLowerCase();
+            fileTypes.add(type);
+        }
+        return fileTypes;
+    }
 
 	/*
     /**

@@ -53,7 +53,14 @@ $(document)
                     name: "标题",
                     method: {
                         required: true,
-                        lt: 10
+                        lt: 50
+                    }
+                },
+                m_author: {
+                    name: "作者",
+                    method: {
+                        required: true,
+                        lt: 20
                     }
                 }
             };

@@ -10,9 +10,10 @@
     <jsp:include page="../common/css.jsp"></jsp:include>
     <jsp:include page="../common/js.jsp"></jsp:include>
 
-    <script type="text/javascript" charset="utf-8" src="${ctx}/staticUploadify/jquery.uploadify-3.1.js"></script>
-    <link type="text/css" charset="utf-8" href="${ctx}/staticUploadify/uploadify.css" rel="stylesheet">
+    <!--<script type="text/javascript" charset="utf-8" src="${ctx}/staticUploadify/jquery.uploadify-3.1.js"></script>
+    <link type="text/css" charset="utf-8" href="${ctx}/staticUploadify/uploadify.css" rel="stylesheet">-->
     <script src="${ctx}/staticAdmin/modlue/news/news.js"></script>
+
 </head>
 <body>
 
@@ -46,35 +47,31 @@
                             <input type="text" id="m_name" placeholder="请输入标题" class="form-control">
                         </div>
                         <div class="form-group">
+                            <label for="m_name">作者：</label> <span></span>
+                            <input type="text" id="m_author" placeholder="请输入作者" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <label for="m_typeId">文章类型：</label> <span></span><br>
                             <select name="newsType" id="m_typeId" onChange="aab()" class="styled hasCustomSelect"
                                     style="border-radius: 4px;border: 1px solid #e2e2e4;box-shadow: none;color: #555;width: 130px;height: 32px">
-                                <option value="">新闻类型</option>
+                                <option value="">文章类型</option>
                                 <c:forEach var="c" items="${newsTypeList}">
                                     <option value="${c.p_id}">${c.p_type_name}</option>
                                 </c:forEach>
                             </select>
                         </div>
-                        <div class="form-group">
-
-                            <label for="uploadify">小图片:(80*80)</label> <span></span>
-                            <label for="file" class="input input-file state-success">
-                            <input type="file" name="uploadify" id="uploadify" />
-                                <label class="error" id="advice-required-picUrl2" style="display:none"></label>
-                               <!-- <input type="button" id="picUrl2Btn-picUrl" class="btn btn-danger btn-delete" value="删除 " onClick="javascript:delFj('picUrl2Btn-picUrl')" style="display:none"/>-->
-                                <span id="picUrl2Class"></span>
-                            </label> </div>
 
                         <div class="form-group">
-                            <label for="editor">新闻详情：</label>
-                            <script id="editor" type="text/plain" style="width:100%;height:500px;"></script>
+                            <label for="editor">文章内容：</label>
+                            <textarea id="editor" name="m_content" style="width:100%;height:500px;">
+                            </textarea>
                         </div>
 
                         <div class="form-group">
                             <div class="pull-right">
                                 <button type="button" class="btn btn-default">关闭
                                 </button>
-                                <button type="button" onclick="addNews()" class="btn btn-primary">确认添加</button>
+                                <button type="button" onclick="save()" class="btn btn-primary">确认添加</button>
                             </div>
                         </div>
                     </form>

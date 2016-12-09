@@ -17,10 +17,10 @@
     http://www.springframework.org/schema/task/spring-task.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 	<!-- 激活@Controller模式 -->
 	<mvc:annotation-driven />
-	<!-- scanner db properties -->
+	<!-- db配置文件 -->
 	<context:property-placeholder location="classpath:properties/db.properties" />
-
-
+	<!-- 文件上传路径配置文件 -->
+	<context:property-placeholder location="classpath:properties/app.properties" />
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">   
         <property name="basenames">  
             <list>  
