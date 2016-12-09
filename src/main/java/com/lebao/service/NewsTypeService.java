@@ -5,8 +5,8 @@ import com.lebao.common.beans.SearchBean;
 import com.lebao.common.dbhelp.page.Page;
 import com.lebao.converter.NewsTypeConverter;
 
-import com.lebao.dao.newstype.NewsTypeDao;
 
+import com.lebao.dao.newstype.NewsTypeDao;
 import com.lebao.po.NewsType;
 
 import com.lebao.vo.NewsTypeVo;
@@ -43,10 +43,15 @@ public class NewsTypeService {
         return pageBean;
     }
 
+    public List<NewsTypeVo> queryAll() {
+        List<NewsType> newsTypeList=newsTypeDao.findAll();
+        List<NewsTypeVo> newsTypeVoList= newsTypeConverter.convert2V(newsTypeList);
+        return newsTypeVoList;
+    }
+
     public void save(NewsTypeVo vo) {
         NewsType newsType = newsTypeConverter.convert2P(vo);
         newsTypeDao.save(newsType);
-        System.out.println(newsType.toString());
     }
 
     public void update(NewsTypeVo vo) {
