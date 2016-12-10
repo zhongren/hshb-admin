@@ -153,7 +153,7 @@ function preDel(id) {
  */
 function del(id) {
     $.ajaxInvoke({
-        url: G_CTX_ROOT + "/new/delete",
+        url: G_CTX_ROOT + "/news/delete",
         type: "post",
         datatype: "json",
         data: {
