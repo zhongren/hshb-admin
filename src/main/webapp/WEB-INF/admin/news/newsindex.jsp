@@ -80,78 +80,7 @@
         <!-- page end-->
     </section>
 </div>
-<!-- 添加模态框（Modal） -->
-<div class="modal fade" id="saveModal" tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"
-                        aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="saveModalLabel">添加类型</h4>
-            </div>
-            <div class="modal-body">
-                <div class="col-lg-12">
-                    <section class="panel">
-                        <div class="panel-body">
-                            <form role="form">
-                                <div class="form-group">
-                                    <label for="m_name">类型名：</label><span></span>
-                                    <input type="text" class="form-control" id="m_name" placeholder="请输入类型名">
-                                </div>
-                            </form>
-                        </div>
-                    </section>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                </button>
-                <button type="button" onclick="save()" class="btn btn-info">确认添加</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal -->
-</div>
-<!-- 更新模态框（Modal） -->
-<div class="modal fade" id="updateModal" tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"
-                        aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="updateModalLabel">修改用户</h4>
-            </div>
-            <div class="modal-body">
-                <div class="col-lg-12">
-                    <section class="panel">
-                        <div class="panel-body">
-                            <form role="form">
-                                <div class="form-group">
-                                    <label for="m_name">用户名：</label><span></span>
-                                    <input type="text" class="form-control" id="m_name1" placeholder="请输入用户名">
-                                </div>
-                                <div class="form-group">
-                                    <label for="m_password">密码：</label> <span></span>
-                                    <input type="password" id="m_password1" placeholder="请输入密码" class="form-control">
-                                </div>
-                            </form>
-                        </div>
-                    </section>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                </button>
-                <button  id="updateButton">确认修改</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal -->
-</div>
+
 <!-- 删除模态框（Modal） -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
@@ -160,7 +89,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"
                         aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="deleteModalLabel">删除用户</h4>
+                <h4 class="modal-title" id="deleteModalLabel">删除文章</h4>
             </div>
             <div class="modal-body">
 
