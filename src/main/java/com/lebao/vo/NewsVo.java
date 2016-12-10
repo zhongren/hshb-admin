@@ -15,6 +15,8 @@ public class NewsVo {
     private String updateTime;
     private String picSmall;
     private String picBig;
+    private String displayUpdateTime;
+    private String displayCreateTime;
 
     public Long getId() {
         return id;
@@ -96,6 +98,22 @@ public class NewsVo {
         this.picBig = picBig;
     }
 
+    public String getDisplayUpdateTime() {
+        return updateTime.replaceAll("\\s\\d{1,2}:\\d{1,2}:\\d{1,2}(\\.\\d)?$","");
+    }
+
+    public void setDisplayUpdateTime(String displayUpdateTime) {
+        this.displayUpdateTime = displayUpdateTime;
+    }
+
+    public String getDisplayCreateTime() {
+        return displayCreateTime;
+    }
+
+    public void setDisplayCreateTime(String displayCreateTime) {
+        this.displayCreateTime = displayCreateTime;
+    }
+
     @Override
     public String toString() {
         return "NewsVo{" +
@@ -111,4 +129,6 @@ public class NewsVo {
                 ", picBig='" + picBig + '\'' +
                 '}';
     }
+
+
 }
