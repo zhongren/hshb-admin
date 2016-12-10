@@ -13,6 +13,8 @@ public class NewsVo {
     private String author;
     private String createTime;
     private String updateTime;
+    private String picSmall;
+    private String picBig;
 
     public Long getId() {
         return id;
@@ -78,6 +80,22 @@ public class NewsVo {
         this.updateTime = updateTime;
     }
 
+    public String getPicSmall() {
+        return picSmall;
+    }
+
+    public void setPicSmall(String picSmall) {
+        this.picSmall = picSmall;
+    }
+
+    public String getPicBig() {
+        return picBig;
+    }
+
+    public void setPicBig(String picBig) {
+        this.picBig = picBig;
+    }
+
     @Override
     public String toString() {
         return "NewsVo{" +
@@ -89,6 +107,8 @@ public class NewsVo {
                 ", author='" + author + '\'' +
                 ", createTime='" + createTime + '\'' +
                 ", updateTime='" + updateTime + '\'' +
+                ", picSmall='" + picSmall + '\'' +
+                ", picBig='" + picBig + '\'' +
                 '}';
     }
 }
