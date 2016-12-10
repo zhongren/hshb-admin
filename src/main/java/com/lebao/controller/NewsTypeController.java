@@ -85,7 +85,7 @@ public class NewsTypeController extends BaseController {
     /**
      * 获取所有类型
      * @return
-     */
+
     @RequestMapping(value = "/queryAll", produces = "plain/text; charset=UTF-8")
     @ResponseBody
     public String queryAll() {
@@ -97,7 +97,7 @@ public class NewsTypeController extends BaseController {
             return this.buildFailMessage("所有类型获取失败", ResultModal.MESSAGE);
         }
     }
-
+*/
     /**
      * 添加类型
      *

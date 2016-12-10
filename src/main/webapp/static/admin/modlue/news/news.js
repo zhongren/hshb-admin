@@ -62,39 +62,45 @@ $(document)
                         required: true,
                         lt: 20
                     }
+                },
+                m_typeId: {
+                name: "文章类型",
+                    method: {
+                    required: true
                 }
+            }
             };
             validator.init(rule);
+
         });
+
 /**
  * 查询
  */
 function doSearch() {
     dataTable.fnDraw();
 }
-/**
- * 显示添加窗口
- */
-function preSave() {
-    $("#m_name").val("");
-    $("#saveModal").modal("show").css({
-        'top': '60px'
-    });
-}
+
 /**
  * 发送添加请求
  * @returns {boolean}
  */
 function save() {
     var name = $("#m_name").val();
+    var author = $("#m_author").val();
+    var typeId = $("#m_typeId").val();
+    var content = $("#m_content").val();
     if (!validator.validate())
         return false;
     $.ajaxInvoke({
-        url: G_CTX_ROOT + "/newsType/save",
+        url: G_CTX_ROOT + "/news/save",
         type: "post",
         datatype: "json",
         data: {
-            name: name
+            typeId:typeId,
+            name: name,
+            author: author,
+            content: content
         },
         success: function (data) {
             $("#saveModal").modal("hide");
@@ -176,3 +182,5 @@ function del(id) {
         }
     });
 }
+
+
