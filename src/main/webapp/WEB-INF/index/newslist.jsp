@@ -64,12 +64,12 @@
 
         </ul>
         <div class="pages">
-        	<a><<上一页</a>
-            <a>1</a>
-            <a>2</a>
-            <a>3</a>
-            <a>4</a>
-            <a>下一页>></a>
+            <%int crtPage =Integer.parseInt((String)(request.getParameter("page"))) ;%>
+            <a href="newslist?page=<%=crtPage-1%>"><<上一页</a>
+            <%for ( int i = crtPage -2>0?crtPage -2:1 ; i <= (crtPage+2>5?crtPage+2:5);i++){%>
+            <a href="newslist?page=<%=i%>" <%=i==crtPage?"id=\"current_page\"":""%>><%=i%></a>
+            <%}%>
+            <a href="newslist?page=<%=crtPage+1%>">下一页>></a>
         </div>
     </div><!--/con_right-->
 </div>
