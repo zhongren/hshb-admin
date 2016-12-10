@@ -110,6 +110,8 @@ background-image: linear-gradient(bottom,rgb(19,150,215),rgb(55,235,75));}
 .pagination{ text-align:center;}
 .pagination a,.pagination span{ margin:0 5px;}
 
+#current_page{ color:#999; }
+
 @media screen and (max-width: 768px) {
 	.header_index .nav{ background: #fff; position: fixed; z-index: 999; width: 25%; right: 2%; top: 48px; border: none; border-radius: 0; margin: 0; display:none;}
 	.header_index .nav li{ width: 100%; float: none; text-align: left; padding-left:5%; border-bottom:1px solid #ccc;}

@@ -66,7 +66,7 @@
 	<div class="container_left">
     	<div class="head">
         	<div class="name">新闻中心</div>
-            <a class="more">更多</a>
+            <a href="newslist?page=1" class="more">更多</a>
         </div>
         <ul class="news_list">
         	<li><div class="date">2015-12-12</div><a href="#">新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容</a></li>
@@ -79,7 +79,7 @@
     <div class="container_right">
     	<div class="head">
         	<div class="name">信息公示</div>
-            <a class="more">更多</a>
+            <a href="newslist?page=1" class="more">更多</a>
         </div>
         <ul class="news_list">
         	<li><div class="date">2015-12-12</div><a href="#">新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容</a></li>
