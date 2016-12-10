@@ -20,4 +20,22 @@ public class IndexController {
         view.setViewName("index/index");
         return view;
     }
+    @RequestMapping("/content")
+    public ModelAndView content() {
+        ModelAndView view = new ModelAndView();
+        view.setViewName("index/content");
+        return view;
+    }
+    @RequestMapping("/joboffer")
+    public ModelAndView joboffer() {
+        ModelAndView view = new ModelAndView();
+        view.setViewName("index/joboffer");
+        return view;
+    }
+    @RequestMapping("/newslist")
+    public ModelAndView newslist() {
+        ModelAndView view = new ModelAndView();
+        view.setViewName("index/newslist");
+        return view;
+    }
 }

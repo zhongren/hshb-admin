@@ -8,13 +8,13 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0">
 <meta name="apple-mobile-web-app-capable" content="yes"><title>无标题文档</title>
-<link href="css/css.css" type="text/css" rel="stylesheet">
+<link href="${ctx}/staticAdmin/css/css.css" type="text/css" rel="stylesheet">
 
 
 <!--Required libraries-->
     <script src="${ctx}/staticAdmin/js/jquery.js" type="text/javascript"></script>
 <!--Include flickerplate-->
-    <link src="${ctx}/staticAdmin/css/flickerplate.css"  type="text/css" rel="stylesheet">
+    <link href="${ctx}/staticAdmin/css/flickerplate.css"  type="text/css" rel="stylesheet">
 
     <script src="${ctx}/staticAdmin/js/flickerplate.min.js" type="text/javascript"></script>
 <!--Execute flickerplate-->
@@ -34,7 +34,7 @@
 
 <!--head-->
 <div class="header_index">
-	<div class="logo"><img src="images/logo.png"></div>
+	<div class="logo"><img src="${ctx}/staticAdmin/img/logo.png"></div>
     <ul class="nav">
     	<li><a href="#">首页</a></li>
     	<li><a href="#">关于和顺</a></li>
@@ -42,9 +42,9 @@
         <li><a href="#">新闻中心</a></li>
         <li><a href="#">人才招聘</a></li>
     </ul>
-    <div class="tel"><p>服务热线</p><span><img src="images/400.png"></span></div>
+    <div class="tel"><p>服务热线</p><span><img src="${ctx}/staticAdmin/img/400.png"></span></div>
     <div class="nav_mobile">
-    	<img src="images/list1.png">        
+    	<img src="${ctx}/staticAdmin/img/list1.png">
     </div>
 </div>
 <!--/head-->
@@ -52,11 +52,11 @@
 <!--banner-->
 <div class="flicker-example" data-block-text="false">
   <ul>
-    <li data-background="images/banner_1.png"></li>
-    <li data-background="images/banner_2.png"></li>
-    <li data-background="images/banner_3.png"></li>
-    <li data-background="images/banner_4.png"></li>
-    <li data-background="images/banner_5.png"></li>
+    <li data-background="${ctx}/staticAdmin/img/banner_3.png"></li>
+    <li data-background="${ctx}/staticAdmin/img/banner_3.png"></li>
+    <li data-background="${ctx}/staticAdmin/img/banner_3.png"></li>
+    <li data-background="${ctx}/staticAdmin/img/banner_5.png"></li>
+    <li data-background="${ctx}/staticAdmin/img/banner_5.png"></li>
   </ul>
 </div>
 <!--/banner-->
@@ -92,10 +92,10 @@
     <div class="container_bottom">
     	<div class="head"><div class="name">服务项目</div></div>
         <ul class="service_list">
-        	<li><a href="#"><img src="images/service_1.png"><div class="txt"><h3>固废处理</h3></div></a></li>
-            <li><a href="#"><img src="images/service_2.png"><div class="txt"><h3>废液处理</h3></div></a></li>
-            <li><a href="#"><img src="images/service_3.png"><div class="txt"><h3>线路板处理</h3></div></a></li>
-            <li><a href="#"><img src="images/service_4.png"><div class="txt"><h3>覆铜板处理</h3></div></a></li>
+        	<li><a href="#"><img src="${ctx}/staticAdmin/img/service_1.png"><div class="txt"><h3>固废处理</h3></div></a></li>
+            <li><a href="#"><img src="${ctx}/staticAdmin/img/service_2.png"><div class="txt"><h3>废液处理</h3></div></a></li>
+            <li><a href="#"><img src="${ctx}/staticAdmin/img/service_3.png"><div class="txt"><h3>线路板处理</h3></div></a></li>
+            <li><a href="#"><img src="${ctx}/staticAdmin/img/service_4.png"><div class="txt"><h3>覆铜板处理</h3></div></a></li>
         </ul>
     </div>
 </div>

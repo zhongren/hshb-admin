@@ -10,9 +10,9 @@ pageEncoding="UTF-8" %>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>无标题文档</title>
-<link href="css/css.css" type="text/css" rel="stylesheet">
-<script src="js/jquery.min.js" type="text/javascript"></script>
-<script src="js/js.js" type="text/javascript"></script>
+<link href="${ctx}/staticAdmin/css/css.css" type="text/css" rel="stylesheet">
+<script src="${ctx}/staticAdmin/js/jquery.js" type="text/javascript"></script>
+<script src="${ctx}/staticAdmin/js/js.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -21,7 +21,7 @@ pageEncoding="UTF-8" %>
 <!--head-->
 <div class="header">
 	<div class="container">
-        <a class="logo"><img src="images/logo.png"></a>
+        <a class="logo"><img src="${ctx}/staticAdmin/img/logo.png"></a>
         <ul class="nav">
             <li><a href="#">首页</a></li>
             <li class="on"><a href="#">关于和顺</a></li>
@@ -30,7 +30,7 @@ pageEncoding="UTF-8" %>
             <li><a href="#">人才招聘</a></li>
         </ul>
         <div class="nav_mobile">
-            <img src="images/list1.png">        
+            <img src="${ctx}/staticAdmin/img/list1.png">        
         </div>
     </div>
 	
