@@ -29,8 +29,4 @@ public class Constant {
     public static final int LEBAO_USER_TYPE_OTHER = 4; //运维人员
 
 
-
-
-
-
 }

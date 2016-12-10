@@ -26,12 +26,20 @@ public class IndexController {
     public ModelAndView index() {
         ModelAndView view = new ModelAndView();
         try {  int curPage = 0;
+            int pageSize = 5;
             SearchBean searchBean =new SearchBean();
             searchBean.getParamMap().put("typeId",1);
             searchBean.setCurrentPage(curPage);
-            searchBean.setPageSize(5);
+            searchBean.setPageSize(pageSize);
             List<NewsVo> indexNewsList=newsService.indexList(searchBean);
             view.addObject("indexNewsList", indexNewsList);
+
+            SearchBean searchBean1 =new SearchBean();
+            searchBean1.getParamMap().put("typeId",2);
+            searchBean1.setCurrentPage(curPage);
+            searchBean1.setPageSize(pageSize);
+            List<NewsVo> indexInfosList=newsService.indexList(searchBean1);
+            view.addObject("indexInfosList", indexInfosList);
         }catch (Exception e){
             e.printStackTrace();
         }
