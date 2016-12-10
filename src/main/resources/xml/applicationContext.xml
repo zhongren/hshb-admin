@@ -19,8 +19,7 @@
 	<mvc:annotation-driven />
 	<!-- db配置文件 -->
 	<context:property-placeholder location="classpath:properties/db.properties" />
-	<!-- 文件上传路径配置文件 -->
-	<context:property-placeholder location="classpath:properties/app.properties" />
+
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">   
         <property name="basenames">  
             <list>  
@@ -69,6 +68,7 @@
 		<property name="locations">
 			<list>
 				<value>classpath:properties/application.properties</value>
+				<value>classpath:properties/app.properties</value>
 			</list>
 		</property>
 	</bean>

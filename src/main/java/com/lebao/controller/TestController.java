@@ -23,14 +23,14 @@ private IPictureService pictureService;
         return view;
     }
 
-
+/*
     @RequestMapping("/testUpload")
     @ResponseBody
     public String testUpload(MultipartFile uploadFile) {
         System.out.println("开始上传");
         return  pictureService.uploadPicture(uploadFile);
     }
-
+*/
 
 
 

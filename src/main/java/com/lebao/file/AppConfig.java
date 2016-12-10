@@ -5,6 +5,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AppConfig {
+    @Value("#{appSetting['image_allow_type']}")
+    public String IMAGE_ALLOW_TYPE;
+    @Value("#{appSetting['news_image_content']}")
+    public String NEWS_IMAGE_CONTENT;
+    @Value("#{appSetting['root']}")
+    public String ROOT;
+
     @Value("#{appSetting['root_dir']}")
     private String rootDir;
 
