@@ -39,6 +39,7 @@ $(document)
                     "sWidth": "2%",
                     "mRender": function (data, style, obj) {
                        // console.log(obj);
+                      //  <a class="btn btn-info" href="${ctx}/news/preSave"
                         var xqDom = "<a class=\"btn btn-round btn-info btn-xs\" onclick=\"preUpdate("+obj.id+")\" >修改</a>";
                         var delDom ="<a class=\"btn btn-round btn-danger btn-xs\" onclick=\"preDel("+obj.id+")\" >删除</a>";
                         return xqDom + "&nbsp;&nbsp;&nbsp;&nbsp;"
