@@ -71,7 +71,7 @@
                             <div class="pull-right">
                                 <button type="button" class="btn btn-default">关闭
                                 </button>
-                                <button type="button" onclick="update()" class="btn btn-primary">确认添加</button>
+                                <button type="button" onclick="update()" class="btn btn-primary">确认修改</button>
                             </div>
                         </div>
                     </form>
