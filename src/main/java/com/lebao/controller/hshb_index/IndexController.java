@@ -58,8 +58,14 @@ public class IndexController {
     }
 
     @RequestMapping("/content")
-    public ModelAndView content() {
+    public ModelAndView content(@RequestParam(value = "id", required = true) Long id) {
         ModelAndView view = new ModelAndView();
+        try {
+            NewsVo news = newsService.findOne(id);
+            view.addObject("news", news);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         view.setViewName("index/content");
         return view;
     }
@@ -73,12 +79,13 @@ public class IndexController {
 
     /**
      * 更多
+     *
      * @param typeId
      * @return
      */
     @RequestMapping("/newslist")
-    public ModelAndView newslist(	@RequestParam(value = "typeId", required = true) Long typeId ,
-                                     @RequestParam(value = "typeId", required = false,defaultValue = "1") Integer curPage) {
+    public ModelAndView newslist(@RequestParam(value = "typeId", required = true) Long typeId,
+                                 @RequestParam(value = "typeId", required = false, defaultValue = "1") Integer curPage) {
         ModelAndView view = new ModelAndView();
         try {
             SearchBean searchBean = new SearchBean();
@@ -87,7 +94,7 @@ public class IndexController {
             searchBean.setPageSize(15);
             List<NewsVo> indexNewsList = newsService.indexList(searchBean);
             view.addObject("indexNewsList", indexNewsList);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         view.setViewName("index/newslist");
