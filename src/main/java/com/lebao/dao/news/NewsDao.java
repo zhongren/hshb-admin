@@ -5,8 +5,6 @@ import com.lebao.common.beans.SearchBean;
 import com.lebao.common.dbhelp.DbHelper;
 import com.lebao.common.dbhelp.page.Page;
 import com.lebao.po.News;
-import com.lebao.po.NewsType;
-import groovy.sql.Sql;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -53,14 +51,15 @@ public class NewsDao {
     /**
      * 首页的内容
      */
-    public List<News> indexList(Long typeId) throws SQLException{
+    public Page<News> indexList(SearchBean searchBean) throws SQLException{
         String sql = " SELECT * from tb_news   order by updateTime desc where 1=1 ";
         List<Object> list = new ArrayList<Object>();
-        if(typeId!=null){
+        Map<Object, Object> map = searchBean.getParamMap();
+        if (map.containsKey("typeId")) {
             sql += " and typeId = ? ";
-            list.add(typeId);
+            list.add( map.get("typeId"));
         }
-        return dbHelper.getPage(sql,News.class,0,5,list.toArray());
+        return dbHelper.getPage(sql, News.class, searchBean.getCurrentPage(), searchBean.getPageSize(), list.toArray());
     }
 
 

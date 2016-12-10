@@ -70,8 +70,9 @@ public class NewsService {
     /**
      * 下面都是返回首页内容,根据写死的typeId查询
      */
-    public List<NewsVo> indexList(Long typeId) throws SQLException {
-        List<News> newsList = newsDao.indexList(typeId);
+    public List<NewsVo> indexList(SearchBean searchBean) throws SQLException {
+        Page<News> newsPage=newsDao.indexList(searchBean);
+        List<News> newsList = newsPage.getData();
         List<NewsVo> newsVoList = newsConverter.convert2V(newsList);
         return newsVoList;
     }

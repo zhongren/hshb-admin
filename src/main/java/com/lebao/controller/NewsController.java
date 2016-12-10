@@ -99,10 +99,10 @@ public class NewsController extends BaseController {
         List<NewsTypeVo> list = null;
         try {
             list = newsTypeService.queryAll();
+            view.addObject("newsTypeList", list);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        view.addObject("newsTypeList", list);
         view.setViewName("admin/news/newssave");
         return view;
     }

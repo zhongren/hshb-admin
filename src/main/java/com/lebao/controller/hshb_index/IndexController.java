@@ -1,10 +1,14 @@
 package com.lebao.controller.hshb_index;
 
+import com.lebao.common.beans.SearchBean;
 import com.lebao.service.NewsService;
+import com.lebao.vo.NewsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * Created by ZR on 2016/12/11.
@@ -21,6 +25,16 @@ public class IndexController {
     @RequestMapping("/index")
     public ModelAndView index() {
         ModelAndView view = new ModelAndView();
+        try {  int curPage = 0;
+            SearchBean searchBean =new SearchBean();
+            searchBean.getParamMap().put("typeId",1);
+            searchBean.setCurrentPage(curPage);
+            searchBean.setPageSize(5);
+            List<NewsVo> indexNewsList=newsService.indexList(searchBean);
+            view.addObject("indexNewsList", indexNewsList);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         view.setViewName("index/index");
 
         return view;
