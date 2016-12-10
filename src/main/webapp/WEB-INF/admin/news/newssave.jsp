@@ -54,9 +54,8 @@
                             <label for="m_typeId">文章类型：</label> <span></span><br>
                             <select name="newsType" id="m_typeId" onChange="aab()" class="styled hasCustomSelect"
                                     style="border-radius: 4px;border: 1px solid #e2e2e4;box-shadow: none;color: #555;width: 130px;height: 32px">
-                                <option value="">文章类型</option>
-                                <c:forEach var="c" items="${newsTypeList}">
-                                    <option value="${c.p_id}">${c.p_type_name}</option>
+                                <c:forEach var="newsType" items="${newsTypeList}">
+                                    <option value="${newsType.id}">${newsType.name}</option>
                                 </c:forEach>
                             </select>
                         </div>

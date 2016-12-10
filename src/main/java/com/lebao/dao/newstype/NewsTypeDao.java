@@ -47,13 +47,8 @@ public class NewsTypeDao {
     public NewsType findOne(Long id) {
         return newsTypeRepo.findOne(id);
     }
-    public List<NewsType> findAll() {
-        Iterable<NewsType> iterable=newsTypeRepo.findAll();
-        List<NewsType> list = new ArrayList<NewsType>();
-        for (; iterable.iterator().hasNext();) {
-            NewsType element =  iterable.iterator().next();
-            list.add(element);
-        }
-        return list;
+    public List<NewsType> findAll() throws SQLException{
+        String sql = " SELECT * from tb_newstype   ";
+        return dbHelper.getBeanList(sql,NewsType.class);
     }
 }

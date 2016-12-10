@@ -3,6 +3,7 @@ package com.lebao.service;
 
 import com.lebao.common.beans.SearchBean;
 import com.lebao.common.dbhelp.page.Page;
+import com.lebao.common.utils.TimeUtil;
 import com.lebao.converter.NewsConverter;
 import com.lebao.dao.news.NewsDao;
 import com.lebao.po.News;
@@ -41,6 +42,8 @@ public class NewsService {
 
     public void save(NewsVo vo) {
         News news = newsConverter.convert2P(vo);
+        news.setCreateTime(TimeUtil.now());
+        news.setUpdateTime(TimeUtil.now());
         newsDao.save(news);
         System.out.println(news.toString());
     }

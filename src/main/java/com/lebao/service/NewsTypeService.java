@@ -43,7 +43,7 @@ public class NewsTypeService {
         return pageBean;
     }
 
-    public List<NewsTypeVo> queryAll() {
+    public List<NewsTypeVo> queryAll ()throws SQLException {
         List<NewsType> newsTypeList=newsTypeDao.findAll();
         List<NewsTypeVo> newsTypeVoList= newsTypeConverter.convert2V(newsTypeList);
         return newsTypeVoList;
