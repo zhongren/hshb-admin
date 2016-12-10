@@ -10,6 +10,7 @@ import com.lebao.vo.NewsVo;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -87,7 +88,7 @@ public class NewsController extends BaseController {
     }
 
     /**
-     * 页面入口
+     * 预添加
      *
      * @return
      */
@@ -125,6 +126,26 @@ public class NewsController extends BaseController {
     }
 
     /**
+     * 预更新
+     * @return
+     */
+    @RequestMapping("/preUpdate/{id}")
+    public ModelAndView preUpdate( @PathVariable Long  id) {
+        ModelAndView view = new ModelAndView();
+        view.addObject("title", "文章管理>>文章修改");
+        List<NewsTypeVo> list = null;
+        try {
+            NewsVo newsVo=newsService.findOne(id);
+            list = newsTypeService.queryAll();
+            view.addObject("newsTypeList", list);
+            view.addObject("news", newsVo);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        view.setViewName("admin/news/newsupdate");
+        return view;
+    }
+    /**
      * 更新文章
      *
      * @param id
@@ -137,9 +158,7 @@ public class NewsController extends BaseController {
                          @RequestParam(value = "typeId", required = true) Long typeId,
                          @RequestParam(value = "name", required = true) String name,
                          @RequestParam(value = "content", required = true) String content,
-                         @RequestParam(value = "author", required = true) String author,
-                         @RequestParam(value = "createTime", required = true) String createTime,
-                         @RequestParam(value = "createTime", required = true) String updateTime
+                         @RequestParam(value = "author", required = true) String author
     ) {
         try {
             NewsVo newsVo = newsService.findOne(id);
@@ -147,8 +166,6 @@ public class NewsController extends BaseController {
             newsVo.setName(name);
             newsVo.setContent(content);
             newsVo.setAuthor(author);
-            newsVo.setCreateTime(createTime);
-            newsVo.setUpdateTime(updateTime);
             newsService.update(newsVo);
             return this.buildSuccessMessage("文章更新成功",
                     ResultModal.MESSAGE);
