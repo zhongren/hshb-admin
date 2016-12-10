@@ -87,10 +87,11 @@ function doSearch() {
  * @returns {boolean}
  */
 function save() {
+    editor.sync();
     var name = $("#m_name").val();
     var author = $("#m_author").val();
     var typeId = $("#m_typeId").val();
-    var content = $("#m_content").val();
+    var content = $('#editor').val();
     if (!validator.validate())
         return false;
     $.ajaxInvoke({
@@ -114,11 +115,12 @@ function save() {
  * 发送更新请求
  */
 function update() {
+    editor.sync();
     var id = $("#m_id").val();
     var name = $("#m_name").val();
     var author = $("#m_author").val();
     var typeId = $("#m_typeId").val();
-    var content = $("#m_content").val();
+    var content = $('#editor').val();
     $.ajaxInvoke({
         url: G_CTX_ROOT + "/news/update",
         type: "post",

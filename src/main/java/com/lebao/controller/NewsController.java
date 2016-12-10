@@ -117,6 +117,7 @@ public class NewsController extends BaseController {
     @ResponseBody
     public String save(NewsVo newsVo) {
         try {
+            System.out.println(newsVo.toString());
             newsService.save(newsVo);
             return this.buildSuccessMessage("文章添加成功",
                     ResultModal.MESSAGE);

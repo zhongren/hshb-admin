@@ -77,4 +77,18 @@ public class NewsVo {
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
     }
+
+    @Override
+    public String toString() {
+        return "NewsVo{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", typeId=" + typeId +
+                ", name='" + name + '\'' +
+                ", content='" + content + '\'' +
+                ", author='" + author + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", updateTime='" + updateTime + '\'' +
+                '}';
+    }
 }
