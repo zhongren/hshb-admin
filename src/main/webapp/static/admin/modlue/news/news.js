@@ -38,10 +38,10 @@ $(document)
                     "sClass": "center",
                     "sWidth": "2%",
                     "mRender": function (data, style, obj) {
-                       // console.log(obj);
-                      //  <a class="btn btn-info" href="${ctx}/news/preSave"
-                        var xqDom = "<a class=\"btn btn-round btn-info btn-xs\" onclick=\"preUpdate("+obj.id+")\" >修改</a>";
-                        var delDom ="<a class=\"btn btn-round btn-danger btn-xs\" onclick=\"preDel("+obj.id+")\" >删除</a>";
+                        // console.log(obj);
+                        //  <a class="btn btn-info" href="${ctx}/news/preSave"
+                        var xqDom = "<a class=\"btn btn-round btn-info btn-xs\" href=\"/news/preUpdate/" + obj.id + "\" >修改</a>";
+                        var delDom = "<a class=\"btn btn-round btn-danger btn-xs\" onclick=\"preDel(" + obj.id + ")\" >删除</a>";
                         return xqDom + "&nbsp;&nbsp;&nbsp;&nbsp;"
                             + delDom;
                     }
@@ -65,11 +65,11 @@ $(document)
                     }
                 },
                 m_typeId: {
-                name: "文章类型",
+                    name: "文章类型",
                     method: {
-                    required: true
+                        required: true
+                    }
                 }
-            }
             };
             validator.init(rule);
 
@@ -98,13 +98,12 @@ function save() {
         type: "post",
         datatype: "json",
         data: {
-            typeId:typeId,
+            typeId: typeId,
             name: name,
             author: author,
             content: content
         },
         success: function (data) {
-            $("#saveModal").modal("hide");
             msgBox(data.state, data.msg);
             dataTable.fnDraw();
         }
@@ -112,44 +111,26 @@ function save() {
 }
 
 /**
- * 显示更新窗口
- * @param id
- */
-function preUpdate(id) {
-    $.ajaxInvoke({
-        url: G_CTX_ROOT + "/newsType/queryById",
-        type: "post",
-        datatype: "json",
-        data: {
-            id: id
-        },
-        success: function (data) {
-            var user=data;
-             $("#m_name1").val(user.data.name);
-             console.log(user);
-        }
-    });
-    $("#updateButton").replaceWith("<button type=\"button\" onclick=\"update("+id+")\" class=\"btn btn-info\" id=\"updateButton\">确认修改</button>");
-    $("#updateModal").modal("show").css({
-        'top': '60px'
-    });
-}
-/**
  * 发送更新请求
- * @param id
  */
-function update(id) {
-    var name = $("#m_name1").val();
+function update() {
+    var id = $("#m_id").val();
+    var name = $("#m_name").val();
+    var author = $("#m_author").val();
+    var typeId = $("#m_typeId").val();
+    var content = $("#m_content").val();
     $.ajaxInvoke({
-        url: G_CTX_ROOT + "/newsType/update",
+        url: G_CTX_ROOT + "/news/update",
         type: "post",
         datatype: "json",
         data: {
-            id:id,
-            name: name
+            id: id,
+            name: name,
+            author: author,
+            typeId: typeId,
+            content: content
         },
         success: function (data) {
-            $("#updateModal").modal("hide");
             msgBox(data.state, data.msg);
             dataTable.fnDraw();
         }
@@ -159,7 +140,7 @@ function update(id) {
  * 显示删除窗口
  */
 function preDel(id) {
-    $("#deleteButton").replaceWith("<button type=\"button\" onclick=\"del("+id+")\" class=\"btn btn-danger\" id=\"deleteButton\">确认删除</button>");
+    $("#deleteButton").replaceWith("<button type=\"button\" onclick=\"del(" + id + ")\" class=\"btn btn-danger\" id=\"deleteButton\">确认删除</button>");
     $("#deleteModal").modal("show").css({
         'top': '60px'
     });

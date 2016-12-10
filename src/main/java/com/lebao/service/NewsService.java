@@ -50,6 +50,7 @@ public class NewsService {
 
     public void update(NewsVo vo) {
         News news = newsConverter.convert2P(vo);
+        news.setUpdateTime(TimeUtil.now());
         newsDao.save(news);
     }
 
