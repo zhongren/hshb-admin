@@ -1,5 +1,7 @@
 package com.lebao.controller.hshb_index;
 
+import com.lebao.service.NewsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -10,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/index")
 public class IndexController {
+    @Autowired
+    NewsService newsService;
     /**
      * 首页
      * @return
@@ -18,6 +22,7 @@ public class IndexController {
     public ModelAndView index() {
         ModelAndView view = new ModelAndView();
         view.setViewName("index/index");
+
         return view;
     }
     @RequestMapping("/content")

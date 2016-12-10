@@ -65,4 +65,15 @@ public class NewsService {
         NewsVo newsVo = newsConverter.convert2V(news);
         return newsVo;
     }
+
+
+    /**
+     * 下面都是返回首页内容,根据写死的typeId查询
+     */
+    public List<NewsVo> indexList(Long typeId) throws SQLException {
+        List<News> newsList = newsDao.indexList(typeId);
+        List<NewsVo> newsVoList = newsConverter.convert2V(newsList);
+        return newsVoList;
+    }
+
 }
