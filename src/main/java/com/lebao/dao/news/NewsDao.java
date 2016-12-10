@@ -52,13 +52,14 @@ public class NewsDao {
      * 首页的内容
      */
     public Page<News> indexList(SearchBean searchBean) throws SQLException{
-        String sql = " SELECT * from tb_news   order by updateTime desc where 1=1 ";
+        String sql = " SELECT * from tb_news   where 1=1 ";
         List<Object> list = new ArrayList<Object>();
         Map<Object, Object> map = searchBean.getParamMap();
         if (map.containsKey("typeId")) {
             sql += " and typeId = ? ";
             list.add( map.get("typeId"));
         }
+        sql+="order by updateTime desc";
         return dbHelper.getPage(sql, News.class, searchBean.getCurrentPage(), searchBean.getPageSize(), list.toArray());
     }
 
