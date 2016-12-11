@@ -61,14 +61,14 @@
         </ul>
         <div class="pages">
             <%int crtPage = Integer.parseInt((String) (request.getParameter("page")));%>
-            <a href="newslist?page=<%=crtPage-1%>"><
+            <a href="newslist?page=<%=crtPage-1%>&typeId=1"><
                 <上一页
             </a>
             <%for (int i = crtPage - 2 > 0 ? crtPage - 2 : 1; i <= (crtPage + 2 > 5 ? crtPage + 2 : 5); i++) {%>
-            <a href="newslist?page=<%=i%>" <%=i == crtPage ? "id=\"current_page\"" : ""%>><%=i%>
+            <a href="newslist?page=<%=i%>&typeId=1" <%=i == crtPage ? "id=\"current_page\"" : ""%>><%=i%>
             </a>
             <%}%>
-            <a href="newslist?page=<%=crtPage+1%>">下一页>></a>
+            <a href="newslist?page=<%=crtPage+1%>&typeId=1">下一页>></a>
         </div>
     </div><!--/con_right-->
 </div>
