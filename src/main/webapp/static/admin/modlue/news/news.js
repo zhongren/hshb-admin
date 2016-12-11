@@ -8,7 +8,7 @@ $(document)
                     "mData": "id", // 属性
                     "bSortable": true,// 排序
                     "sClass": "center",
-                    "sWidth": "2%"
+                    "sWidth": "1%"
                 },
                 {
                     "sTitle": "<center>标题</center>", // 显示标题
@@ -23,6 +23,13 @@ $(document)
                     "bSortable": true,// 排序
                     "sClass": "center",
                     "sWidth": "4%"
+                },
+                {
+                    "sTitle": "<center>首页滚动(0:否,1:是)</center>", // 显示标题
+                    "mData": "recommend", // 属性
+                    "bSortable": true,// 排序
+                    "sClass": "center",
+                    "sWidth": "2%"
                 },
                 {
                     "sTitle": "<center>更新时间</center>", // 显示标题
