@@ -55,24 +55,25 @@ public class IndexController {
             /**
              * 招聘
 
-            SearchBean searchBean2 = new SearchBean();
-            searchBean2.getParamMap().put("typeId", NewsTypeSetting.TYPE_NEWS_JOBOFFER);
-            searchBean2.setCurrentPage(curPage);
-            searchBean2.setPageSize(pageSize);
-            List<NewsVo> indexJobofferList = newsService.indexList(searchBean2);
-            view.addObject("indexJobofferList", indexJobofferList);
-            /**
+             SearchBean searchBean2 = new SearchBean();
+             searchBean2.getParamMap().put("typeId", NewsTypeSetting.TYPE_NEWS_JOBOFFER);
+             searchBean2.setCurrentPage(curPage);
+             searchBean2.setPageSize(pageSize);
+             List<NewsVo> indexJobofferList = newsService.indexList(searchBean2);
+             view.addObject("indexJobofferList", indexJobofferList);
+             /**
              * 关于和顺
 
-            SearchBean searchBean3 = new SearchBean();
-            searchBean3.getParamMap().put("typeId", NewsTypeSetting.TYPE_NEWS_COMPANY);
-            searchBean3.setCurrentPage(curPage);
-            searchBean3.setPageSize(pageSize);
-            List<NewsVo> indexCompanyList = newsService.indexList(searchBean3);
-            view.addObject("indexCompanyList", indexCompanyList);
+             SearchBean searchBean3 = new SearchBean();
+             searchBean3.getParamMap().put("typeId", NewsTypeSetting.TYPE_NEWS_COMPANY);
+             searchBean3.setCurrentPage(curPage);
+             searchBean3.setPageSize(pageSize);
+             List<NewsVo> indexCompanyList = newsService.indexList(searchBean3);
+             view.addObject("indexCompanyList", indexCompanyList);
+             */
             /**
              * 服务项目
-
+             */
             SearchBean searchBean4 = new SearchBean();
             searchBean4.getParamMap().put("typeId", NewsTypeSetting.TYPE_NEWS_SERVICE);
             searchBean4.setCurrentPage(curPage);
