@@ -64,4 +64,11 @@ public class SysUserService {
         SysUserVo sysUserVo = sysUserConverter.convert2V(sysUser);
        return sysUserVo;
     }
+
+    public SysUserVo findByNameAndPassword(String name,String password){
+        SysUser sysUser=sysUserDao.findByNameAndPassword(name,password);
+        SysUserVo sysUserVo = sysUserConverter.convert2V(sysUser);
+        return sysUserVo;
+    }
+
 }

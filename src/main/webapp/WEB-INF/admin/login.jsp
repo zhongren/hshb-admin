@@ -37,7 +37,7 @@
             <c:if test="${msg != null}">
                 <span style="color: red"><c:out value="${msg }"/></span>
             </c:if>
-            <input type="text" name="loginName" class="form-control" placeholder="请输入用户名" autofocus>
+            <input type="text" name="name" class="form-control" placeholder="请输入用户名" autofocus>
             <input type="password" class="form-control" placeholder="请输入密码" name="password">
             <input class="btn btn-lg btn-login btn-block" type="submit" value="登录" />
         </div>

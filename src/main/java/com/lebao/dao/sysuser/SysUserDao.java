@@ -31,7 +31,7 @@ public class SysUserDao {
             list.add("%" + map.get("name") + "%");
         }
         sql += " order by " + searchBean.getSortField() + "  " + searchBean.getSortType() + " ";
-        return dbHelper.getPage(sql, SysUser.class, searchBean.getCurrentPage(), searchBean.getPageSize(),list.toArray());
+        return dbHelper.getPage(sql, SysUser.class, searchBean.getCurrentPage(), searchBean.getPageSize(), list.toArray());
     }
 
     public void save(SysUser sysUser) {
@@ -45,7 +45,12 @@ public class SysUserDao {
     public void delete(SysUser sysUser) {
         sysUserRepo.delete(sysUser);
     }
+
     public SysUser findOne(Long id) {
         return sysUserRepo.findOne(id);
+    }
+
+    public SysUser findByNameAndPassword(String name,String password){
+        return sysUserRepo.findByNameAndPassword(name,password);
     }
 }
