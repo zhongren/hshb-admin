@@ -159,10 +159,16 @@ public class NewsController extends BaseController {
                          @RequestParam(value = "typeId", required = true) Long typeId,
                          @RequestParam(value = "name", required = true) String name,
                          @RequestParam(value = "content", required = true) String content,
-                         @RequestParam(value = "author", required = true) String author
+                         @RequestParam(value = "author", required = true) String author,
+                         @RequestParam(value = "picSmall", required = false) String picSmall,
+                         @RequestParam(value = "picBig", required = false) String picBig,
+                         @RequestParam(value = "recommend", required = true) Integer recommend
     ) {
         try {
             NewsVo newsVo = newsService.findOne(id);
+            newsVo.setPicSmall(picSmall);
+            newsVo.setPicBig(picBig);
+            newsVo.setRecommend(recommend);
             newsVo.setTypeId(typeId);
             newsVo.setName(name);
             newsVo.setContent(content);

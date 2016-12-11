@@ -102,6 +102,9 @@ function save() {
     var picSmall =$("#m_picSmall").val();
     var picBig =$("#m_picBig").val();
     var recommend =$("#m_recommend").val();
+    console.log("picSmall"+picSmall);
+    console.log("picBig"+picBig);
+    console.log("recommend"+recommend);
     if (!validator.validate())
         return false;
     $.ajaxInvoke({

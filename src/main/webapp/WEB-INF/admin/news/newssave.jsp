@@ -70,11 +70,11 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="m_picSmall" class="input input-file state-success">小图片(首页底部)</label><br>
+                            <label for="m_picSmall" class="input input-file state-success">小图片(首页-服务项目)</label><br>
                             <input type="button" class="uploadPicture" name="m_picSmall" value="选择图片"/>
                         </div>
                         <div class="form-group">
-                            <label for="m_picBig" class="input input-file state-success">大图片(首页滚动)</label><br>
+                            <label for="m_picBig" class="input input-file state-success">大图片(首页-滚动)</label><br>
                             <input type="button" class="uploadPicture" name="m_picBig" value="选择图片"/>
                         </div>
                         <div class="form-group">
