@@ -92,6 +92,8 @@ function save() {
     var author = $("#m_author").val();
     var typeId = $("#m_typeId").val();
     var content = $('#editor').val();
+    var picSmall =$("#m_picSmall").val();
+    var picBig =$("#m_picBig").val();
     if (!validator.validate())
         return false;
     $.ajaxInvoke({
@@ -102,7 +104,9 @@ function save() {
             typeId: typeId,
             name: name,
             author: author,
-            content: content
+            content: content,
+            picSmall:picSmall,
+            picBig:picBig
         },
         success: function (data) {
             msgBox(data.state, data.msg);

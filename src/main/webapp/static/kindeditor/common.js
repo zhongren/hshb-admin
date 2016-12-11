@@ -36,10 +36,10 @@ var KE = {
                     this.plugin.imageDialog({
                         showRemote: false,
                         clickFn: function (url, title, width, height, border, align) {
-                            $(e).prev("#"+id).remove();
-                            $(e).next("img").remove();
+                            $("#"+id).remove();
+                            $(e).next("div").remove();
                             $(e).after("<input type='hidden' id='" + id + "' value='" + url + "'>" +
-                                "<a href='" + url + "' target='_blank'><img src='" + url + "' width='80' height='80'/></a>");
+                                "<div style='margin-top: 20px;'><a href='" + url + "' target='_blank'><img src='" + url + "' width='80' height='80'/></a></div>");
                             this.hideDialog();
                         }
                     });

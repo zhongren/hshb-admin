@@ -59,7 +59,14 @@
                                 </c:forEach>
                             </select>
                         </div>
-
+                        <div class="form-group">
+                            <label for="m_picSmall" class="input input-file state-success">小图片(首页底部)</label><br>
+                            <input type="button" class="uploadPicture" name="m_picSmall" value="选择图片"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="m_picBig" class="input input-file state-success">大图片(首页滚动广告)</label><br>
+                            <input type="button" class="uploadPicture" name="m_picBig" value="选择图片"/>
+                        </div>
                         <div class="form-group">
                             <label for="editor">文章内容：</label>
                             <textarea id="editor" name="m_content" style="width:100%;height:500px;">
