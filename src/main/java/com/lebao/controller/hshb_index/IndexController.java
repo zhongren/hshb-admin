@@ -1,5 +1,6 @@
 package com.lebao.controller.hshb_index;
 
+import com.lebao.common.NewsTypeSetting;
 import com.lebao.common.beans.SearchBean;
 import com.lebao.common.dbhelp.page.Page;
 import com.lebao.service.NewsService;
@@ -37,7 +38,7 @@ public class IndexController {
              * 新闻中心
              */
             SearchBean searchBean = new SearchBean();
-            searchBean.getParamMap().put("typeId", 1);
+            searchBean.getParamMap().put("typeId", NewsTypeSetting.TYPE_NEWS_CENTER);
             searchBean.setCurrentPage(curPage);
             searchBean.setPageSize(pageSize);
             List<NewsVo> indexNewsList = newsService.indexList(searchBean);
@@ -46,11 +47,20 @@ public class IndexController {
              * 信息公示
              */
             SearchBean searchBean1 = new SearchBean();
-            searchBean1.getParamMap().put("typeId", 2);
+            searchBean1.getParamMap().put("typeId", NewsTypeSetting.TYPE_NEWS_INFO);
             searchBean1.setCurrentPage(curPage);
             searchBean1.setPageSize(pageSize);
             List<NewsVo> indexInfosList = newsService.indexList(searchBean1);
             view.addObject("indexInfosList", indexInfosList);
+            /**
+             * 招聘
+             */
+            SearchBean searchBean2 = new SearchBean();
+            searchBean2.getParamMap().put("typeId", NewsTypeSetting.TYPE_NEWS_JOBOFFER);
+            searchBean2.setCurrentPage(curPage);
+            searchBean2.setPageSize(pageSize);
+            List<NewsVo> indexJobofferList = newsService.indexList(searchBean2);
+            view.addObject("indexJobofferList", indexJobofferList);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -71,13 +81,14 @@ public class IndexController {
         view.setViewName("index/content");
         return view;
     }
-
+/*
     @RequestMapping("/joboffer")
     public ModelAndView joboffer() {
         ModelAndView view = new ModelAndView();
         view.setViewName("index/joboffer");
         return view;
     }
+*/
 
     /**
      * 更多
@@ -89,7 +100,7 @@ public class IndexController {
     public ModelAndView newslist(@RequestParam(value = "typeId", required = true) Long typeId,
                                  @RequestParam(value = "typeId", required = false, defaultValue = "0") Integer curPage) {
         ModelAndView view = new ModelAndView();
-        int pageSize=15;
+        int pageSize = 15;
         try {
             SearchBean s = new SearchBean();
             s.setSortType("createTime");
