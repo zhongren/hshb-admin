@@ -62,6 +62,13 @@ public class NewsDao {
         sql+="order by updateTime desc";
         return dbHelper.getPage(sql, News.class, searchBean.getCurrentPage(), searchBean.getPageSize(), list.toArray());
     }
-
+    /**
+     * 首页滚动
+     */
+    public List<News> indexList1() throws SQLException{
+        String sql = " SELECT * from tb_news   where recommend =1 ";
+        sql+="order by updateTime desc";
+        return dbHelper.getBeanList(sql, News.class);
+    }
 
 }

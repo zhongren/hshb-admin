@@ -6,6 +6,8 @@ package com.lebao.common;
 public class Constant {
     public static final int USER_ADMIN = 1 ;
 
+    public static final int NEWS_RECOMMEND_TRUE = 1 ;
+    public static final int NEWS_RECOMMEND_FALSE = 0 ;
     /**
      * User is locked
      */

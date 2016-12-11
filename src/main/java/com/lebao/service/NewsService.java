@@ -77,4 +77,14 @@ public class NewsService {
         return newsVoList;
     }
 
+    /**
+     * 首页滚动
+     * @return
+     * @throws SQLException
+     */
+    public List<NewsVo> indexList1() throws SQLException {
+        List<News> newsList=newsDao.indexList1();
+        List<NewsVo> newsVoList = newsConverter.convert2V(newsList);
+        return newsVoList;
+    }
 }

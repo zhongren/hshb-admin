@@ -25,6 +25,13 @@ $(document)
                     "sWidth": "4%"
                 },
                 {
+                    "sTitle": "<center>首页滚动</center>", // 显示标题
+                    "mData": "recommend", // 属性
+                    "bSortable": true,// 排序
+                    "sClass": "center",
+                    "sWidth": "1%"
+                },
+                {
                     "sTitle": "<center>更新时间</center>", // 显示标题
                     "mData": "updateTime", // 属性
                     "bSortable": true,// 排序

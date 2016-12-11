@@ -54,7 +54,7 @@ public class IndexController {
             view.addObject("indexInfosList", indexInfosList);
             /**
              * 招聘
-             */
+
             SearchBean searchBean2 = new SearchBean();
             searchBean2.getParamMap().put("typeId", NewsTypeSetting.TYPE_NEWS_JOBOFFER);
             searchBean2.setCurrentPage(curPage);
@@ -63,7 +63,7 @@ public class IndexController {
             view.addObject("indexJobofferList", indexJobofferList);
             /**
              * 关于和顺
-             */
+
             SearchBean searchBean3 = new SearchBean();
             searchBean3.getParamMap().put("typeId", NewsTypeSetting.TYPE_NEWS_COMPANY);
             searchBean3.setCurrentPage(curPage);
@@ -72,13 +72,18 @@ public class IndexController {
             view.addObject("indexCompanyList", indexCompanyList);
             /**
              * 服务项目
-             */
+
             SearchBean searchBean4 = new SearchBean();
             searchBean4.getParamMap().put("typeId", NewsTypeSetting.TYPE_NEWS_SERVICE);
             searchBean4.setCurrentPage(curPage);
             searchBean4.setPageSize(pageSize);
             List<NewsVo> indexServicesList = newsService.indexList(searchBean4);
             view.addObject("indexServicesList", indexServicesList);
+            /**
+             * 首页滚动
+             */
+            List<NewsVo> indexRecommendList = newsService.indexList1();
+            view.addObject("indexRecommendList", indexRecommendList);
         } catch (Exception e) {
             e.printStackTrace();
         }
