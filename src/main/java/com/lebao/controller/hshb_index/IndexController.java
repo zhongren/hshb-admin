@@ -122,12 +122,14 @@ public class IndexController {
      */
     @RequestMapping("/newslist")
     public ModelAndView newslist(@RequestParam(value = "typeId", required = true) Long typeId,
-                                 @RequestParam(value = "typeId", required = false, defaultValue = "0") Integer curPage) {
+                                 @RequestParam(value = "page", required = false, defaultValue = "0") Integer curPage) {
         ModelAndView view = new ModelAndView();
         int pageSize = 15;
         try {
             SearchBean s = new SearchBean();
-            s.setSortType("createTime");
+            s.getParamMap().put("typeId", typeId);
+            s.setSortType("desc");
+            s.setSortField("updateTime");
             s.setCurrentPage(curPage);
             s.setPageSize(pageSize);
             Page<NewsVo> page = newsService.getPage(s);
