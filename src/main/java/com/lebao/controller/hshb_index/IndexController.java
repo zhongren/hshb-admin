@@ -1,6 +1,7 @@
 package com.lebao.controller.hshb_index;
 
 import com.lebao.common.beans.SearchBean;
+import com.lebao.common.dbhelp.page.Page;
 import com.lebao.service.NewsService;
 import com.lebao.vo.NewsVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+
 
 /**
  * Created by ZR on 2016/12/11.
@@ -85,15 +87,16 @@ public class IndexController {
      */
     @RequestMapping("/newslist")
     public ModelAndView newslist(@RequestParam(value = "typeId", required = true) Long typeId,
-                                 @RequestParam(value = "typeId", required = false, defaultValue = "1") Integer curPage) {
+                                 @RequestParam(value = "typeId", required = false, defaultValue = "0") Integer curPage) {
         ModelAndView view = new ModelAndView();
+        int pageSize=15;
         try {
-            SearchBean searchBean = new SearchBean();
-            searchBean.getParamMap().put("typeId", typeId);
-            searchBean.setCurrentPage(curPage);
-            searchBean.setPageSize(15);
-            List<NewsVo> indexNewsList = newsService.indexList(searchBean);
-            view.addObject("indexNewsList", indexNewsList);
+            SearchBean s = new SearchBean();
+            s.setSortType("createTime");
+            s.setCurrentPage(curPage);
+            s.setPageSize(pageSize);
+            Page<NewsVo> page = newsService.getPage(s);
+            view.addObject("page", page);
         } catch (Exception e) {
             e.printStackTrace();
         }
