@@ -61,6 +61,15 @@ public class IndexController {
             searchBean2.setPageSize(pageSize);
             List<NewsVo> indexJobofferList = newsService.indexList(searchBean2);
             view.addObject("indexJobofferList", indexJobofferList);
+            /**
+             * 关于和顺
+             */
+            SearchBean searchBean3 = new SearchBean();
+            searchBean3.getParamMap().put("typeId", NewsTypeSetting.TYPE_NEWS_COMPANY);
+            searchBean3.setCurrentPage(curPage);
+            searchBean3.setPageSize(pageSize);
+            List<NewsVo> indexCompanyList = newsService.indexList(searchBean3);
+            view.addObject("indexCompanyList", indexCompanyList);
         } catch (Exception e) {
             e.printStackTrace();
         }
