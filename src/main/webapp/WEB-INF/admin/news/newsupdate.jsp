@@ -43,6 +43,14 @@
                         <input type="hidden" id="picUrlVal" value=""/>
                         <input type="hidden" id="m_id" value="${news.id}"/>
                         <div class="form-group">
+                            <label for="m_recommend">首页滚动：</label> <span></span><br>
+                            <select name="newsType" id="m_recommend"  class="styled hasCustomSelect"
+                                    style="border-radius: 4px;border: 1px solid #e2e2e4;box-shadow: none;color: #555;width: 130px;height: 32px">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="m_name">文章标题：</label> <span></span>
                             <input type="text" id="m_name" placeholder="请输入标题" class="form-control" value="${news.name}">
                         </div>

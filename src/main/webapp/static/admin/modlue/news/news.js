@@ -134,6 +134,9 @@ function update() {
     var author = $("#m_author").val();
     var typeId = $("#m_typeId").val();
     var content = $('#editor').val();
+    var picSmall =$("#m_picSmall").val();
+    var picBig =$("#m_picBig").val();
+    var recommend =$("#m_recommend").val();
     $.ajaxInvoke({
         url: G_CTX_ROOT + "/news/update",
         type: "post",
@@ -143,7 +146,10 @@ function update() {
             name: name,
             author: author,
             typeId: typeId,
-            content: content
+            content: content,
+            picSmall:picSmall,
+            picBig:picBig,
+            recommend:recommend
         },
         success: function (data) {
             msgBox(data.state, data.msg);
