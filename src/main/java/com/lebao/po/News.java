@@ -20,7 +20,7 @@ public class News {
     private String updateTime;
     private String picSmall;
     private String picBig;
-
+    private Integer recommend;
     public Long getId() {
         return id;
     }
@@ -99,5 +99,13 @@ public class News {
 
     public void setPicBig(String picBig) {
         this.picBig = picBig;
+    }
+
+    public Integer getRecommend() {
+        return recommend;
+    }
+
+    public void setRecommend(Integer recommend) {
+        this.recommend = recommend;
     }
 }

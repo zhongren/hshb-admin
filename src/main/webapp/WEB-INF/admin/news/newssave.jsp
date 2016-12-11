@@ -41,6 +41,16 @@
                 <div class="panel-body">
                     <form role="form">
                         <input type="hidden" id="picUrlVal" value=""/>
+                        <div class="form-group">
+                            <label for="m_recommend">首页滚动：</label> <span></span><br>
+                            <select name="newsType" id="m_recommend"  class="styled hasCustomSelect"
+                                    style="border-radius: 4px;border: 1px solid #e2e2e4;box-shadow: none;color: #555;width: 130px;height: 32px">
+                                    <option value="0">否</option>
+                                    <option value="1">是</option>
+
+                            </select>
+
+                        </div>
 
                         <div class="form-group">
                             <label for="m_name">文章标题：</label> <span></span>
@@ -52,7 +62,7 @@
                         </div>
                         <div class="form-group">
                             <label for="m_typeId">文章类型：</label> <span></span><br>
-                            <select name="newsType" id="m_typeId" onChange="aab()" class="styled hasCustomSelect"
+                            <select name="newsType" id="m_typeId"  class="styled hasCustomSelect"
                                     style="border-radius: 4px;border: 1px solid #e2e2e4;box-shadow: none;color: #555;width: 130px;height: 32px">
                                 <c:forEach var="newsType" items="${newsTypeList}">
                                     <option value="${newsType.id}">${newsType.name}</option>
@@ -64,7 +74,7 @@
                             <input type="button" class="uploadPicture" name="m_picSmall" value="选择图片"/>
                         </div>
                         <div class="form-group">
-                            <label for="m_picBig" class="input input-file state-success">大图片(首页滚动广告)</label><br>
+                            <label for="m_picBig" class="input input-file state-success">大图片(首页滚动)</label><br>
                             <input type="button" class="uploadPicture" name="m_picBig" value="选择图片"/>
                         </div>
                         <div class="form-group">

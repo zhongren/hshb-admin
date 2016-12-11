@@ -94,6 +94,7 @@ function save() {
     var content = $('#editor').val();
     var picSmall =$("#m_picSmall").val();
     var picBig =$("#m_picBig").val();
+    var recommend =$("#m_recommend").val();
     if (!validator.validate())
         return false;
     $.ajaxInvoke({
@@ -106,7 +107,8 @@ function save() {
             author: author,
             content: content,
             picSmall:picSmall,
-            picBig:picBig
+            picBig:picBig,
+            recommend:recommend
         },
         success: function (data) {
             msgBox(data.state, data.msg);

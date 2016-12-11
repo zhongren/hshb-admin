@@ -70,6 +70,15 @@ public class IndexController {
             searchBean3.setPageSize(pageSize);
             List<NewsVo> indexCompanyList = newsService.indexList(searchBean3);
             view.addObject("indexCompanyList", indexCompanyList);
+            /**
+             * 服务项目
+             */
+            SearchBean searchBean4 = new SearchBean();
+            searchBean4.getParamMap().put("typeId", NewsTypeSetting.TYPE_NEWS_SERVICE);
+            searchBean4.setCurrentPage(curPage);
+            searchBean4.setPageSize(pageSize);
+            List<NewsVo> indexServicesList = newsService.indexList(searchBean4);
+            view.addObject("indexServicesList", indexServicesList);
         } catch (Exception e) {
             e.printStackTrace();
         }

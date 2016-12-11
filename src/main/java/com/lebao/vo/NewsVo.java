@@ -15,6 +15,7 @@ public class NewsVo {
     private String updateTime;
     private String picSmall;
     private String picBig;
+    private Integer recommend;
     private String displayUpdateTime;
     private String displayCreateTime;
 
@@ -96,6 +97,14 @@ public class NewsVo {
 
     public void setPicBig(String picBig) {
         this.picBig = picBig;
+    }
+
+    public Integer getRecommend() {
+        return recommend;
+    }
+
+    public void setRecommend(Integer recommend) {
+        this.recommend = recommend;
     }
 
     public String getDisplayUpdateTime() {
