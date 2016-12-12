@@ -71,4 +71,7 @@ public class SysUserService {
         return sysUserVo;
     }
 
+    public boolean checkSysUserIsExist(String name){
+       return sysUserDao.checkSysUserIsExist(name);
+    }
 }

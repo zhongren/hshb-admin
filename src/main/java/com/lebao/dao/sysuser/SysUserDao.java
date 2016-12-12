@@ -53,4 +53,12 @@ public class SysUserDao {
     public SysUser findByNameAndPassword(String name,String password){
         return sysUserRepo.findByNameAndPassword(name,password);
     }
+    public boolean checkSysUserIsExist(String name){
+         int count=sysUserRepo.countByName(name);
+        if(count>0){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

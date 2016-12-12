@@ -89,6 +89,10 @@ public class SysUserController extends BaseController{
     @ResponseBody
     public String save(SysUserVo sysUserVo) {
         try {
+            boolean exist=sysUserService.checkSysUserIsExist(sysUserVo.getName());
+            if(exist){
+                return  this.buildFailMessage("用户名已存在", ResultModal.MESSAGE);
+            }
             sysUserService.save(sysUserVo);
             return this.buildSuccessMessage("用户添加成功",
                     ResultModal.MESSAGE);
