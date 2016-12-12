@@ -1,3 +1,5 @@
+<%@ page import="com.lebao.common.dbhelp.page.Page" %>
+<%@ page import="com.lebao.vo.NewsVo" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -52,7 +54,7 @@
     <div class="con_right">
         <div class="head">新闻中心-中新公用</div>
         <ul class="news_list">
-            <c:forEach var="news" items="${indexNewsList}">
+            <c:forEach var="news" items="${page.data}">
                 <li><a href=content?id=<c:out value="${news.id}"/>><span class="date"><c:out
                         value="${news.displayUpdateTime}"/></span>
 
@@ -60,15 +62,29 @@
             </c:forEach>
         </ul>
         <div class="pages">
-            <%int crtPage = Integer.parseInt((String) (request.getParameter("page")));%>
-            <a href="newslist?page=<%=crtPage-1%>&typeId=1"><
-                <上一页
+            <%
+                Page<NewsVo> pageObj = ((Page<NewsVo>) (request.getAttribute("page")));
+                int curPage = pageObj.getCurPage();
+                int pageCount = pageObj.getPageCount();
+            %>
+            <%if (curPage > 1) { %>
+            <a href="newslist?page=1&typeId=1">
+                首页
             </a>
-            <%for (int i = crtPage - 2 > 0 ? crtPage - 2 : 1; i <= (crtPage + 2 > 5 ? crtPage + 2 : 5); i++) {%>
-            <a href="newslist?page=<%=i%>&typeId=1" <%=i == crtPage ? "id=\"current_page\"" : ""%>><%=i%>
+            <a href="newslist?page=<%=curPage-1%>&typeId=1">
+                &lt;&lt;上一页
             </a>
             <%}%>
-            <a href="newslist?page=<%=crtPage+1%>&typeId=1">下一页>></a>
+            <%for (int i = curPage - 2 > 0 ? curPage - 2 : 1; i <= (curPage + 2 > 5 ? curPage + 2 < pageCount ? curPage + 2 : pageCount : pageCount > 5 ? 5 : pageCount); i++) {%>
+            <a href="newslist?page=<%=i%>&typeId=1" <%=i == curPage ? "id=\"current_page\"" : ""%>><%=i%>
+            </a>
+            <%}%>
+            <%if (curPage < pageCount) {%>
+            <a href="newslist?page=<%=curPage+1%>&typeId=1">下一页&gt;&gt;</a>
+            <a href="newslist?page=<%=pageCount%>&typeId=1">
+                末页
+            </a>
+            <%}%>
         </div>
     </div><!--/con_right-->
 </div>
