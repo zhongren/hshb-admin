@@ -93,8 +93,7 @@ background-image: linear-gradient(bottom,rgb(19,150,215),rgb(55,235,75));}
 .con_left .fast_links ul li{ line-height:30px;}
 .con_left .fast_links ul li a{ color:#606260;}
 
-.con_right{ width:760px; float:left; margin-top:15px;margin-left: 25px;
-	margin-right: 45px;}
+.con_right{ width:760px; float:left; margin-top:15px;}
 .con_right .head{ height:40px; line-height:40px; background:url(../img/content_bg.png) no-repeat; background-size:100% 40px;-moz-background-size:100% 40px;-webkit-background-size:100% 40px;-o-background-size:100% 40px; color:#4d524d; font-size:18px; padding-left:35px;}
 .con_right .title{ text-align:center; font-size:20px; margin: 20px 20px 0;}
 .con_right .content{ padding:25px 20px 30px;}
