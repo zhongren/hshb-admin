@@ -55,7 +55,7 @@
         <div class="head"><c:out value="${news.name}" /></div>
         <div class="title"><c:out value="${news.name}" /> </div>
         <div class="content">
-            <c:out value="${news.content}" />
+            <c:out value="${news.content}" escapeXml="false" />
         </div>
     </div><!--/con_right-->
 </div>

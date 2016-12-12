@@ -52,9 +52,9 @@
 
 <!--banner-->
 <div class="flicker-example" data-block-text="false">
-    <a>
+    <ul>
         <c:forEach var="recommend" items="${indexRecommendList}">
-            <a href="content?id=<c:out value="${recommend.id}" />"></a> <li data-background="<c:out value="${recommend.picBig}" />"></li></a>
+            <a href="content?id=<c:out value="${recommend.id}" />"> <li data-background="<c:out value="${recommend.picBig}" />"></li></a>
         </c:forEach>
     </ul>
 </div>
