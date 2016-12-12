@@ -43,7 +43,7 @@ public class LoginController {
                 view.addObject("msg", "用户名或密码错误！");
                 return view;
             }
-
+             view.addObject("sysUserVo",sysUserVo);
         } catch (Exception e) {
             e.printStackTrace();
         }

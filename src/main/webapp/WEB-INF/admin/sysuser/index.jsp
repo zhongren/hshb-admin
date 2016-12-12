@@ -38,6 +38,7 @@
                                 <input name="s_name" type="text" class="form-control" id="userPhone"
                                        placeholder="请输入用户名">
                             </div>
+                            <!--
                             <div class="form-group">
                                 <label for="date">日期：</label>
                                 <input size="16" type="text" class="form_datetime form-control"
@@ -53,6 +54,7 @@
                                             });
                                 </script>
                             </div>
+                            -->
                             <div class="form-group" style="padding-top: 22px;padding-left: 2px">
                                 <button onclick="doSearch()" class="btn btn-primary">查询</button>
                             </div>

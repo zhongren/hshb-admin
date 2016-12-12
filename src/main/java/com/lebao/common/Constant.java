@@ -5,7 +5,9 @@ package com.lebao.common;
  */
 public class Constant {
     public static final int USER_ADMIN = 1 ;
-
+    /**
+     * 新闻推荐
+     */
     public static final int NEWS_RECOMMEND_TRUE = 1 ;
     public static final int NEWS_RECOMMEND_FALSE = 0 ;
     /**
@@ -29,6 +31,5 @@ public class Constant {
     public static final int LEBAO_USER_TYPE_SALESMAN = 2; //业务员
     public static final int LEBAO_USER_TYPE_OPRATION = 3; //运维人员
     public static final int LEBAO_USER_TYPE_OTHER = 4; //运维人员
-
 
 }
