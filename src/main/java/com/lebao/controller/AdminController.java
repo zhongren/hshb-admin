@@ -29,7 +29,7 @@ public class AdminController  {
 		return view;
 	}
 
-	@RequestMapping(value={"","/"})
+	@RequestMapping(value={"/admin"})
 	public ModelAndView index(HttpServletRequest request) {
 		ModelAndView view = new ModelAndView();
 		//initSideMenu(view);
@@ -44,11 +44,12 @@ public class AdminController  {
 		view.setViewName("admin/orderList");
 		return view;
 	}
+	/*
 	@RequestMapping("/index")
 	public ModelAndView index(){
 		ModelAndView view = new ModelAndView();
 		try{
-			/*
+
 			Subject user = SecurityUtils.getSubject();
 			SysUserBean sub =  (SysUserBean) user.getPrincipal() ;
 			logger.debug(new Gson().toJson(sub));
@@ -57,14 +58,14 @@ public class AdminController  {
 			view.setViewName("admin/index");
 			view.addObject("sysUser", sub);
 			view.addObject("sysMenus", menus);
-			*/
+
 		}catch(Exception e){
 			logger.error("load menu fail" , e);
 			e.printStackTrace();
 		}
 		return view ;
 	}
-	
+	*/
 	/*
 	 * 用于js脚本的全局变量
 	 */

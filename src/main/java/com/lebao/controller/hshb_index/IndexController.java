@@ -20,7 +20,6 @@ import java.util.List;
  * Created by ZR on 2016/12/11.
  */
 @Controller
-@RequestMapping("/index")
 public class IndexController {
     @Autowired
     NewsService newsService;
@@ -96,7 +95,7 @@ public class IndexController {
         return view;
     }
 
-    @RequestMapping("/content")
+    @RequestMapping("/index/content")
     public ModelAndView content(@RequestParam(value = "id", required = true) Long id) {
         ModelAndView view = new ModelAndView();
         try {
@@ -123,7 +122,7 @@ public class IndexController {
      * @param typeId
      * @return
      */
-    @RequestMapping("/newslist")
+    @RequestMapping("/index/newslist")
     public ModelAndView newslist(@RequestParam(value = "typeId", required = true) Long typeId,
                                  @RequestParam(value = "page", required = false, defaultValue = "0") Integer curPage) {
         ModelAndView view = new ModelAndView();
