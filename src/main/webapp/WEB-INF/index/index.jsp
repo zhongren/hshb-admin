@@ -37,7 +37,7 @@
 <div class="header_index">
     <div class="logo"><img src="${ctx}/staticAdmin/img/logo.png"></div>
     <ul class="nav">
-        <li><a href="index">首页</a></li>
+        <li><a href="/">首页</a></li>
         <li><a href="newslist?page=1&typeId=4">关于和顺</a></li>
         <li><a href="newslist?page=1&typeId=2">信息公示</a></li>
         <li><a href="newslist?page=1&typeId=1">新闻中心</a></li>
@@ -52,9 +52,9 @@
 
 <!--banner-->
 <div class="flicker-example" data-block-text="false">
-    <ul>
+    <a>
         <c:forEach var="recommend" items="${indexRecommendList}">
-            <li data-background="<c:out value="${recommend.picBig}" />"></li>
+            <a href="content?id=<c:out value="${recommend.id}" />"></a> <li data-background="<c:out value="${recommend.picBig}" />"></li></a>
         </c:forEach>
     </ul>
 </div>
