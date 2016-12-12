@@ -4,6 +4,8 @@ import com.lebao.common.NewsTypeSetting;
 import com.lebao.common.beans.SearchBean;
 import com.lebao.common.dbhelp.page.Page;
 import com.lebao.service.NewsService;
+import com.lebao.service.NewsTypeService;
+import com.lebao.vo.NewsTypeVo;
 import com.lebao.vo.NewsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +24,8 @@ import java.util.List;
 public class IndexController {
     @Autowired
     NewsService newsService;
-
+    @Autowired
+    NewsTypeService newsTypeService;
     /**
      * 首页
      *
@@ -126,6 +129,8 @@ public class IndexController {
         ModelAndView view = new ModelAndView();
         int pageSize = 15;
         try {
+            NewsTypeVo newsTypeVo=newsTypeService.findOne(typeId);
+            view.addObject("newsTypeVo", newsTypeVo);
             SearchBean s = new SearchBean();
             s.getParamMap().put("typeId", typeId);
             s.setSortType("desc");
@@ -133,7 +138,6 @@ public class IndexController {
             s.setCurrentPage(curPage);
             s.setPageSize(pageSize);
             Page<NewsVo> page = newsService.getPage(s);
-            System.out.println("1"+page.getData().size());
             view.addObject("page", page);
         } catch (Exception e) {
             e.printStackTrace();
