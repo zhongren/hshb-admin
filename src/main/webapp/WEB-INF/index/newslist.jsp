@@ -11,7 +11,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>无标题文档</title>
+    <title><c:out value="${newsTypeVo.name}"/></title>
     <link href="${ctx}/staticAdmin/css/css.css" type="text/css" rel="stylesheet">
     <script src="${ctx}/staticAdmin/js/jquery.js" type="text/javascript"></script>
     <script src="${ctx}/staticAdmin/js/js.js" type="text/javascript"></script>
@@ -29,7 +29,7 @@
             <li class="on"><a href="newslist?page=1&typeId=5">关于和顺</a></li>
             <li><a href="newslist?page=1&typeId=2">信息公示</a></li>
             <li><a href="newslist?page=1&typeId=1">新闻中心</a></li>
-            <li><a href="3">人才招聘</a></li>
+            <li><a href="newslist?page=1&typeId=3">人才招聘</a></li>
         </ul>
         <div class="nav_mobile">
             <img src="${ctx}/staticAdmin/img/list1.png">
@@ -45,14 +45,14 @@
         <div class="fast_links">
             <div class="head">新闻中心</div>
             <ul>
-                <li><a href="#">中新公用</a></li>
-                <li><a href="#">兆润控股</a></li>
-                <li><a href="#">和顺环保</a></li>
+                <li><a href="newslist?page=1&typeId=8">中新公用</a></li>
+                <li><a href="newslist?page=1&typeId=9">兆润控股</a></li>
+                <li><a href="newslist?page=1&typeId=10">和顺环保</a></li>
             </ul>
         </div>
     </div><!--/con_left-->
     <div class="con_right">
-        <div class="head">新闻中心-中新公用</div>
+        <div class="head"><c:out value="${newsTypeVo.name}"/></div>
         <ul class="news_list">
             <c:forEach var="news" items="${page.data}">
                 <li><a href=content?id=<c:out value="${news.id}"/>><span class="date"><c:out

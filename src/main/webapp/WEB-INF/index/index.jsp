@@ -9,7 +9,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>无标题文档</title>
+    <title>首页</title>
     <link href="${ctx}/staticAdmin/css/css.css" type="text/css" rel="stylesheet">
 
 
@@ -37,11 +37,11 @@
 <div class="header_index">
     <div class="logo"><img src="${ctx}/staticAdmin/img/logo.png"></div>
     <ul class="nav">
-        <li><a href="#">首页</a></li>
-        <li><a href="#">关于和顺</a></li>
-        <li><a href="#">信息公示</a></li>
-        <li><a href="#">新闻中心</a></li>
-        <li><a href="#">人才招聘</a></li>
+        <li><a href="index">首页</a></li>
+        <li><a href="newslist?page=1&typeId=4">关于和顺</a></li>
+        <li><a href="newslist?page=1&typeId=2">信息公示</a></li>
+        <li><a href="newslist?page=1&typeId=1">新闻中心</a></li>
+        <li><a href="newslist?page=1&typeId=3">人才招聘</a></li>
     </ul>
     <div class="tel"><p>服务热线</p><span><img src="${ctx}/staticAdmin/img/400.png"></span></div>
     <div class="nav_mobile">
@@ -71,20 +71,20 @@
             <c:forEach var="news" items="${indexNewsList}">
                 <li>
                     <div class="date"><c:out value="${news.displayUpdateTime}"/></div>
-                    <a href="#"><c:out value="${news.name}"/></a></li>
+                    <a href="content?id=<c:out value="${news.id}" />"><c:out value="${news.name}"/></a></li>
             </c:forEach>
         </ul>
     </div><!--/left-->
     <div class="container_right">
         <div class="head">
             <div class="name">信息公示</div>
-            <a href="newslist?page=1" class="more">更多</a>
+            <a href="newslist?page=1&typeId=2" class="more">更多</a>
         </div>
         <ul class="news_list">
             <c:forEach var="info" items="${indexInfosList}">
                 <li>
                     <div class="date"><c:out value="${info.displayUpdateTime}"/></div>
-                    <a href="#"><c:out value="${info.name}"/></a></li>
+                    <a href="content?id=<c:out value="${info.id}" /> "><c:out value="${info.name}"/></a></li>
             </c:forEach>
         </ul>
     </div><!--/right-->
@@ -94,7 +94,7 @@
         </div>
         <ul class="service_list">
             <c:forEach var="service" items="${indexServicesList}">
-                <li><a href="#"><img src="<c:out value="${service.picSmall}" />">
+                <li><a href="content?id=<c:out value="${service.id}" />"><img src="<c:out value="${service.picSmall}" />">
                     <div class="txt"><h3><c:out value="${service.name}" /></h3></div>
                 </a></li>
             </c:forEach>
