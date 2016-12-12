@@ -42,13 +42,15 @@
 <div class="container">
     <div class="con_left">
         <div class="fast_links">
-            <div class="head">关于和顺</div>
+            <div class="head">服务项目</div>
+            <!--
             <ul>
                 <li><a href="#">快速通道1</a></li>
                 <li><a href="#">快速通道2</a></li>
                 <li><a href="#">快速通道3</a></li>
                 <li><a href="#">快速通道4</a></li>
             </ul>
+            -->
         </div>
     </div><!--/con_left-->
     <div class="con_right">
