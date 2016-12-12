@@ -67,6 +67,7 @@
                 int curPage = pageObj.getCurPage();
                 int pageCount = pageObj.getPageCount();
             %>
+            <%if(pageCount>1){%>
             <%if (curPage > 1) { %>
             <a href="newslist?page=1&typeId=<c:out value="${newsTypeVo.id}"/>">
                 首页
@@ -84,6 +85,7 @@
             <a href="newslist?page=<%=pageCount%>&typeId=<c:out value="${newsTypeVo.id}"/>">
                 末页
             </a>
+            <%}%>
             <%}%>
         </div>
     </div><!--/con_right-->
