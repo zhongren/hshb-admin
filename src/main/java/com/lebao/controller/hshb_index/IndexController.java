@@ -95,7 +95,7 @@ public class IndexController {
         return view;
     }
 
-    @RequestMapping("/index/content")
+    @RequestMapping("/content")
     public ModelAndView content(@RequestParam(value = "id", required = true) Long id) {
         ModelAndView view = new ModelAndView();
         try {
@@ -122,7 +122,7 @@ public class IndexController {
      * @param typeId
      * @return
      */
-    @RequestMapping("/index/newslist")
+    @RequestMapping("/newslist")
     public ModelAndView newslist(@RequestParam(value = "typeId", required = true) Long typeId,
                                  @RequestParam(value = "page", required = false, defaultValue = "0") Integer curPage) {
         ModelAndView view = new ModelAndView();
