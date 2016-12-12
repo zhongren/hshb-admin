@@ -133,6 +133,7 @@ public class IndexController {
             s.setCurrentPage(curPage);
             s.setPageSize(pageSize);
             Page<NewsVo> page = newsService.getPage(s);
+            System.out.println("1"+page.getData().size());
             view.addObject("page", page);
         } catch (Exception e) {
             e.printStackTrace();

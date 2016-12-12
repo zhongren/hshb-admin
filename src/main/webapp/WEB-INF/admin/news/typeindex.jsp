@@ -44,7 +44,7 @@
                                 <button onclick="doSearch()" class="btn btn-primary">查询</button>
                             </div>
                             <div class="form-group" style="padding-top: 22px;padding-left: 2px">
-                                <button onclick="preSave()" class="btn btn-info">添加类型</button>
+                                <button onclick="preSave()" class="btn btn-info">添加</button>
                             </div>
                         </div>
 
