@@ -76,7 +76,7 @@
             </a>
             <%}%>
             <%for (int i = curPage - 2 > 0 ? curPage - 2 : 1; i <= (curPage + 2 > 5 ? curPage + 2 < pageCount ? curPage + 2 : pageCount : pageCount > 5 ? 5 : pageCount); i++) {%>
-            <a href="newslist?page=<%=i%>&typeId=1" <%=i == curPage ? "id=\"current_page\"" : ""%>><%=i%>
+            <a href="newslist?page=<%=i%>&typeId=<c:out value="${newsTypeVo.id}"/>" <%=i == curPage ? "id=\"current_page\"" : ""%>><%=i%>
             </a>
             <%}%>
             <%if (curPage < pageCount) {%>
