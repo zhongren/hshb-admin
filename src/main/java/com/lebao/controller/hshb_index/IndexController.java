@@ -31,7 +31,7 @@ public class IndexController {
      *
      * @return
      */
-    @RequestMapping("/index")
+    @RequestMapping("")
     public ModelAndView index() {
         ModelAndView view = new ModelAndView();
         try {
