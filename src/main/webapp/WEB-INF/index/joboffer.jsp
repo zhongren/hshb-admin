@@ -22,11 +22,11 @@
 	<div class="container">
         <div class="logo"><img src="${ctx}/staticAdmin/img/logo.png"></div>
         <ul class="nav">
-            <li><a href="#">首页</a></li>
-            <li class="on"><a href="#">关于和顺</a></li>
-            <li><a href="#">信息公示</a></li>
-            <li><a href="#">新闻中心</a></li>
-            <li><a href="#">人才招聘</a></li>
+            <li><a href="index">首页</a></li>
+            <li class="on"><a href="newslist?page=1&typeId=5">关于和顺</a></li>
+            <li><a href="newslist?page=1&typeId=2">信息公示</a></li>
+            <li><a href="newslist?page=1&typeId=1">新闻中心</a></li>
+            <li><a href="3">人才招聘</a></li>
         </ul>
     </div>
 	
