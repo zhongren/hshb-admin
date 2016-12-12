@@ -106,6 +106,8 @@ background-image: linear-gradient(bottom,rgb(19,150,215),rgb(55,235,75));}
 .con_right .news_list .job_item:hover{ color:#666;}
 .con_right .news_list .job_item .job_content{ display:none; color:#000; font-size:15px; font-weight:normal; width:550px; float:right;}
 
+
+.flicker-example ul li{cursor: pointer;}
 /*分页*/
 .pagination{ text-align:center;}
 .pagination a,.pagination span{ margin:0 5px;}

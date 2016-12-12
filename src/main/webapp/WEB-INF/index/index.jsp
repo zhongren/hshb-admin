@@ -54,7 +54,7 @@
 <div class="flicker-example" data-block-text="false">
     <ul>
         <c:forEach var="recommend" items="${indexRecommendList}">
-            <a href="content?id=<c:out value="${recommend.id}" />"> <li data-background="<c:out value="${recommend.picBig}" />"></li></a>
+             <li data-background="<c:out value="${recommend.picBig}" />" onclick="window.location='content?id=<c:out value='${recommend.id}' />'"></li>
         </c:forEach>
     </ul>
 </div>
