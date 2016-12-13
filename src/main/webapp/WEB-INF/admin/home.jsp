@@ -12,7 +12,7 @@
 <!--main content start-->
 <body>
 <!--main content end-->
-<p>游乐堡后台管理系统</p>
+<p>后台管理系统</p>
 <jsp:include page="common/js.jsp"/>
 <script>
     //owl carousel

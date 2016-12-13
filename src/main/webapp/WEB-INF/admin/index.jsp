@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="img/favicon.html">
-    <title>和顺环保后台管理系统</title>
+    <title>后台管理</title>
     <jsp:include page="common/css.jsp"/>
 </head>
 <body>
