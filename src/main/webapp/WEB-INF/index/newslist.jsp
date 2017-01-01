@@ -24,7 +24,7 @@
     <div class="container">
         <div class="logo"><img src="${ctx}/staticAdmin/img/logo.png"></div>
         <ul class="nav">
-            <li><a href="/">和顺环保-新闻列表</a></li>
+            <li><a href="/">首页</a></li>
             <li class="on"><a href="newslist?page=1&typeId=4">关于和顺</a></li>
             <li><a href="newslist?page=1&typeId=2">信息公示</a></li>
             <li><a href="newslist?page=1&typeId=1">新闻中心</a></li>
