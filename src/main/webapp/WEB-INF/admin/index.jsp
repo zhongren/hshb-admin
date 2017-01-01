@@ -199,8 +199,23 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
                 <li class="active"><a class="active" href="${ctx}/sysUser/index" target="main"> <i
-                        class="icon-user"></i> <span>用户管理</span>
+                        class="icon-user"></i> <span>网站员工</span>
                 </a></li>
+
+                <li class="sub-menu dcjq-parent-li">
+                    <a href="javascript:;" class="dcjq-parent">
+                        <i class="icon-th"></i>
+                        <span>公司管理</span></a>
+                    <ul class="sub">
+                        <li class="active"><a class="active" href="" target="main"> <i
+                                class="icon-user"></i> <span>公司员工</span>
+                        </a></li>
+                        <li class="active"><a class="active" href="${ctx}/sysUser/index" target="main"> <i
+                                class="icon-user"></i> <span>网站员工</span>
+                        </a></li>
+                    </ul>
+                </li>
+
                 <li class="sub-menu dcjq-parent-li">
                     <a href="javascript:;" class="dcjq-parent">
                         <i class="icon-th"></i>
