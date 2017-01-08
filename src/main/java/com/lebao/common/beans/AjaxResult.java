@@ -2,6 +2,7 @@ package com.lebao.common.beans;
 
 
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,6 +37,12 @@ public class AjaxResult {
         return new AjaxResult(null);
     }
 
+    public static AjaxResult success(String msg) {
+        return new AjaxResult(200, msg, null);
+    }
+    public static AjaxResult fail(String msg) {
+        return new AjaxResult(500, msg, null);
+    }
     public AjaxResult() {
 
     }
@@ -86,9 +93,9 @@ public class AjaxResult {
 
     /**
      * 将json结果集转化为AjaxResult对象
-     * 
+     *
      * @param jsonData json数据
-     * @param clazz AjaxResult中的object类型
+     * @param clazz    AjaxResult中的object类型
      * @return
      */
     public static AjaxResult formatToPojo(String jsonData, Class<?> clazz) {
@@ -115,7 +122,7 @@ public class AjaxResult {
 
     /**
      * 没有object对象的转化
-     * 
+     *
      * @param json
      * @return
      */
@@ -130,9 +137,9 @@ public class AjaxResult {
 
     /**
      * Object是集合转化
-     * 
+     *
      * @param jsonData json数据
-     * @param clazz 集合中的类型
+     * @param clazz    集合中的类型
      * @return
      */
     public static AjaxResult formatToList(String jsonData, Class<?> clazz) {

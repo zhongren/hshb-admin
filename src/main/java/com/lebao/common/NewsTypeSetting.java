@@ -6,7 +6,7 @@ package com.lebao.common;
 public class NewsTypeSetting {
 
     /**
-     * hshb
+     * Hshb
      */
     public static final int TYPE_NEWS_CENTER = 1;
     public static final int TYPE_NEWS_INFO = 2;
