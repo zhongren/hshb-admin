@@ -4,86 +4,27 @@ $(document)
             setting.sAjaxSource = G_CTX_ROOT + "/user/query";
             setting.aoColumns = [
                 {
-                    "sTitle": "<center>用户编号</center>", // 显示标题
-                    "mData": "id", // 属性
-                    "bSortable": false,// 排序
+                    "sTitle": "<center>编号</center>", // 显示标题
+                    "mData": "user_id", // 属性
+                    "bSortable": true,// 排序
                     "sClass": "center",
-                    "sWidth": "3%"
-
-                },
-                {
-                    "sTitle": "<center>手机号</center>", // 显示标题
-                    "mData": "userPhone", // 属性
-                    "bSortable": false,// 排序
-                    "sClass": "center",
-                    "sWidth": "3%",
-
+                    "sWidth": "5%"
                 },
                 {
                     "sTitle": "<center>姓名</center>", // 显示标题
-                    "mData": "userName", // 属性
+                    "mData": "name", // 属性
                     "bSortable": false,// 排序
                     "sClass": "center",
-                    "sWidth": "2%",
-                },
-                {
-                    "sTitle": "<center>账号</center>", // 显示标题
-                    "mData": "userAccount", // 属性
-                    "bSortable": false,// 排序
-                    "sClass": "center",
-                    "sWidth": "2%"
-                },
-                {
-                    "sTitle": "<center>用户类型</center>", // 显示标题
-                    "mData": "userType", // 属性
-                    "bSortable": true,// 排序
-                    "sClass": "center",
-                    "sWidth": "2%"
-                }, {
-                    "sTitle": "<center>乐币</center>", // 显示标题
-                    "mData": "lebi", // 属性
-                    "bSortable": false,// 排序
-                    "sClass": "center",
-                    "sWidth": "2%"
-                },
-                {
-                    "sTitle": "<center>创建时间</center>", // 显示标题
-                    "mData": "createTime", // 属性
-                    "bSortable": true,// 排序
-                    "sClass": "center",
-                    "sWidth": "4%"
-                },
-                {
-                    "sTitle": "<center>最后登录时间</center>", // 显示标题
-                    "mData": "lastLoginTime", // 属性
-                    "bSortable": false,// 排序
-                    "sClass": "center",
-                    "sWidth": "4%"
+                    "sWidth": "5%"
 
                 },
                 {
-                    "sTitle": "<center>会员到期时间</center>", // 显示标题
-                    "mData": "hyEndTime", // 属性
+                    "sTitle": "<center>电话</center>", // 显示标题
+                    "mData": "name", // 属性
                     "bSortable": false,// 排序
                     "sClass": "center",
-                    "sWidth": "4%"
-
+                    "sWidth": "5%"
                 },
-                {
-                    "sTitle": "<center>会员时间添加</center>", // 显示标题
-                    "bSortable": false,// 排序
-                    "mData": "id", // 属性
-                    "sClass": "center",
-                    "sWidth": "5%",
-                    "mRender": function (data, style, obj) {
-                        var timeDom1 = "<a class=\"btn btn-round btn-danger btn-xs\" onclick=\"hyAdd(" + obj.id + ",1)\" >1个月</a>";
-                        var timeDom2 = "<a class=\"btn btn-round btn-danger btn-xs\" onclick=\"hyAdd(" + obj.id + ",3)\" >3个月</a>";
-                        var timeDom3 = "<a class=\"btn btn-round btn-danger btn-xs\" onclick=\"hyAdd(" + obj.id + ",6)\" >半年</a>";
-                        var timeDom4 = "<a class=\"btn btn-round btn-danger btn-xs\" onclick=\"hyAdd(" + obj.id + ",12)\" >一年</a>";
-                        return timeDom1 + "&nbsp;" + timeDom2 + "&nbsp;" + timeDom3 + "&nbsp;" + timeDom4;
-                    }
-                }
-                ,
                 {
                     "sTitle": "<center>操作</center>", // 显示标题
                     "bSortable": false,// 排序

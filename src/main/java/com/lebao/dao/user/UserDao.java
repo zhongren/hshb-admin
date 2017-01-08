@@ -7,6 +7,7 @@ import com.lebao.common.dbhelp.page.Page;
 import com.lebao.dao.sysuser.SysUserRepo;
 import com.lebao.po.SysUser;
 import com.lebao.po.User;
+import com.lebao.po.UserDepartmentRel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

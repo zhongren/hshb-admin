@@ -13,8 +13,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    private String pic;
     private Integer sex;
-    private Long department;
     private Long eduLevel;
     private Long position;
     private String phone;
@@ -45,13 +45,6 @@ public class User {
         this.sex = sex;
     }
 
-    public Long getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Long department) {
-        this.department = department;
-    }
 
     public Long getEduLevel() {
         return eduLevel;
@@ -104,15 +97,12 @@ public class User {
     public User() {
     }
 
-    public User(String name, Integer sex, Long department, Long eduLevel, Long position, String phone, String desc, Date createTime) {
-        this.name = name;
-        this.sex = sex;
-        this.department = department;
-        this.eduLevel = eduLevel;
-        this.position = position;
-        this.phone = phone;
-        this.desc = desc;
-        this.createTime = createTime;
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 
     @Override
@@ -120,8 +110,8 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", pic='" + pic + '\'' +
                 ", sex=" + sex +
-                ", department=" + department +
                 ", eduLevel=" + eduLevel +
                 ", position=" + position +
                 ", phone='" + phone + '\'' +

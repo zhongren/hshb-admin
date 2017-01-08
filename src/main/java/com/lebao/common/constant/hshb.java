@@ -2,6 +2,7 @@ package com.lebao.common.constant;
 
 import com.lebao.po.Department;
 import com.lebao.po.EduLevel;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,9 +12,10 @@ import java.util.Map;
 /**
  * Created by ZR on 2017/1/8.
  */
-public class hshb {
+@Component
+public class Hshb {
 
-    public void createDepartment() {
+    public List<Department> createDepartment() {
         List<Department> departmentList = new ArrayList<>();
         departmentList.add(new Department(1L, "管理层"));
         departmentList.add(new Department(2L, "总经理室"));
@@ -30,9 +32,10 @@ public class hshb {
         departmentList.add(new Department(13L, "物流部"));
         departmentList.add(new Department(14L, "押运"));
         departmentList.add(new Department(15L, "其他"));
+        return  departmentList;
     }
 
-    public void createEduLevel() {
+    public List<EduLevel> createEduLevel() {
         List<EduLevel> eduLevelList = new ArrayList<>();
         eduLevelList.add(new EduLevel(1L, "初中"));
         eduLevelList.add(new EduLevel(2L, "高中"));
@@ -43,7 +46,7 @@ public class hshb {
         eduLevelList.add(new EduLevel(7L, "博士"));
         eduLevelList.add(new EduLevel(8L, "其他"));
         eduLevelList.add(new EduLevel(9L, "保密"));
-
+        return  eduLevelList;
     }
 
 

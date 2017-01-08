@@ -2,10 +2,19 @@ package com.lebao.converter;
 
 
 import com.lebao.common.utils.TimeUtil;
+import com.lebao.po.Department;
 import com.lebao.po.User;
+import com.lebao.po.UserDepartmentRel;
+import com.lebao.service.DepartmentService;
+import com.lebao.service.EduLevelService;
+import com.lebao.service.UserDepartmentRelService;
 import com.lebao.vo.UserVo;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ZR on 2016/12/6.
@@ -13,6 +22,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserConverter extends BaseConverter<User, UserVo> {
 
+    @Autowired
+    UserDepartmentRelService userDepartmentRelService;
+    @Autowired
+    DepartmentService departmentService;
+    @Autowired
+    EduLevelService eduLevelService;
     @Override
     public User convert2P(UserVo vo) {
         if (vo == null) {
@@ -40,6 +55,13 @@ public class UserConverter extends BaseConverter<User, UserVo> {
             BeanUtils.copyProperties(po, vo);
             vo.setCreateTime(TimeUtil.format(po.getCreateTime()));
             vo.setUpdateTime(TimeUtil.format(po.getUpdateTime()));
+            List<UserDepartmentRel> userDepartmentRelList = userDepartmentRelService.findByUid(po.getId());
+            List<Department> departmentList = new ArrayList<>();
+            for (UserDepartmentRel userDepartmentRel : userDepartmentRelList) {
+                Department department = departmentService.findOne(userDepartmentRel.getDid());
+                departmentList.add(department);
+            }
+            vo.setDepartmentList(departmentList);
         } catch (Exception e) {
             e.printStackTrace();
         }

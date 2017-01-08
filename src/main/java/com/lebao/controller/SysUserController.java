@@ -145,6 +145,10 @@ public class SysUserController extends BaseController{
     @ResponseBody
     public String delete(@RequestParam(value = "id", required = true) Long id) {
         try {
+            SysUserVo sysUserVo=sysUserService.findOne(id);
+            if (sysUserVo.getName().equals("admin")){
+                return  this.buildFailMessage("admin用户无法删除", ResultModal.MESSAGE);
+            }
             sysUserService.delete(id);
             return this.buildSuccessMessage("用户删除成功",
                     ResultModal.MESSAGE);

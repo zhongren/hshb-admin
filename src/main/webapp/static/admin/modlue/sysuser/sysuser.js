@@ -4,7 +4,7 @@ $(document)
             setting.sAjaxSource = G_CTX_ROOT + "/sysUser/query";
             setting.aoColumns = [
                 {
-                    "sTitle": "<center>用户编号</center>", // 显示标题
+                    "sTitle": "<center>编号</center>", // 显示标题
                     "mData": "user_id", // 属性
                     "bSortable": true,// 排序
                     "sClass": "center",
