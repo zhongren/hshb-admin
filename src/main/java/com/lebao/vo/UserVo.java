@@ -16,7 +16,7 @@ public class UserVo {
     private String name;
     private String pic;
     private Integer sex;
-    private List<Department> departmentList;
+    private List<Long> departmentList;
     private Long eduLevel;
     private Long position;
     private String phone;
@@ -47,11 +47,11 @@ public class UserVo {
         this.sex = sex;
     }
 
-    public List<Department> getDepartmentList() {
+    public List<Long> getDepartmentList() {
         return departmentList;
     }
 
-    public void setDepartmentList(List<Department> departmentList) {
+    public void setDepartmentList(List<Long> departmentList) {
         this.departmentList = departmentList;
     }
 

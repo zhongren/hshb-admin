@@ -24,10 +24,7 @@ public class UserConverter extends BaseConverter<User, UserVo> {
 
     @Autowired
     UserDepartmentRelService userDepartmentRelService;
-    @Autowired
-    DepartmentService departmentService;
-    @Autowired
-    EduLevelService eduLevelService;
+
     @Override
     public User convert2P(UserVo vo) {
         if (vo == null) {
@@ -56,10 +53,9 @@ public class UserConverter extends BaseConverter<User, UserVo> {
             vo.setCreateTime(TimeUtil.format(po.getCreateTime()));
             vo.setUpdateTime(TimeUtil.format(po.getUpdateTime()));
             List<UserDepartmentRel> userDepartmentRelList = userDepartmentRelService.findByUid(po.getId());
-            List<Department> departmentList = new ArrayList<>();
+            List<Long> departmentList = new ArrayList<>();
             for (UserDepartmentRel userDepartmentRel : userDepartmentRelList) {
-                Department department = departmentService.findOne(userDepartmentRel.getDid());
-                departmentList.add(department);
+                departmentList.add(userDepartmentRel.getDid());
             }
             vo.setDepartmentList(departmentList);
         } catch (Exception e) {

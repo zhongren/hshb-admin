@@ -2,6 +2,8 @@ package com.lebao.controller;
 
 import com.lebao.common.beans.SearchBean;
 import com.lebao.common.dbhelp.page.Page;
+import com.lebao.service.DepartmentService;
+import com.lebao.service.EduLevelService;
 import com.lebao.service.SysUserService;
 import com.lebao.service.UserService;
 import com.lebao.vo.SysUserVo;
@@ -24,6 +26,10 @@ import java.util.Map;
 public class UserController extends BaseController{
     @Autowired
     private UserService userService;
+    @Autowired
+    DepartmentService departmentService;
+    @Autowired
+    EduLevelService eduLevelService;
     /**
      * 页面入口
      *
