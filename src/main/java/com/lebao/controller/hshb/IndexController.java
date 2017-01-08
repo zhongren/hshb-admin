@@ -1,4 +1,4 @@
-package com.lebao.controller.hshb_index;
+package com.lebao.controller.hshb;
 
 import com.lebao.common.NewsTypeSetting;
 import com.lebao.common.beans.SearchBean;
