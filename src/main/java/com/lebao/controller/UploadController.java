@@ -35,17 +35,19 @@ public class UploadController extends BaseController {
         try {
             boolean result = false;
             //取得可上传的文件类型
-            List<String> fileTypes = this.getAllowFiles(appConfig.IMAGE_ALLOW_TYPE);
+           // List<String> fileTypes = this.getAllowFiles(appConfig.IMAGE_ALLOW_TYPE);
             //获取文件名
             String fileName = uploadFile.getOriginalFilename();
             // 获取上传文件类型的扩展名,先得到.的位置，再截取从.的下一个位置到文件的最后，最后得到扩展名
             String ext = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length());
             // 对扩展名进行小写转换
             ext = ext.toLowerCase();
+            /*
             //文件类型检查
             if(!fileTypes.contains(ext)){
                 return UploadResult.fail("不是合法的格式");
             }
+            */
             // 新的文件名
             String newFileName = new SimpleDateFormat("yyyyMMddHHmmssms").format(new Date())
                     + (int) (Math.random() * 10000) + "." + ext;

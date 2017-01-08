@@ -16,7 +16,7 @@ var KE = {
         //uploadJson: '/testUpload',
         uploadJson: '/file/upload',
         //上传类型，分别为image、flash、media、file
-        dir: "image"
+        dir: "file"
     },
 
     createEditor: function (select) {
