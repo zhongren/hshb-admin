@@ -7,9 +7,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="tb_educationalLevel")
-public class EducationalLevel {
+public class EduLevel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
 
@@ -31,7 +30,7 @@ public class EducationalLevel {
 
     @Override
     public String toString() {
-        return "EducationalLevel{" +
+        return "EduLevel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

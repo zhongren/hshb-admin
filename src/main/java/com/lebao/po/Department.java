@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Table(name="tb_department")
 public class Department {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
 
@@ -27,6 +26,14 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Department(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Department() {
     }
 
     @Override

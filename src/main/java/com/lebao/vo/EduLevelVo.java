@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by ZR on 2017/1/8.
  */
 
-public class EducationalLevelVo {
+public class EduLevelVo {
 
     private Long id;
     private String name;
@@ -29,7 +29,7 @@ public class EducationalLevelVo {
 
     @Override
     public String toString() {
-        return "EducationalLevelVo{" +
+        return "EduLevelVo{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
