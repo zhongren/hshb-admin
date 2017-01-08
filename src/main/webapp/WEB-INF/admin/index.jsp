@@ -198,10 +198,6 @@
         <div id="sidebar" class="nav-collapse " tabindex="5000" style="overflow: hidden; outline: none;">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
-                <li class="active"><a class="active" href="${ctx}/sysUser/index" target="main"> <i
-                        class="icon-user"></i> <span>网站员工</span>
-                </a></li>
-
                 <li class="sub-menu dcjq-parent-li">
                     <a href="javascript:;" class="dcjq-parent">
                         <i class="icon-th"></i>

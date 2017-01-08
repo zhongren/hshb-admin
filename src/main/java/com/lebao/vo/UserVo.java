@@ -18,7 +18,8 @@ public class UserVo {
     private String positionValue;
     private String phone;
     private String desc;
-
+    private String createTime;
+    private String updateTime;
     public Long getId() {
         return id;
     }
@@ -107,20 +108,23 @@ public class UserVo {
         this.desc = desc;
     }
 
-    public UserVo() {
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public UserVo(String name, Integer sex, Long department, String departmentValue, Long eduLevel, String eduLevelValue, Long position, String positionValue, String phone, String desc) {
-        this.name = name;
-        this.sex = sex;
-        this.department = department;
-        this.departmentValue = departmentValue;
-        this.eduLevel = eduLevel;
-        this.eduLevelValue = eduLevelValue;
-        this.position = position;
-        this.positionValue = positionValue;
-        this.phone = phone;
-        this.desc = desc;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public UserVo() {
     }
 
     @Override
@@ -137,6 +141,8 @@ public class UserVo {
                 ", positionValue='" + positionValue + '\'' +
                 ", phone='" + phone + '\'' +
                 ", desc='" + desc + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", updateTime='" + updateTime + '\'' +
                 '}';
     }
 }
