@@ -21,4 +21,11 @@ public class UserContrller {
         view.setViewName("admin/user/index");
         return view;
     }
+    @RequestMapping("/edit")
+    public ModelAndView edit() {
+        ModelAndView view = new ModelAndView();
+        view.addObject("title","系统管理>>员工查询");
+        view.setViewName("admin/user/edit");
+        return view;
+    }
 }
