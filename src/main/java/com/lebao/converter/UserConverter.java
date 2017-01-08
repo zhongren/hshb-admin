@@ -1,6 +1,7 @@
 package com.lebao.converter;
 
 
+import com.lebao.common.utils.TimeUtil;
 import com.lebao.po.User;
 import com.lebao.vo.UserVo;
 import org.springframework.beans.BeanUtils;
@@ -21,6 +22,8 @@ public class UserConverter extends BaseConverter<User, UserVo> {
         try {
             po = new User();
             BeanUtils.copyProperties(vo, po);
+            po.setCreateTime(TimeUtil.str2Date(vo.getCreateTime()));
+            po.setUpdateTime(TimeUtil.str2Date(vo.getUpdateTime()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -35,6 +38,8 @@ public class UserConverter extends BaseConverter<User, UserVo> {
         UserVo vo = new UserVo();
         try {
             BeanUtils.copyProperties(po, vo);
+            vo.setCreateTime(TimeUtil.format(po.getCreateTime()));
+            vo.setUpdateTime(TimeUtil.format(po.getUpdateTime()));
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -29,8 +29,7 @@ public class hshb {
         departmentList.add(new Department(12L, "安全部"));
         departmentList.add(new Department(13L, "物流部"));
         departmentList.add(new Department(14L, "押运"));
-        departmentList.add(new Department(15L, "物流部|内控部"));
-        departmentList.add(new Department(16L, "其他"));
+        departmentList.add(new Department(15L, "其他"));
     }
 
     public void createEduLevel() {
