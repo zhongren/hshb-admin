@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Created by ZR on 2017/1/8.
  */
 @Controller
-@RequestMapping(value="sysUser")
+@RequestMapping(value="user")
 public class UserContrller {
     /**
      * 页面入口
