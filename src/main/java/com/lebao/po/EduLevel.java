@@ -28,6 +28,14 @@ public class EduLevel {
         this.name = name;
     }
 
+    public EduLevel() {
+    }
+
+    public EduLevel(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return "EduLevel{" +

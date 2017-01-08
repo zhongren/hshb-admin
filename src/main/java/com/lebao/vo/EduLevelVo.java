@@ -1,6 +1,6 @@
 package com.lebao.vo;
 
-import javax.persistence.*;
+
 
 /**
  * Created by ZR on 2017/1/8.
