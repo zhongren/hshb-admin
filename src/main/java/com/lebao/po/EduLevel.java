@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by ZR on 2017/1/8.
  */
 @Entity
-@Table(name="tb_educationalLevel")
+@Table(name="tb_edu_level")
 public class EduLevel {
     @Id
     private Long id;

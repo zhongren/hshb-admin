@@ -1,9 +1,22 @@
 package com.lebao.common;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Server on 2016/5/4.
  */
 public class Constant {
+    static {
+        Map<Integer,String> sexMap=new HashMap<>();
+        sexMap.put(0,"男");
+        sexMap.put(1,"女");
+        sexMap.put(2,"其他");
+    }
+
+
+
+
     public static final int USER_ADMIN = 1 ;
     /**
      * 新闻推荐
