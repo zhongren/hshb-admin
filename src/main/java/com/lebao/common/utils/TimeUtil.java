@@ -154,7 +154,7 @@ public class TimeUtil {
     }
 
     public static String format(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat(SOURCE_1);
+        SimpleDateFormat sdf = new SimpleDateFormat(TARGET_1);
         return sdf.format(date);
     }
 
@@ -323,6 +323,9 @@ public class TimeUtil {
      * @return
      */
     public static Date str2Date(String str) {
+        if(str==null){
+            return null;
+        }
         SimpleDateFormat format = new SimpleDateFormat(TARGET_1);
         Date date = null;
         try {
@@ -341,6 +344,9 @@ public class TimeUtil {
      * @return
      */
     public static Date str2Date(String str, String fmt) {
+        if(str==null){
+            return null;
+        }
         SimpleDateFormat format = new SimpleDateFormat(fmt);
         Date date = null;
         try {

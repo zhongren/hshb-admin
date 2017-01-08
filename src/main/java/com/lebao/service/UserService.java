@@ -61,8 +61,7 @@ public class UserService {
 
     public UserVo findOne(Long id) {
         User user = userDao.findOne(id);
-        UserVo userVo = userConverter.convert2V(user);
-        return userVo;
+        return userConverter.convert2V(user);
     }
 
 

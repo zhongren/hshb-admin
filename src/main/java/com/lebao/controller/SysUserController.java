@@ -25,7 +25,7 @@ import java.util.Map;
 @RequestMapping(value="sysUser")
 public class SysUserController extends BaseController{
     @Autowired
-    SysUserService sysUserService;
+    private SysUserService sysUserService;
 
     /**
      * 页面入口
