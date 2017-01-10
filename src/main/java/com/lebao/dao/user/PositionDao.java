@@ -7,6 +7,8 @@ import com.lebao.po.Position;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 @Repository
 public class PositionDao {
@@ -22,4 +24,9 @@ public class PositionDao {
     public void save(Position position) {
         positionRepo.save(position);
     }
+
+    public List<Position> findAll(){
+        return positionRepo.findAll();
+    }
+
 }

@@ -5,6 +5,8 @@ import com.lebao.po.EduLevel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Author: zr
  * Date  : 2016/12/6 18:13
@@ -18,5 +20,8 @@ public class EduLevelService {
     }
     public void save(EduLevel eduLevel){
         eduLevelDao.save(eduLevel);
+    }
+    public List<EduLevel> findAll(){
+        return eduLevelDao.findAll();
     }
 }

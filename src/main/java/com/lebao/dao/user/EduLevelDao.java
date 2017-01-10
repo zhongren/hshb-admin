@@ -7,6 +7,8 @@ import com.lebao.po.EduLevel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 @Repository
 public class EduLevelDao {
@@ -21,5 +23,9 @@ public class EduLevelDao {
 
     public void save(EduLevel eduLevel) {
         eduLevelRepo.save(eduLevel);
+    }
+
+    public List<EduLevel> findAll(){
+        return eduLevelRepo.findAll();
     }
 }

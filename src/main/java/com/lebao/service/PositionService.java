@@ -1,9 +1,12 @@
 package com.lebao.service;
 
 import com.lebao.dao.user.PositionDao;
+import com.lebao.po.Department;
 import com.lebao.po.Position;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Author: zr
@@ -19,4 +22,9 @@ public class PositionService {
     public void save(Position position){
         positionDao.save(position);
     }
+
+    public List<Position> findAll(){
+        return positionDao.findAll();
+    }
+
 }

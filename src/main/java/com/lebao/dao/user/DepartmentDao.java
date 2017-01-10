@@ -9,6 +9,7 @@ import com.lebao.po.Department;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 
 
 @Repository
@@ -26,5 +27,8 @@ public class DepartmentDao {
 
     public void save(Department department) {
          departmentRepo.save(department);
+    }
+    public List<Department> findAll(){
+        return departmentRepo.findAll();
     }
 }
