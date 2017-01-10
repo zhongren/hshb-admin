@@ -18,4 +18,7 @@ public class DepartmentService {
         return departmentDao.findOne(id);
     }
 
+    public void save(Department department){
+        departmentDao.save(department);
+    }
 }

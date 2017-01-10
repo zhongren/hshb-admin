@@ -16,7 +16,7 @@ import java.util.Map;
 public class Hshb {
 
     public List<Department> createDepartment() {
-        List<Department> departmentList = new ArrayList<>();
+        List<Department> departmentList = new ArrayList<Department>();
         departmentList.add(new Department(1L, "管理层"));
         departmentList.add(new Department(2L, "总经理室"));
         departmentList.add(new Department(3L, "财务部"));
@@ -36,7 +36,7 @@ public class Hshb {
     }
 
     public List<EduLevel> createEduLevel() {
-        List<EduLevel> eduLevelList = new ArrayList<>();
+        List<EduLevel> eduLevelList = new ArrayList<EduLevel>();
         eduLevelList.add(new EduLevel(1L, "初中"));
         eduLevelList.add(new EduLevel(2L, "高中"));
         eduLevelList.add(new EduLevel(3L, "中专"));

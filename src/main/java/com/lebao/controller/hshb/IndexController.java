@@ -1,6 +1,6 @@
 package com.lebao.controller.hshb;
 
-import com.lebao.common.NewsTypeSetting;
+import com.lebao.common.constant.NewsTypeSetting;
 import com.lebao.common.beans.SearchBean;
 import com.lebao.common.dbhelp.page.Page;
 import com.lebao.service.NewsService;

@@ -19,5 +19,7 @@ public class EduLevelDao {
         return eduLevelRepo.findOne(id);
     }
 
-
+    public void save(EduLevel eduLevel) {
+        eduLevelRepo.save(eduLevel);
+    }
 }

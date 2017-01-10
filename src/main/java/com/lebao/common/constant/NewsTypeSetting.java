@@ -1,4 +1,4 @@
-package com.lebao.common;
+package com.lebao.common.constant;
 
 /**
  * Created by ZR on 2016/12/11.

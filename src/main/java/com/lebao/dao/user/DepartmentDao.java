@@ -24,5 +24,7 @@ public class DepartmentDao {
         return departmentRepo.findOne(id);
     }
 
-
+    public void save(Department department) {
+         departmentRepo.save(department);
+    }
 }

@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public class Constant {
     static {
-        Map<Integer,String> sexMap=new HashMap<>();
+        Map<Integer,String> sexMap=new HashMap<Integer,String>();
         sexMap.put(1,"男");
         sexMap.put(0,"女");
         sexMap.put(2,"其他");

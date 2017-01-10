@@ -53,7 +53,7 @@ public class UserConverter extends BaseConverter<User, UserVo> {
             vo.setCreateTime(TimeUtil.format(po.getCreateTime()));
             vo.setUpdateTime(TimeUtil.format(po.getUpdateTime()));
             List<UserDepartmentRel> userDepartmentRelList = userDepartmentRelService.findByUid(po.getId());
-            List<Long> departmentList = new ArrayList<>();
+            List<Long> departmentList = new ArrayList<Long>();
             for (UserDepartmentRel userDepartmentRel : userDepartmentRelList) {
                 departmentList.add(userDepartmentRel.getDid());
             }

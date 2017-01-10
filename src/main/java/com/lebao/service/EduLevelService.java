@@ -13,9 +13,10 @@ import org.springframework.stereotype.Service;
 public class EduLevelService {
     @Autowired
     EduLevelDao eduLevelDao;
-
     public EduLevel findOne(Long id) {
         return eduLevelDao.findOne(id);
     }
-
+    public void save(EduLevel eduLevel){
+        eduLevelDao.save(eduLevel);
+    }
 }
