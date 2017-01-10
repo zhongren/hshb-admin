@@ -147,7 +147,7 @@ public class UserController extends BaseController {
             userVo.setEduLevel(eduLevel);
             userVo.setPosition(position);
             userVo.setPhone(phone);
-            userVo.setDesc(desc);
+            userVo.setRemark(desc);
             userService.save(userVo);
             for (Long id : departmentIds) {
                 UserDepartmentRel userDepartmentRel = new UserDepartmentRel();
@@ -197,7 +197,7 @@ public class UserController extends BaseController {
             userVo.setEduLevel(eduLevel);
             userVo.setPosition(position);
             userVo.setPhone(phone);
-            userVo.setDesc(desc);
+            userVo.setRemark(desc);
             userService.save(userVo);
             List<UserDepartmentRel> oldUserDepartmentRelList = userDepartmentRelService
                     .findByUid(userVo.getId());

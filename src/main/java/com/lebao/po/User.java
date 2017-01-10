@@ -12,13 +12,22 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
     private String name;
     private String pic;
     private Integer sex;
     private Long eduLevel;
     private Long position;
     private String phone;
-    private String desc;
+    private String remark;
     private Date createTime;
     private Date updateTime;
 
@@ -71,13 +80,7 @@ public class User {
         this.phone = phone;
     }
 
-    public String getDesc() {
-        return desc;
-    }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
 
     public Date getCreateTime() {
         return createTime;
@@ -116,7 +119,7 @@ public class User {
                 ", eduLevel=" + eduLevel +
                 ", position=" + position +
                 ", phone='" + phone + '\'' +
-                ", desc='" + desc + '\'' +
+                ", remark='" + remark + '\'' +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 '}';

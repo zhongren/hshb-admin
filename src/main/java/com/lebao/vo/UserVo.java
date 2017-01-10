@@ -22,7 +22,16 @@ public class UserVo {
     private Long position;
     private String positionValue;
     private String phone;
-    private String desc;
+    private String remark;
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
     private String createTime;
     private String updateTime;
     public Long getId() {
@@ -85,13 +94,6 @@ public class UserVo {
         this.phone = phone;
     }
 
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
 
     public String getCreateTime() {
         return createTime;
@@ -149,7 +151,7 @@ public class UserVo {
                 ", position=" + position +
                 ", positionValue='" + positionValue + '\'' +
                 ", phone='" + phone + '\'' +
-                ", desc='" + desc + '\'' +
+                ", remark='" + remark + '\'' +
                 ", createTime='" + createTime + '\'' +
                 ", updateTime='" + updateTime + '\'' +
                 '}';
