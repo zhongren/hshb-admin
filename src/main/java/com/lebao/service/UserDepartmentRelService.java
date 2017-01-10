@@ -32,6 +32,13 @@ public class UserDepartmentRelService {
         userDepartmentRelDao.delete(userDepartmentRel);
     }
 
+    public void deleteBatch(List<Long> ids) {
+        for(Long id:ids){
+            UserDepartmentRel userDepartmentRel = findOne(id);
+            userDepartmentRelDao.delete(userDepartmentRel);
+        }
+    }
+
     public UserDepartmentRel findOne(Long id) {
         UserDepartmentRel userDepartmentRel = userDepartmentRelDao.findOne(id);
         return userDepartmentRel;

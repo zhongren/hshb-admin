@@ -2,10 +2,10 @@ package com.lebao.converter;
 
 
 import com.lebao.common.utils.TimeUtil;
-import com.lebao.po.User.User;
+import com.lebao.po.User;
 import com.lebao.po.UserDepartmentRel;
 import com.lebao.service.UserDepartmentRelService;
-import com.lebao.vo.User.UserVo;
+import com.lebao.vo.UserVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

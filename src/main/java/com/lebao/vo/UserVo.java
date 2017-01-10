@@ -1,4 +1,4 @@
-package com.lebao.vo.User;
+package com.lebao.vo;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
