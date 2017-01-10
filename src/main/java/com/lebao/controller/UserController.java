@@ -55,18 +55,20 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping("/edit")
-    public ModelAndView edit(@RequestParam("module") String module, @RequestParam("action") String action) {
+    public ModelAndView edit(@RequestParam("module") String module, @RequestParam("action") String action, @RequestParam("id") Long id) {
+
         ModelAndView view = new ModelAndView();
         List<EduLevel> eduLevelList = eduLevelService.findAll();
         List<Position> positionList = positionService.findAll();
         List<Department> departmentList = departmentService.findAll();
-        view.addObject("eduLevelList",eduLevelList);
-        view.addObject("positionList",positionList);
-        view.addObject("departmentList",departmentList);
+        view.addObject("eduLevelList", eduLevelList);
+        view.addObject("positionList", positionList);
+        view.addObject("departmentList", departmentList);
         if ("save".equals(action)) {
             view.setViewName("admin/user/edit");
         } else if ("update".equals(action)) {
-
+            UserVo userVo = userService.findOne(id);
+            view.addObject("userVo", userVo);
             view.setViewName("admin/user/edit");
         }
         return view;
