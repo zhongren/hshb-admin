@@ -7,9 +7,9 @@ import com.lebao.common.dbhelp.page.Page;
 import com.lebao.converter.UserConverter;
 
 import com.lebao.dao.user.UserDao;
-import com.lebao.po.User;
+import com.lebao.po.User.User;
 
-import com.lebao.vo.UserVo;
+import com.lebao.vo.User.UserVo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

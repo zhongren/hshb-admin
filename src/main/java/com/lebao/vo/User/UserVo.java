@@ -1,4 +1,4 @@
-package com.lebao.vo;
+package com.lebao.vo.User;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -18,7 +18,9 @@ public class UserVo {
     private Integer sex;
     private List<Long> departmentList;
     private Long eduLevel;
+    private String eduLevelValue;
     private Long position;
+    private String positionValue;
     private String phone;
     private String desc;
     private String createTime;
@@ -118,6 +120,22 @@ public class UserVo {
         this.pic = pic;
     }
 
+    public String getEduLevelValue() {
+        return eduLevelValue;
+    }
+
+    public void setEduLevelValue(String eduLevelValue) {
+        this.eduLevelValue = eduLevelValue;
+    }
+
+    public String getPositionValue() {
+        return positionValue;
+    }
+
+    public void setPositionValue(String positionValue) {
+        this.positionValue = positionValue;
+    }
+
     @Override
     public String toString() {
         return "UserVo{" +
@@ -127,7 +145,9 @@ public class UserVo {
                 ", sex=" + sex +
                 ", departmentList=" + departmentList +
                 ", eduLevel=" + eduLevel +
+                ", eduLevelValue='" + eduLevelValue + '\'' +
                 ", position=" + position +
+                ", positionValue='" + positionValue + '\'' +
                 ", phone='" + phone + '\'' +
                 ", desc='" + desc + '\'' +
                 ", createTime='" + createTime + '\'' +

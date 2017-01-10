@@ -1,4 +1,4 @@
-package com.lebao.po;
+package com.lebao.po.User;
 
 import javax.persistence.*;
 import java.util.Date;

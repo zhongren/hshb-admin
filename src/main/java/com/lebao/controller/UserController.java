@@ -5,7 +5,7 @@ import com.lebao.common.dbhelp.page.Page;
 import com.lebao.service.DepartmentService;
 import com.lebao.service.EduLevelService;
 import com.lebao.service.UserService;
-import com.lebao.vo.UserVo;
+import com.lebao.vo.User.UserVo;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -4,10 +4,7 @@ package com.lebao.dao.user;
 import com.lebao.common.beans.SearchBean;
 import com.lebao.common.dbhelp.DbHelper;
 import com.lebao.common.dbhelp.page.Page;
-import com.lebao.dao.sysuser.SysUserRepo;
-import com.lebao.po.SysUser;
-import com.lebao.po.User;
-import com.lebao.po.UserDepartmentRel;
+import com.lebao.po.User.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
