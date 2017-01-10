@@ -47,20 +47,30 @@
                             <label for="m_number">编号：</label> <span></span>
                             <input type="text" id="m_number" placeholder="请输入编号" class="form-control">
                         </div>--%>
+                        <input type="hidden" id="id" value="${userVo.id}">
                         <div class="form-group">
                             <label class="input input-file state-success">照片</label><br>
                             <input type="button" class="uploadPicture" name="m_user_image"
                                    value="选择图片"/>
+                            <c:if test="${userVo.pic!=null&&userVo.pic!=''}">
+                                <input type="hidden" id="m_user_image"/>
+
+                                <div style="margin-top: 20px;"><a
+                                        href="${userVo.pic}"
+                                        target="_blank"><img src="${userVo.pic}" width="80"
+                                                             height="80"/></a></div>
+                            </c:if>
                         </div>
                         <div class="form-group">
                             <label for="m_name">姓名：</label> <span></span>
-                            <input type="text" id="m_name" placeholder="请输入姓名" class="form-control">
+                            <input type="text" id="m_name" placeholder="请输入姓名" value="${userVo.name}"
+                                   class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="m_sex">性别：</label> <span></span>
                             <select name="sex" id="m_sex" class="form-control">
-                                <option value="1">男</option>
-                                <option value="0">女</option>
+                                <option value="1" <c:if test="${userVo.sex==1}">selected</c:if>>男</option>
+                                <option value="0" <c:if test="${userVo.sex==0}">selected</c:if>>女</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -76,7 +86,12 @@
                             <div style="clear:both;"></div>
                             <div class="col-md-12"></c:if>
                                 <div class="col-md-4"><input type="checkbox" class="m_depart"
-                                                             value="${depart.id}"/><c:out value="${depart.name}"/></div>
+                                                             value="${depart.id}"
+                                                             <c:forEach var="udepart"
+                                                                        items="${userVo.departmentList}">
+                                                            <c:if test="${udepart.id==depart.id}">checked</c:if>
+                                </c:forEach>/><c:out value="${depart.name}"/>
+                                </div>
                                 </c:forEach>
                             </div>
                             <div style="clear:both;"></div>
@@ -85,31 +100,31 @@
                             <label for="m_position">职位：</label> <span></span>
                             <select id="m_position" class="form-control">
                                 <c:forEach var="position" items="${positionList}" varStatus="i">
-                                <option value="${position.id}"><c:out value="${position.name}"/></option>
-                                    </c:forEach>
+                                    <option value="${position.id}" <c:if test="${userVo.position==position.id}">selected</c:if >><c:out value="${position.name}"/></option>
+                                </c:forEach>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="m_edu">学历：</label> <span></span>
                             <select id="m_edu" class="form-control">
                                 <c:forEach var="eduLeve" items="${eduLevelList}" varStatus="i">
-                                    <option value="${eduLeve.id}"><c:out value="${eduLeve.name}"/></option>
+                                    <option value="${eduLeve.id}" <c:if test="${userVo.eduLevel==eduLeve.id}">selected</c:if >><c:out value="${eduLeve.name}"/></option>
                                 </c:forEach>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="m_phoneNumber">手机号：</label> <span></span>
-                            <input type="text" id="m_phoneNumber" placeholder="请输入手机号" class="form-control">
+                            <input type="text" id="m_phoneNumber" placeholder="请输入手机号" class="form-control" value="${userVo.phone}">
                         </div>
                         <div class="form-group">
                             <label for="m_remark">备注：</label> <span></span>
-                            <input type="text" id="m_remark" placeholder="请输入备注" class="form-control">
+                            <input type="text" id="m_remark" placeholder="请输入备注" class="form-control" value="${userVo.remark}">
                         </div>
                         <div class="form-group">
                             <div class="pull-right">
                                 <button type="button" class="btn btn-default">关闭
                                 </button>
-                                <button type="button" onclick="edit(p['action']);" class="btn btn-primary">确认添加
+                                <button type="button" onclick="edit(p['action']);" class="btn btn-primary">提交
                                 </button>
                             </div>
                         </div>

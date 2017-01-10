@@ -138,7 +138,7 @@ public class UserController extends BaseController {
             @RequestParam(value = "position", required = true) Long position,
             @RequestParam(value = "phone", required = true) String phone,
             @RequestParam(value = "desc", required = true) String desc,
-            @RequestParam(value = "departmentIds", required = false) Long departmentIds[]) {
+            @RequestParam(value = "departmentIds[]", required = false) Long departmentIds[]) {
         try {
             UserVo userVo = new UserVo();
             userVo.setName(name);

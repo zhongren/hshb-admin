@@ -30,15 +30,17 @@ function edit(action) {
         console.log("save");
     }
     else if (action === "update") {
-        //updUser();
+        updateUser();
         console.log("update");
     }
 }
 function addUser() {
-
+    var depart=[];
+    $( ".m_depart:checked").each(function(){depart.push(this.value);});
+    var user_image=$("#m_user_image").val();
     var name = $("#m_name").val();
     var sex = $("#m_sex").val();
-    var depart = $( ".m_depart:checked" ).val();
+
     var position = $("#m_position").val();
     var edu = $("#m_edu").val();
     var phoneNumber = $("#m_phoneNumber").val();
@@ -51,7 +53,42 @@ function addUser() {
         datatype: "json",
         data: {
             name: name,
-            pic: "",
+            pic: user_image,
+            sex: sex,
+            eduLevel: edu,
+            position: position,
+            phone: phoneNumber,
+            desc: remark,
+            departmentIds: depart
+        },
+        success: function (data) {
+            $("#myModal").modal("hide");
+            msgBox(data.state, data.msg);
+            dataTable.fnDraw();
+        }
+    });
+}
+function updateUser() {
+    var depart=[];
+    $( ".m_depart:checked").each(function(){depart.push(this.value);});
+    var id=$("#id").val();
+    var user_image=$("#m_user_image").val();
+    var name = $("#m_name").val();
+    var sex = $("#m_sex").val();
+    var position = $("#m_position").val();
+    var edu = $("#m_edu").val();
+    var phoneNumber = $("#m_phoneNumber").val();
+    var remark = $("#m_remark").val();
+    if (!validator.validate())
+        return false;
+    $.ajaxInvoke({
+        url: G_CTX_ROOT + "/user/update",
+        type: "post",
+        datatype: "json",
+        data: {
+            id:id,
+            name: name,
+            pic: user_image,
             sex: sex,
             eduLevel: edu,
             position: position,
