@@ -7,7 +7,7 @@ import java.util.Date;
  * Created by ZR on 2017/1/8.
  */
 @Entity
-@Table(name="tb_user")
+@Table(name = "tb_user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,6 +21,7 @@ public class User {
     private String desc;
     private Date createTime;
     private Date updateTime;
+
     public Long getId() {
         return id;
     }

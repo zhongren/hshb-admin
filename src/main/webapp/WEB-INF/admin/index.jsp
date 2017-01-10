@@ -203,7 +203,7 @@
                         <i class="icon-th"></i>
                         <span>公司管理</span></a>
                     <ul class="sub">
-                        <li class="active"><a class="active" href="" target="main"> <i
+                        <li class="active"><a class="active" href="${ctx}/user/index" target="main"> <i
                                 class="icon-user"></i> <span>公司员工</span>
                         </a></li>
                         <li class="active"><a class="active" href="${ctx}/sysUser/index" target="main"> <i
