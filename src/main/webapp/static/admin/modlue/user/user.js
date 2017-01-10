@@ -8,22 +8,22 @@ $(document)
                     "mData": "user_id", // 属性
                     "bSortable": true,// 排序
                     "sClass": "center",
-                    "sWidth": "5%"
+                    "sWidth": "2%"
                 },
                 {
                     "sTitle": "<center>姓名</center>", // 显示标题
                     "mData": "name", // 属性
                     "bSortable": false,// 排序
                     "sClass": "center",
-                    "sWidth": "5%"
+                    "sWidth": "3%"
 
                 },
                 {
                     "sTitle": "<center>电话</center>", // 显示标题
-                    "mData": "name", // 属性
+                    "mData": "phone", // 属性
                     "bSortable": false,// 排序
                     "sClass": "center",
-                    "sWidth": "5%"
+                    "sWidth": "3%"
                 },
                 {
                     "sTitle": "<center>操作</center>", // 显示标题
@@ -39,7 +39,7 @@ $(document)
                            // + delDom;
                     }
                 }];
-            setting.aaSorting = [[3, "desc"]];
+            setting.aaSorting = [[0, "desc"]];
             setting.bStateSave = false;
             dataTable = $('#datatable_tabletools').dataTable(setting);
             var rule = {
@@ -56,23 +56,9 @@ $(document)
                     name: "姓名",
                     method: {
                         required: true,
-                        lt: 10,
-                    },
-                },
-                m_account: {
-                    name: "账号",
-                    method: {
-                        required: true,
-                    },
-                },
-                m_password: {
-                    name: "密码",
-                    method: {
-                        required: true,
-                        gt: 8,
-                        lt: 18
-                    },
-                },
+                        lt: 10
+                    }
+                }
 
             };
             validator.init(rule);

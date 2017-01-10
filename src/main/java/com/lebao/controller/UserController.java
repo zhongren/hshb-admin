@@ -25,6 +25,7 @@ import com.lebao.vo.UserVo;
  * Author: zr Date : 2017/1/10 18:00
  */
 @Controller
+@RequestMapping("/user")
 public class UserController extends BaseController {
 	@Autowired
 	private UserService userService;

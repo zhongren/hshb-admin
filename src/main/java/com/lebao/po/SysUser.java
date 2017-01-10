@@ -3,7 +3,7 @@ package com.lebao.po;
 import javax.persistence.*;
 
 @Entity
-@Table(name="tb_sysuser")
+@Table(name = "tb_sysuser")
 public class SysUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
