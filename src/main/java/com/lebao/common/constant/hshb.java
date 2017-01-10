@@ -52,10 +52,11 @@ public class Hshb {
 
     public List<Position> createPosition() {
         List<Position> positionList = new ArrayList<Position>();
-        positionList.add(new Position(1L, "总监"));
-        positionList.add(new Position(2L, "经理"));
-        positionList.add(new Position(3L, "员工"));
-        positionList.add(new Position(4L, "其他"));
+        positionList.add(new Position(1L, "总经理"));
+        positionList.add(new Position(2L, "副总经理"));
+        positionList.add(new Position(3L, "经理"));
+        positionList.add(new Position(4L, "主管"));
+        positionList.add(new Position(5L, "员工"));
         return  positionList;
     }
 
