@@ -33,7 +33,7 @@ $(document)
                     "sWidth": "2%",
                     "mRender": function (data, style, obj) {
                         var xgDom = "<a class=\"btn btn-round btn-info btn-xs\" href=\"/user/preUpdate/" + obj.user_id + "\" >修改</a>";
-                        var qrDom = "<button class=\"btn btn-round btn-danger btn-xs\" onclick=\"\" >二维码</button>";
+                        var qrDom = "<button class=\"btn btn-round btn-info btn-xs\" onclick=\"\" >二维码</button>";
                         return xgDom+
                             "&nbsp;&nbsp;&nbsp;&nbsp;"
                             + qrDom;
