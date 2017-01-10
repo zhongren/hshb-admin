@@ -2,6 +2,8 @@ package com.lebao.controller.hshb;
 
 import java.util.List;
 
+import com.lebao.po.Position;
+import com.lebao.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,9 +15,7 @@ import com.lebao.po.EduLevel;
 import com.lebao.service.DepartmentService;
 import com.lebao.service.EduLevelService;
 
-/**
- * Created by ZR on 2017/1/8.
- */
+
 @RestController
 public class InitController {
 	@Autowired
@@ -24,6 +24,8 @@ public class InitController {
 	private DepartmentService departmentService;
 	@Autowired
 	private EduLevelService eduLevelService;
+	@Autowired
+	private PositionService positionService;
 	@RequestMapping(value = "init")
 	public AjaxResult createDepartment() {
 		try {
@@ -34,6 +36,10 @@ public class InitController {
 			List<EduLevel> eduLevelList = hshb.createEduLevel();
 			for (EduLevel eduLevel : eduLevelList) {
 				eduLevelService.save(eduLevel);
+			}
+			List<Position> positionList=hshb.createPosition();
+			for (Position position : positionList) {
+				positionService.save(position);
 			}
 			return AjaxResult.success("初始化成功");
 		} catch (Exception e) {
