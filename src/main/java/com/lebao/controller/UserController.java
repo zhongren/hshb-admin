@@ -49,7 +49,6 @@ public class UserController extends BaseController {
     @RequestMapping("/edit")
     public ModelAndView edit(@RequestParam("module") String module, @RequestParam("action") String action) {
         ModelAndView view = new ModelAndView();
-        //view.addObject("title", "系统管理>>用户查询");
         if ("save".equals(action)) {
             view.setViewName("admin/user/edit");
         } else if ("update".equals(action)) {
