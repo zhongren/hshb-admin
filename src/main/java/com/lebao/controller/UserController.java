@@ -55,7 +55,7 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping("/edit")
-    public ModelAndView edit(@RequestParam("module") String module, @RequestParam("action") String action, @RequestParam("id") Long id) {
+    public ModelAndView edit(@RequestParam("module") String module, @RequestParam("action") String action, @RequestParam(value = "id",required = false) Long id) {
 
         ModelAndView view = new ModelAndView();
         List<EduLevel> eduLevelList = eduLevelService.findAll();
@@ -157,6 +157,7 @@ public class UserController extends BaseController {
             }
             return this.buildSuccessMessage("用户添加成功", ResultModal.MESSAGE);
         } catch (Exception e) {
+            e.printStackTrace();
             return this.buildFailMessage("用户添加失败", ResultModal.MESSAGE);
         }
     }

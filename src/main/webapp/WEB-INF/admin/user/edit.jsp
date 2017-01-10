@@ -34,7 +34,7 @@
             <section class="panel">
                 <header class="panel-heading">
                     <header class="panel-heading">
-                        <script>if(p["action"]==="save")document.write("用户添加");else document.write("用户更新");</script>
+                        <script>if (p["action"] === "save")document.write("用户添加"); else document.write("用户更新");</script>
                     </header>
                 </header>
                 <div class="panel-body">
@@ -48,6 +48,11 @@
                             <input type="text" id="m_number" placeholder="请输入编号" class="form-control">
                         </div>--%>
                         <div class="form-group">
+                            <label class="input input-file state-success">照片</label><br>
+                            <input type="button" class="uploadPicture" name="m_user_image"
+                                   value="选择图片"/>
+                        </div>
+                        <div class="form-group">
                             <label for="m_name">姓名：</label> <span></span>
                             <input type="text" id="m_name" placeholder="请输入姓名" class="form-control">
                         </div>
@@ -59,23 +64,39 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="m_depart">部门：</label> <span></span>
-                            <select id="m_depart" class="form-control">
+                            <div>
+                                <label>部门：</label> <span></span>
+                            </div>
+                            <%--<select id="m_depart" class="form-control">--%>
 
-                            </select>
+                            <%--</select>--%>
+                            <div class="col-md-12">
+                                <c:forEach var="depart" items="${departmentList}" varStatus="i">
+                                <c:if test="${(i.index)%3==0&&i.index>0}"></div>
+                            <div style="clear:both;"></div>
+                            <div class="col-md-12"></c:if>
+                                <div class="col-md-4"><input type="checkbox" class="m_depart"
+                                                             value="${depart.id}"/><c:out value="${depart.name}"/></div>
+                                </c:forEach>
+                            </div>
+                            <div style="clear:both;"></div>
                         </div>
                         <div class="form-group">
                             <label for="m_position">职位：</label> <span></span>
                             <select id="m_position" class="form-control">
-
+                                <c:forEach var="position" items="${positionList}" varStatus="i">
+                                <option value="${position.id}"><c:out value="${position.name}"/></option>
+                                    </c:forEach>
                             </select>
                         </div>
-                            <div class="form-group">
-                                <label for="m_edu">学历：</label> <span></span>
-                                <select id="m_edu" class="form-control">
-
-                                </select>
-                            </div>
+                        <div class="form-group">
+                            <label for="m_edu">学历：</label> <span></span>
+                            <select id="m_edu" class="form-control">
+                                <c:forEach var="eduLeve" items="${eduLevelList}" varStatus="i">
+                                    <option value="${eduLeve.id}"><c:out value="${eduLeve.name}"/></option>
+                                </c:forEach>
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="m_phoneNumber">手机号：</label> <span></span>
                             <input type="text" id="m_phoneNumber" placeholder="请输入手机号" class="form-control">
@@ -88,7 +109,8 @@
                             <div class="pull-right">
                                 <button type="button" class="btn btn-default">关闭
                                 </button>
-                                <button type="button" onclick="edit(p['action']);" class="btn btn-primary">确认添加</button>
+                                <button type="button" onclick="edit(p['action']);" class="btn btn-primary">确认添加
+                                </button>
                             </div>
                         </div>
                     </form>

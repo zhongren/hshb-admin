@@ -38,7 +38,7 @@ function addUser() {
 
     var name = $("#m_name").val();
     var sex = $("#m_sex").val();
-    var depart = $("#m_depart").val();
+    var depart = $( ".m_depart:checked" ).val();
     var position = $("#m_position").val();
     var edu = $("#m_edu").val();
     var phoneNumber = $("#m_phoneNumber").val();
@@ -57,7 +57,7 @@ function addUser() {
             position: position,
             phone: phoneNumber,
             desc: remark,
-            departmentIds: [1,2,3]
+            departmentIds: depart
         },
         success: function (data) {
             $("#myModal").modal("hide");
