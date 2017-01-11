@@ -1,9 +1,6 @@
 package com.lebao.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -156,6 +153,7 @@ public class UserController extends BaseController {
             userVo.setPosition(position);
             userVo.setPhone(phone);
             userVo.setRemark(desc);
+            userVo.setCreateTime(Calendar.getInstance().getTime().toString());
             Long uid = userService.save(userVo);
             if(!CommonUtil.isEmpty(Arrays.asList(departmentIds))){
                 for (Long id : departmentIds) {
