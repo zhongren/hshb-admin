@@ -88,13 +88,10 @@
                         aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="deleteModalLabel">删除员工</h4>
             </div>
-            <div class="modal-body">
-
-            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                 </button>
-                <button  id="deleteButton">确认删除</button>
+                <button  id="deleteButton" type="button" class="btn btn-danger" data-dismiss="modal">删除</button>
             </div>
         </div>
         <!-- /.modal-content -->

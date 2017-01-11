@@ -165,10 +165,10 @@ public class UserController extends BaseController {
             UserVo u = userService.findOne(uid);
             u.setQr(qr);
             userService.update(u);
-            return this.buildSuccessMessage("用户添加成功", ResultModal.MESSAGE);
+            return this.buildSuccessMessage("员工添加成功", ResultModal.MESSAGE);
         } catch (Exception e) {
             e.printStackTrace();
-            return this.buildFailMessage("用户添加失败", ResultModal.MESSAGE);
+            return this.buildFailMessage("员工添加失败", ResultModal.MESSAGE);
         }
     }
 
@@ -199,7 +199,7 @@ public class UserController extends BaseController {
         try {
             UserVo userVo = userService.findOne(id);
             if (userVo == null) {
-                return this.buildFailMessage("用户不存在", ResultModal.MESSAGE);
+                return this.buildFailMessage("员工不存在", ResultModal.MESSAGE);
             }
             userVo.setName(name);
             userVo.setPic(pic);
@@ -228,9 +228,9 @@ public class UserController extends BaseController {
                 u.setQr(qr);
                 userService.update(u);
             }
-            return this.buildSuccessMessage("用户更新成功", ResultModal.MESSAGE);
+            return this.buildSuccessMessage("员工更新成功", ResultModal.MESSAGE);
         } catch (Exception e) {
-            return this.buildFailMessage("用户更新失败", ResultModal.MESSAGE);
+            return this.buildFailMessage("员工更新失败", ResultModal.MESSAGE);
         }
     }
     /**
@@ -243,10 +243,10 @@ public class UserController extends BaseController {
     public String delete(@RequestParam(value = "id", required = true) Long id) {
         try {
             userService.delete(id);
-            return this.buildSuccessMessage("用户删除成功",
+            return this.buildSuccessMessage("员工删除成功",
                     ResultModal.MESSAGE);
         } catch (Exception e) {
-            return  this.buildFailMessage("用户删除失败", ResultModal.MESSAGE);
+            return  this.buildFailMessage("员工删除失败", ResultModal.MESSAGE);
         }
     }
 }

@@ -110,7 +110,7 @@ function del(user_id) {
             id : user_id
         },
         success : function(data) {
-            $("#myModal").modal("hide")
+            $("#deleteModal").modal("hide")
             msgBox(data.state, data.msg);
             dataTable.fnDraw();
         },
