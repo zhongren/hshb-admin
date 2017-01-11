@@ -23,6 +23,7 @@ public class User {
 
     private String name;
     private String pic;
+    private String qr;
     private Integer sex;
     private Long eduLevel;
     private Long position;
@@ -80,7 +81,13 @@ public class User {
         this.phone = phone;
     }
 
+    public String getQr() {
+        return qr;
+    }
 
+    public void setQr(String qr) {
+        this.qr = qr;
+    }
 
     public Date getCreateTime() {
         return createTime;

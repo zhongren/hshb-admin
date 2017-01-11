@@ -112,6 +112,29 @@ function addUser() {
         }
     });
 }
+/**
+ * 展示二维码
+ * @param id
+ */
+function showQR(uid) {
+    $.ajaxInvoke({
+        url: G_CTX_ROOT + "/user/queryById",
+        type: "post",
+        datatype: "json",
+        data: {
+            id: id
+        },
+        success: function (data) {
+            var user=data;
+            $("#m_name1").val(user.data.name);
+            $("#m_password1").val(user.data.password);
+            console.log(user);
+        }
+    });
+    $("#saveModal").modal("show").css({
+        'top': '60px'
+    });
+}
 function updUser() {
 
     var id = $("#m_id").val();

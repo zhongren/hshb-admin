@@ -50,6 +50,19 @@ public class QRUtil {
             throw new IOException("Could not write an image of format " + format);
         }
     }
+
+    /**
+     * 生成二维码
+     * @return
+     */
+    public static synchronized String saveQR(){
+        return null;
+    }
+
+
+
+
+
     public static void main(String[] args){
         String content = "肥猪赛大象，就是鼻子短，全社杀一口，足够吃半年";
         String path = "D:\\zxing\\";
