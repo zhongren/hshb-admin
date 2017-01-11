@@ -43,9 +43,9 @@ public class UserService {
         return pageBean;
     }
 
-    public void save(UserVo vo) {
+    public Long save(UserVo vo) {
         User user = userConverter.convert2P(vo);
-        userDao.save(user);
+        return userDao.save(user);
     }
 
     public void update(UserVo vo) {

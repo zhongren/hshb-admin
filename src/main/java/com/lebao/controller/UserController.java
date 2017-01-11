@@ -148,10 +148,10 @@ public class UserController extends BaseController {
             userVo.setPosition(position);
             userVo.setPhone(phone);
             userVo.setRemark(desc);
-            userService.save(userVo);
+            Long uid=  userService.save(userVo);
             for (Long id : departmentIds) {
                 UserDepartmentRel userDepartmentRel = new UserDepartmentRel();
-                userDepartmentRel.setUid(userVo.getId());
+                userDepartmentRel.setUid(uid);
                 userDepartmentRel.setDid(id);
                 userDepartmentRelService.save(userDepartmentRel);
             }
