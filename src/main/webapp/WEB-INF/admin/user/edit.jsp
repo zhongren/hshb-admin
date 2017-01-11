@@ -12,7 +12,7 @@
 
     <!--<script type="text/javascript" charset="utf-8" src="${ctx}/staticUploadify/jquery.uploadify-3.1.js"></script>
     <link type="text/css" charset="utf-8" href="${ctx}/staticUploadify/uploadify.css" rel="stylesheet">-->
-    <script src="${ctx}/staticAdmin/modlue/user/edit.js"></script>
+    <script src="${ctx}/staticAdmin/modlue/user/user.js"></script>
 </head>
 <body>
 
