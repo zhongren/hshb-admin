@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class QRController {
 
 
-    @RequestMapping("/USER")
+    @RequestMapping("/user")
     public ModelAndView testKind(String uid) {
         ModelAndView view = new ModelAndView();
         view.setViewName("admin/test");
