@@ -10,6 +10,7 @@ import com.lebao.common.beans.SearchBean;
 import com.lebao.common.dbhelp.page.Page;
 
 import com.lebao.common.utils.QRUtil;
+import com.lebao.common.utils.TimeUtil;
 import com.lebao.common.utils.UrlUtil;
 import com.lebao.converter.UserConverter;
 
@@ -59,6 +60,8 @@ public class UserService {
     }
 
     public Long save(UserVo vo) {
+        vo.setCreateTime(TimeUtil.now());
+        vo.setUpdateTime(TimeUtil.now());
         User user = userConverter.convert2P(vo);
         Long uid = userDao.save(user);
         return uid;
@@ -84,23 +87,19 @@ public class UserService {
      * 生成二维码
      *
      * @param uid
-     * @param request
      * @return
      * @throws Exception
      */
-    public String saveQR(Long uid, HttpServletRequest request) throws Exception {
-        String baseUrl = UrlUtil.getBaseUrl(request);
-        String content = baseUrl + "/user/qr?uid=" + uid;
-        System.out.println(content);
+    public String saveQR(Long uid) throws Exception {
+        String content = appConfig.SERVER_NAME + "/qr/user?uid=" + uid;
         String path = appConfig.getUSER_QR();
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         Map hints = new HashMap();
         hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
         BitMatrix bitMatrix = null;
         bitMatrix = multiFormatWriter.encode(content, BarcodeFormat.QR_CODE, 400, 400, hints);
-        File file1 = new File(path, "你的二维码.jpg");
+        File file1 = new File(path, uid+".jpg");
         QRUtil.writeToFile(bitMatrix, "jpg", file1);
-
-        return null;
+        return content;
     }
 }

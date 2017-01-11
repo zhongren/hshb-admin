@@ -43,7 +43,7 @@
                             <div class="form-group" style="padding-top: 22px;padding-left: 2px">
                                 <button onclick="doSearch()" class="btn btn-primary">查询</button>
                             </div>
-                            <div class="form-group" style="padding-top: 22px;"> <a class="btn btn-info" href="edit?module=user&action=save" target="main">
+                            <div class="form-group" style="padding-top: 22px;"> <a class="btn btn-info" href="${ctx}/user/edit?module=user&action=save" target="main">
                                 添加</a>
                             </div>
                         </div>

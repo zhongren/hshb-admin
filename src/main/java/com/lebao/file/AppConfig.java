@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AppConfig {
+    @Value("#{appSetting['server_name']}")
+    public String SERVER_NAME;
     @Value("#{appSetting['user_qr']}")
     public String USER_QR;
     @Value("#{appSetting['image_allow_type']}")
@@ -139,6 +141,13 @@ public class AppConfig {
         this.rootSmallDir = rootSmallDir;
     }
 
+    public String getSERVER_NAME() {
+        return SERVER_NAME;
+    }
+
+    public void setSERVER_NAME(String SERVER_NAME) {
+        this.SERVER_NAME = SERVER_NAME;
+    }
 
     public String getGoodsDir() {
         return goodsDir;

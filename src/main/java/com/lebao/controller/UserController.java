@@ -119,6 +119,7 @@ public class UserController extends BaseController {
         return json;
     }
 
+
     /**
      * 添加用户
      *
@@ -134,7 +135,7 @@ public class UserController extends BaseController {
      */
     @RequestMapping(value = "/save", produces = "plain/text; charset=UTF-8")
     @ResponseBody
-    public String save(HttpServletRequest request,
+    public String save(
                        @RequestParam(value = "name", required = true) String name,
                        @RequestParam(value = "pic", required = true) String pic,
                        @RequestParam(value = "sex", required = true) Integer sex,
@@ -159,7 +160,7 @@ public class UserController extends BaseController {
                 userDepartmentRel.setDid(id);
                 userDepartmentRelService.save(userDepartmentRel);
             }
-            String qr = userService.saveQR(uid, request);
+            String qr = userService.saveQR(uid);
             UserVo u = userService.findOne(uid);
             u.setQr(qr);
             userService.update(u);
