@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AppConfig {
+    @Value("#{appSetting['user_qr']}")
+    public String USER_QR;
     @Value("#{appSetting['image_allow_type']}")
     public String IMAGE_ALLOW_TYPE;
     @Value("#{appSetting['news_image_content']}")
@@ -242,5 +244,35 @@ public class AppConfig {
         this.imageAllowFiles = imageAllowFiles;
     }
 
+    public String getUSER_QR() {
+        return USER_QR;
+    }
 
+    public void setUSER_QR(String USER_QR) {
+        this.USER_QR = USER_QR;
+    }
+
+    public String getIMAGE_ALLOW_TYPE() {
+        return IMAGE_ALLOW_TYPE;
+    }
+
+    public void setIMAGE_ALLOW_TYPE(String IMAGE_ALLOW_TYPE) {
+        this.IMAGE_ALLOW_TYPE = IMAGE_ALLOW_TYPE;
+    }
+
+    public String getNEWS_IMAGE_CONTENT() {
+        return NEWS_IMAGE_CONTENT;
+    }
+
+    public void setNEWS_IMAGE_CONTENT(String NEWS_IMAGE_CONTENT) {
+        this.NEWS_IMAGE_CONTENT = NEWS_IMAGE_CONTENT;
+    }
+
+    public String getROOT() {
+        return ROOT;
+    }
+
+    public void setROOT(String ROOT) {
+        this.ROOT = ROOT;
+    }
 }

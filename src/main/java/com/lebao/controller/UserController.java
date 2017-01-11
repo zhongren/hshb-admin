@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.lebao.common.utils.UrlUtil;
+import com.lebao.file.AppConfig;
 import com.lebao.po.Department;
 import com.lebao.po.EduLevel;
 import com.lebao.po.Position;
@@ -31,6 +33,8 @@ import com.lebao.vo.UserVo;
 @RequestMapping("/user")
 public class UserController extends BaseController {
     @Autowired
+    private AppConfig appConfig;
+    @Autowired
     private UserService userService;
     @Autowired
     private UserDepartmentRelService userDepartmentRelService;
@@ -55,7 +59,7 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping("/edit")
-    public ModelAndView edit(@RequestParam("module") String module, @RequestParam("action") String action, @RequestParam(value = "id",required = false) Long id) {
+    public ModelAndView edit(@RequestParam("module") String module, @RequestParam("action") String action, @RequestParam(value = "id", required = false) Long id) {
 
         ModelAndView view = new ModelAndView();
         List<EduLevel> eduLevelList = eduLevelService.findAll();
@@ -130,15 +134,15 @@ public class UserController extends BaseController {
      */
     @RequestMapping(value = "/save", produces = "plain/text; charset=UTF-8")
     @ResponseBody
-    public String save(
-            @RequestParam(value = "name", required = true) String name,
-            @RequestParam(value = "pic", required = true) String pic,
-            @RequestParam(value = "sex", required = true) Integer sex,
-            @RequestParam(value = "eduLevel", required = true) Long eduLevel,
-            @RequestParam(value = "position", required = true) Long position,
-            @RequestParam(value = "phone", required = true) String phone,
-            @RequestParam(value = "desc", required = true) String desc,
-            @RequestParam(value = "departmentIds[]", required = false) Long departmentIds[]) {
+    public String save(HttpServletRequest request,
+                       @RequestParam(value = "name", required = true) String name,
+                       @RequestParam(value = "pic", required = true) String pic,
+                       @RequestParam(value = "sex", required = true) Integer sex,
+                       @RequestParam(value = "eduLevel", required = true) Long eduLevel,
+                       @RequestParam(value = "position", required = true) Long position,
+                       @RequestParam(value = "phone", required = true) String phone,
+                       @RequestParam(value = "desc", required = true) String desc,
+                       @RequestParam(value = "departmentIds[]", required = false) Long departmentIds[]) {
         try {
             UserVo userVo = new UserVo();
             userVo.setName(name);
@@ -148,13 +152,17 @@ public class UserController extends BaseController {
             userVo.setPosition(position);
             userVo.setPhone(phone);
             userVo.setRemark(desc);
-            Long uid=  userService.save(userVo);
+            Long uid = userService.save(userVo);
             for (Long id : departmentIds) {
                 UserDepartmentRel userDepartmentRel = new UserDepartmentRel();
                 userDepartmentRel.setUid(uid);
                 userDepartmentRel.setDid(id);
                 userDepartmentRelService.save(userDepartmentRel);
             }
+            String qr = userService.saveQR(uid, request);
+            UserVo u = userService.findOne(uid);
+            u.setQr(qr);
+            userService.update(u);
             return this.buildSuccessMessage("用户添加成功", ResultModal.MESSAGE);
         } catch (Exception e) {
             e.printStackTrace();

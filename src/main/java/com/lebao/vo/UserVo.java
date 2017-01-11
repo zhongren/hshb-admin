@@ -15,6 +15,7 @@ public class UserVo {
     private Long id;
     private String name;
     private String pic;
+    private String qr;
     private Integer sex;
     private List<Department> departmentList;
     private Long eduLevel;
@@ -84,7 +85,13 @@ public class UserVo {
         this.position = position;
     }
 
+    public String getQr() {
+        return qr;
+    }
 
+    public void setQr(String qr) {
+        this.qr = qr;
+    }
 
     public String getPhone() {
         return phone;

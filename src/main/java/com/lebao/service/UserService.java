@@ -1,12 +1,20 @@
 package com.lebao.service;
 
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
 import com.lebao.common.beans.SearchBean;
 import com.lebao.common.dbhelp.page.Page;
 
+import com.lebao.common.utils.QRUtil;
+import com.lebao.common.utils.UrlUtil;
 import com.lebao.converter.UserConverter;
 
 import com.lebao.dao.user.UserDao;
+import com.lebao.file.AppConfig;
 import com.lebao.po.User;
 
 import com.lebao.vo.UserVo;
@@ -14,8 +22,13 @@ import com.lebao.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Author: zr
@@ -23,6 +36,8 @@ import java.util.List;
  */
 @Service
 public class UserService {
+    @Autowired
+    private AppConfig appConfig;
     @Autowired
     UserDao userDao;
     @Autowired
@@ -45,7 +60,8 @@ public class UserService {
 
     public Long save(UserVo vo) {
         User user = userConverter.convert2P(vo);
-        return userDao.save(user);
+        Long uid = userDao.save(user);
+        return uid;
     }
 
     public void update(UserVo vo) {
@@ -64,5 +80,27 @@ public class UserService {
         return userConverter.convert2V(user);
     }
 
+    /**
+     * 生成二维码
+     *
+     * @param uid
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    public String saveQR(Long uid, HttpServletRequest request) throws Exception {
+        String baseUrl = UrlUtil.getBaseUrl(request);
+        String content = baseUrl + "/user/qr?uid=" + uid;
+        System.out.println(content);
+        String path = appConfig.getUSER_QR();
+        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+        Map hints = new HashMap();
+        hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+        BitMatrix bitMatrix = null;
+        bitMatrix = multiFormatWriter.encode(content, BarcodeFormat.QR_CODE, 400, 400, hints);
+        File file1 = new File(path, "你的二维码.jpg");
+        QRUtil.writeToFile(bitMatrix, "jpg", file1);
 
+        return null;
+    }
 }
