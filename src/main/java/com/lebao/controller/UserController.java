@@ -58,6 +58,14 @@ public class UserController extends BaseController {
         return view;
     }
 
+    @RequestMapping("/userQR")
+    public ModelAndView userQR() {
+        ModelAndView view = new ModelAndView();
+        //view.addObject("title", "系统管理>>用户查询");
+        view.setViewName("admin/user/userQR");
+        return view;
+    }
+
     @RequestMapping("/edit")
     public ModelAndView edit(@RequestParam("module") String module, @RequestParam("action") String action, @RequestParam(value = "id", required = false) Long id) {
 
