@@ -161,7 +161,7 @@ public class UserController extends BaseController {
                 userDepartmentRel.setDid(id);
                 userDepartmentRelService.save(userDepartmentRel);
             }
-            String qr = userService.saveQR(uid);
+            String qr = userService.saveQR(uid,userVo.getName());
             UserVo u = userService.findOne(uid);
             u.setQr(qr);
             userService.update(u);
@@ -223,7 +223,7 @@ public class UserController extends BaseController {
                 userDepartmentRelService.save(userDepartmentRel);
             }
             if(userService.deleteQR(uid)){
-                String qr = userService.saveQR(uid);
+                String qr = userService.saveQR(uid,userVo.getName());
                 UserVo u = userService.findOne(uid);
                 u.setQr(qr);
                 userService.update(u);

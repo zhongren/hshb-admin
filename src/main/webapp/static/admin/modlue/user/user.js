@@ -33,7 +33,7 @@ $(document)
                     "sWidth": "5%",
                     "mRender": function (data, style, obj) {
                         var xgDom = "<a class=\"btn btn-round btn-info btn-xs\" href=\"edit?module=user&action=update&id=" + obj.user_id + "\" >修改</a>";
-                        var qrDom = "<button class=\"btn btn-round btn-info btn-xs\" onclick=\"\" >二维码</button>";
+                        var qrDom = "<button class=\"btn btn-round btn-info btn-xs\" onclick=\"showQR("+obj.qr+")\" >二维码</button>";
                         var delDom = "<a class=\"btn btn-round btn-danger btn-xs\" onclick=\"preDel("+obj.user_id+")\" >删除</a>";
                         return xgDom+
                             "&nbsp;"
@@ -75,24 +75,12 @@ function doSearch() {
  * 展示二维码
  * @param id
  */
-function showQR(uid) {
-    $.ajaxInvoke({
-        url: G_CTX_ROOT + "/user/queryById",
-        type: "post",
-        datatype: "json",
-        data: {
-            id: id
-        },
-        success: function (data) {
-            var user=data;
-            $("#m_name1").val(user.data.name);
-            $("#m_password1").val(user.data.password);
-            console.log(user);
-        }
-    });
-    $("#saveModal").modal("show").css({
+function showQR(qr) {
+    $("#qrModal").modal("show").css({
         'top': '60px'
     });
+    $("#qrTemp").after("<div style='border: 1px black'><a href='" + qr + "' target='_blank'><img src='" + qr + "' width='200' height='200'/></a></div>");
+
 }
 function preDel(user_id) {
     $("#deleteModal").modal("show").css({
