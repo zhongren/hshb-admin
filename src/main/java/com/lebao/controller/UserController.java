@@ -1,11 +1,13 @@
 package com.lebao.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.lebao.common.utils.CommonUtil;
 import com.lebao.common.utils.UrlUtil;
 import com.lebao.file.AppConfig;
 import com.lebao.po.Department;
@@ -155,11 +157,13 @@ public class UserController extends BaseController {
             userVo.setPhone(phone);
             userVo.setRemark(desc);
             Long uid = userService.save(userVo);
-            for (Long id : departmentIds) {
-                UserDepartmentRel userDepartmentRel = new UserDepartmentRel();
-                userDepartmentRel.setUid(uid);
-                userDepartmentRel.setDid(id);
-                userDepartmentRelService.save(userDepartmentRel);
+            if(!CommonUtil.isEmpty(Arrays.asList(departmentIds))){
+                for (Long id : departmentIds) {
+                    UserDepartmentRel userDepartmentRel = new UserDepartmentRel();
+                    userDepartmentRel.setUid(uid);
+                    userDepartmentRel.setDid(id);
+                    userDepartmentRelService.save(userDepartmentRel);
+                }
             }
             String qr = userService.saveQR(uid,userVo.getName());
             UserVo u = userService.findOne(uid);
@@ -230,6 +234,7 @@ public class UserController extends BaseController {
             }
             return this.buildSuccessMessage("员工更新成功", ResultModal.MESSAGE);
         } catch (Exception e) {
+            e.printStackTrace();
             return this.buildFailMessage("员工更新失败", ResultModal.MESSAGE);
         }
     }
@@ -246,6 +251,7 @@ public class UserController extends BaseController {
             return this.buildSuccessMessage("员工删除成功",
                     ResultModal.MESSAGE);
         } catch (Exception e) {
+            e.printStackTrace();
             return  this.buildFailMessage("员工删除失败", ResultModal.MESSAGE);
         }
     }

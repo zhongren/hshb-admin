@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 public class AppConfig {
     @Value("#{appSetting['server_name']}")
     public String SERVER_NAME;
+    @Value("#{appSetting['server_user_qr']}")
+    public String SERVER_USER_QR;
     @Value("#{appSetting['user_qr']}")
     public String USER_QR;
     @Value("#{appSetting['image_allow_type']}")
@@ -255,6 +257,14 @@ public class AppConfig {
 
     public String getUSER_QR() {
         return USER_QR;
+    }
+
+    public String getSERVER_USER_QR() {
+        return SERVER_USER_QR;
+    }
+
+    public void setSERVER_USER_QR(String SERVER_USER_QR) {
+        this.SERVER_USER_QR = SERVER_USER_QR;
     }
 
     public void setUSER_QR(String USER_QR) {
