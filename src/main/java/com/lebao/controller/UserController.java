@@ -12,6 +12,7 @@ import com.lebao.po.Department;
 import com.lebao.po.EduLevel;
 import com.lebao.po.Position;
 import com.lebao.service.*;
+import com.lebao.vo.SysUserVo;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -232,5 +233,20 @@ public class UserController extends BaseController {
             return this.buildFailMessage("用户更新失败", ResultModal.MESSAGE);
         }
     }
-
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
+    @RequestMapping("/delete")
+    @ResponseBody
+    public String delete(@RequestParam(value = "id", required = true) Long id) {
+        try {
+            userService.delete(id);
+            return this.buildSuccessMessage("用户删除成功",
+                    ResultModal.MESSAGE);
+        } catch (Exception e) {
+            return  this.buildFailMessage("用户删除失败", ResultModal.MESSAGE);
+        }
+    }
 }

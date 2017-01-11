@@ -15,7 +15,7 @@ $(document)
                     "mData": "name", // 属性
                     "bSortable": false,// 排序
                     "sClass": "center",
-                    "sWidth": "3%"
+                    "sWidth": "2%"
 
                 },
                 {
@@ -23,20 +23,23 @@ $(document)
                     "mData": "phone", // 属性
                     "bSortable": false,// 排序
                     "sClass": "center",
-                    "sWidth": "3%"
+                    "sWidth": "2%"
                 },
                 {
                     "sTitle": "<center>操作</center>", // 显示标题
                     "bSortable": false,// 排序
                     "mData": "user_id", // 属性
                     "sClass": "center",
-                    "sWidth": "2%",
+                    "sWidth": "5%",
                     "mRender": function (data, style, obj) {
                         var xgDom = "<a class=\"btn btn-round btn-info btn-xs\" href=\"edit?module=user&action=update&id=" + obj.user_id + "\" >修改</a>";
                         var qrDom = "<button class=\"btn btn-round btn-info btn-xs\" onclick=\"\" >二维码</button>";
+                        var delDom = "<a class=\"btn btn-round btn-danger btn-xs\" onclick=\"preDel("+obj.user_id+")\" >删除</a>";
                         return xgDom+
-                            "&nbsp;&nbsp;&nbsp;&nbsp;"
-                            + qrDom;
+                            "&nbsp;"
+                            + qrDom+
+                            "&nbsp;&nbsp;&nbsp;"
+                            + delDom;
                     }
                 }];
             setting.aaSorting = [[0, "desc"]];
@@ -66,52 +69,8 @@ $(document)
 function doSearch() {
     dataTable.fnDraw();
 }
-function preAdd() {
-    $("#myModal").modal("show").css({
-        'top': '60px'
-    });
-}
 
-function hyAdd(id, month) {
-    $.ajaxInvoke({
-        url: G_CTX_ROOT + "/user/hyTimeUpdate/",
-        type: "post",
-        datatype: "json",
-        data: {
-            p_id: id,
-            p_month: month
-        },
-        success: function (data) {
-            $("#myModal").modal("hide")
-            msgBox(data.state, data.msg);
-            dataTable.fnDraw();
-        },
-    });
-}
-function addUser() {
-    var phoneNumber = $("#m_phoneNumber").val();
-    var name = $("#m_name").val();
-    var account = $("#m_account").val();
-    var password = $("#m_password").val();
-    if (!validator.validate())
-        return false;
-    $.ajaxInvoke({
-        url: G_CTX_ROOT + "/user/add",
-        type: "post",
-        datatype: "json",
-        data: {
-            p_user_name: name,
-            p_account: account,
-            p_user_phone: phoneNumber,
-            p_password: password
-        },
-        success: function (data) {
-            $("#myModal").modal("hide");
-            msgBox(data.state, data.msg);
-            dataTable.fnDraw();
-        }
-    });
-}
+
 /**
  * 展示二维码
  * @param id
@@ -135,34 +94,25 @@ function showQR(uid) {
         'top': '60px'
     });
 }
-function updUser() {
+function preDel(user_id) {
+    $("#deleteModal").modal("show").css({
+        'top' : '60px'
+    });
+    $("#deleteButton").attr("onClick","del("+user_id+")");
 
-    var id = $("#m_id").val();
-    var phone = $("#m_phone").val();
-    var real_name = $("#m_real_name").val();
-    var account = $("#m_account").val();
-    var email = $("#m_email").val();
-    var role_id = $("#m_role_id").val();
-
-    var lebi = $("#m_lebi").val();
-
+}
+function del(user_id) {
     $.ajaxInvoke({
-        url: G_CTX_ROOT + "/user/update",
-        type: "post",
-        datatype: "json",
-        data: {
-            p_lebi: lebi,
-            p_id: id,
-            p_role_id: role_id,
-            p_phone: phone,
-            p_real_name: real_name,
-            p_account: account,
-            p_email: email
+        url : G_CTX_ROOT+"/user/delete/",
+        type : "post",
+        datatype : "json",
+        data : {
+            id : user_id
         },
-        success: function (data) {
-            $("#myModal").modal("hide");
+        success : function(data) {
+            $("#myModal").modal("hide")
             msgBox(data.state, data.msg);
             dataTable.fnDraw();
-        }
+        },
     });
 }
