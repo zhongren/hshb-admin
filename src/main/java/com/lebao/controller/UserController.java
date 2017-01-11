@@ -207,7 +207,7 @@ public class UserController extends BaseController {
             userVo.setPosition(position);
             userVo.setPhone(phone);
             userVo.setRemark(desc);
-            userService.save(userVo);
+            Long uid=userService.save(userVo);
             List<UserDepartmentRel> oldUserDepartmentRelList = userDepartmentRelService
                     .findByUid(userVo.getId());
             List<Long> oldDepartmentIds = new ArrayList<Long>();
@@ -220,6 +220,12 @@ public class UserController extends BaseController {
                 userDepartmentRel.setUid(userVo.getId());
                 userDepartmentRel.setDid(did);
                 userDepartmentRelService.save(userDepartmentRel);
+            }
+            if(userService.deleteQR(uid)){
+                String qr = userService.saveQR(uid);
+                UserVo u = userService.findOne(uid);
+                u.setQr(qr);
+                userService.update(u);
             }
             return this.buildSuccessMessage("用户更新成功", ResultModal.MESSAGE);
         } catch (Exception e) {

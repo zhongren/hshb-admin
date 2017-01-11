@@ -20,6 +20,7 @@ import com.lebao.po.User;
 
 import com.lebao.vo.UserVo;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -101,5 +102,14 @@ public class UserService {
         File file1 = new File(path, uid+".jpg");
         QRUtil.writeToFile(bitMatrix, "jpg", file1);
         return content;
+    }
+
+    public boolean deleteQR(Long uid) throws Exception {
+        String path = appConfig.getUSER_QR();
+        File file = new File(path, uid+".jpg");
+        if(file.exists()){
+            file.delete();
+        }
+        return true;
     }
 }
