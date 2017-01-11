@@ -92,7 +92,7 @@ public class UserService {
      * @throws Exception
      */
     public String saveQR(Long uid,String name) throws Exception {
-        String content = appConfig.getSERVER_USER_QR() + "/qr/user?uid=" + uid;
+        String content = appConfig.getSERVER_NAME() + "/qr/user?uid=" + uid;
         String path = appConfig.getUSER_QR();
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         Map hints = new HashMap();
@@ -101,7 +101,7 @@ public class UserService {
         bitMatrix = multiFormatWriter.encode(content, BarcodeFormat.QR_CODE, 400, 400, hints);
         File file1 = new File(path, name+".jpg");
         QRUtil.writeToFile(bitMatrix, "jpg", file1);
-        return content;
+        return appConfig.getSERVER_USER_QR()+"/" + name+".jpg";
     }
 
     public boolean deleteQR(Long uid) throws Exception {
