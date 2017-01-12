@@ -6,8 +6,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <jsp:include page="../common/css.jsp"></jsp:include>
-    <jsp:include page="../common/js.jsp"></jsp:include>
+    <jsp:include page="../common/css.jsp"/>
+    <jsp:include page="../common/js.jsp"/>
 
     <script src="${ctx}/staticAdmin/modlue/user/user.js"></script>
 </head>
@@ -43,7 +43,9 @@
                             <div class="form-group" style="padding-top: 22px;padding-left: 2px">
                                 <button onclick="doSearch()" class="btn btn-primary">查询</button>
                             </div>
-                            <div class="form-group" style="padding-top: 22px;"> <a class="btn btn-info" href="${ctx}/user/edit?module=user&action=save" target="main">
+                            <div class="form-group" style="padding-top: 22px;"><a class="btn btn-info"
+                                                                                  href="${ctx}/user/edit?module=user&action=save"
+                                                                                  target="main">
                                 添加</a>
                             </div>
                         </div>
@@ -91,7 +93,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                 </button>
-                <button  id="deleteButton" type="button" class="btn btn-danger" data-dismiss="modal">删除</button>
+                <button id="deleteButton" type="button" class="btn btn-danger" data-dismiss="modal">删除</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -106,7 +108,7 @@
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"
                     aria-hidden="true">&times;</button>
-            <h4 class="modal-title" >二维码</h4>
+            <h4 class="modal-title">二维码</h4>
         </div>
         <div class="modal-content">
 
