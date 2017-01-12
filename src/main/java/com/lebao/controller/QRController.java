@@ -9,13 +9,14 @@ import org.springframework.web.servlet.ModelAndView;
  * Created by Server on 2016/7/15.
  */
 @Controller
+@RequestMapping("/qr")
 public class QRController {
 
 
     @RequestMapping("/user")
     public ModelAndView testKind(String uid) {
         ModelAndView view = new ModelAndView();
-        view.setViewName("admin/test");
+        view.setViewName("admin/user/qr");
         return view;
     }
 
