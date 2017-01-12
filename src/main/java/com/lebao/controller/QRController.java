@@ -3,6 +3,7 @@ package com.lebao.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -14,22 +15,10 @@ public class QRController {
 
 
     @RequestMapping("/user")
-    public ModelAndView testKind(String uid) {
-        System.out.println("你好");
+    public ModelAndView testKind(@RequestParam(value = "uid", required = true) Long uid) {
         ModelAndView view = new ModelAndView();
-        view.setViewName("admin/user/qr");
+        view.setViewName("admin/user/userQR");
         return view;
     }
-
-/*
-    @RequestMapping("/testUpload")
-    @ResponseBody
-    public String testUpload(MultipartFile uploadFile) {
-        System.out.println("开始上传");
-        return  pictureService.uploadPicture(uploadFile);
-    }
-*/
-
-
 
 }
