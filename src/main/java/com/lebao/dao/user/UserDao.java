@@ -32,8 +32,8 @@ public class UserDao {
         return dbHelper.getPage(sql, User.class, searchBean.getCurrentPage(), searchBean.getPageSize(), list.toArray());
     }
 
-    public Long save(User user) {
-       return userRepo.save(user).getId();
+    public User save(User user) {
+       return userRepo.save(user);
     }
 
     public void update(User user) {

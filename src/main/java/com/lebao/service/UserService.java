@@ -60,17 +60,16 @@ public class UserService {
         return pageBean;
     }
 
-    public Long save(UserVo vo) {
-        vo.setCreateTime(TimeUtil.now());
-        vo.setUpdateTime(TimeUtil.now());
-        User user = userConverter.convert2P(vo);
-        Long uid = userDao.save(user);
-        return uid;
+    public User save(User user) {
+        user.setCreateTime(TimeUtil.str2Date(TimeUtil.now()));
+        user.setUpdateTime(TimeUtil.str2Date(TimeUtil.now()));
+        return userDao.save(user);
+
     }
 
-    public void update(UserVo vo) {
-        User user = userConverter.convert2P(vo);
-        userDao.save(user);
+    public User update(User user) {
+        user.setUpdateTime(TimeUtil.str2Date(TimeUtil.now()));
+        return  userDao.save(user);
     }
 
     public void delete(Long id) {
@@ -86,22 +85,21 @@ public class UserService {
 
     /**
      * 生成二维码
-     *
-     * @param uid
+     * @param user
      * @return
      * @throws Exception
      */
-    public String saveQR(Long uid,String name) throws Exception {
-        String content = appConfig.getSERVER_NAME() + "/qr/user?uid=" + uid;
+    public String saveQR(User user) throws Exception {
+        String content = appConfig.getSERVER_NAME() + "/qr/user?uid=" + user.getId();
         String path = appConfig.getUSER_QR();
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         Map hints = new HashMap();
         hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
         BitMatrix bitMatrix = null;
         bitMatrix = multiFormatWriter.encode(content, BarcodeFormat.QR_CODE, 400, 400, hints);
-        File file1 = new File(path, name+".jpg");
+        File file1 = new File(path, user.getName()+".jpg");
         QRUtil.writeToFile(bitMatrix, "jpg", file1);
-        return appConfig.getSERVER_USER_QR()+"/" + name+".jpg";
+        return appConfig.getSERVER_USER_QR()+"/" + user.getName()+".jpg";
     }
 
     public boolean deleteQR(Long uid) throws Exception {

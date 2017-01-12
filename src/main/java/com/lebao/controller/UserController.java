@@ -6,10 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.lebao.common.utils.CommonUtil;
 import com.lebao.common.utils.UrlUtil;
+import com.lebao.converter.UserConverter;
 import com.lebao.file.AppConfig;
-import com.lebao.po.Department;
-import com.lebao.po.EduLevel;
-import com.lebao.po.Position;
+import com.lebao.po.*;
 import com.lebao.service.*;
 import com.lebao.vo.SysUserVo;
 import org.apache.commons.lang.StringUtils;
@@ -23,7 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.lebao.common.beans.SearchBean;
 import com.lebao.common.dbhelp.page.Page;
-import com.lebao.po.UserDepartmentRel;
 import com.lebao.vo.UserVo;
 
 /**
@@ -44,6 +42,8 @@ public class UserController extends BaseController {
     private DepartmentService departmentService;
     @Autowired
     private PositionService positionService;
+    @Autowired
+    private UserConverter userConverter;
 
     /**
      * 页面入口
@@ -144,14 +144,14 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/save", produces = "plain/text; charset=UTF-8")
     @ResponseBody
     public String save(
-                       @RequestParam(value = "name", required = true) String name,
-                       @RequestParam(value = "pic", required = true) String pic,
-                       @RequestParam(value = "sex", required = true) Integer sex,
-                       @RequestParam(value = "eduLevel", required = true) Long eduLevel,
-                       @RequestParam(value = "position", required = true) Long position,
-                       @RequestParam(value = "phone", required = true) String phone,
-                       @RequestParam(value = "desc", required = true) String desc,
-                       @RequestParam(value = "departmentIds[]", required = false) Long departmentIds[]) {
+            @RequestParam(value = "name", required = true) String name,
+            @RequestParam(value = "pic", required = true) String pic,
+            @RequestParam(value = "sex", required = true) Integer sex,
+            @RequestParam(value = "eduLevel", required = true) Long eduLevel,
+            @RequestParam(value = "position", required = true) Long position,
+            @RequestParam(value = "phone", required = true) String phone,
+            @RequestParam(value = "desc", required = true) String desc,
+            @RequestParam(value = "departmentIds[]", required = false) Long departmentIds[]) {
         try {
             UserVo userVo = new UserVo();
             userVo.setName(name);
@@ -161,20 +161,19 @@ public class UserController extends BaseController {
             userVo.setPosition(position);
             userVo.setPhone(phone);
             userVo.setRemark(desc);
-            userVo.setCreateTime(Calendar.getInstance().getTime().toString());
-            Long uid = userService.save(userVo);
-            if(!CommonUtil.isEmpty(Arrays.asList(departmentIds))){
+            User user = userConverter.convert2P(userVo);
+            userService.save(user);
+            if (!CommonUtil.isEmpty(Arrays.asList(departmentIds))) {
                 for (Long id : departmentIds) {
                     UserDepartmentRel userDepartmentRel = new UserDepartmentRel();
-                    userDepartmentRel.setUid(uid);
+                    userDepartmentRel.setUid(user.getId());
                     userDepartmentRel.setDid(id);
                     userDepartmentRelService.save(userDepartmentRel);
                 }
             }
-            String qr = userService.saveQR(uid,userVo.getName());
-            UserVo u = userService.findOne(uid);
-            u.setQr(qr);
-            userService.update(u);
+            String qr = userService.saveQR(user);
+            user.setQr(qr);
+            userService.update(user);
             return this.buildSuccessMessage("员工添加成功", ResultModal.MESSAGE);
         } catch (Exception e) {
             e.printStackTrace();
@@ -205,7 +204,7 @@ public class UserController extends BaseController {
             @RequestParam(value = "position", required = true) Long position,
             @RequestParam(value = "phone", required = true) String phone,
             @RequestParam(value = "desc", required = true) String desc,
-            @RequestParam(value = "departmentIds", required = false) Long departmentIds[]) {
+            @RequestParam(value = "departmentIds[]", required = false) Long departmentIds[]) {
         try {
             UserVo userVo = userService.findOne(id);
             if (userVo == null) {
@@ -218,7 +217,8 @@ public class UserController extends BaseController {
             userVo.setPosition(position);
             userVo.setPhone(phone);
             userVo.setRemark(desc);
-            Long uid=userService.save(userVo);
+            User user = userConverter.convert2P(userVo);
+            userService.save(user);
             List<UserDepartmentRel> oldUserDepartmentRelList = userDepartmentRelService
                     .findByUid(userVo.getId());
             List<Long> oldDepartmentIds = new ArrayList<Long>();
@@ -232,11 +232,10 @@ public class UserController extends BaseController {
                 userDepartmentRel.setDid(did);
                 userDepartmentRelService.save(userDepartmentRel);
             }
-            if(userService.deleteQR(uid)){
-                String qr = userService.saveQR(uid,userVo.getName());
-                UserVo u = userService.findOne(uid);
-                u.setQr(qr);
-                userService.update(u);
+            if (userService.deleteQR(user.getId())) {
+                String qr = userService.saveQR(user);
+                user.setQr(qr);
+                userService.update(user);
             }
             return this.buildSuccessMessage("员工更新成功", ResultModal.MESSAGE);
         } catch (Exception e) {
@@ -244,8 +243,10 @@ public class UserController extends BaseController {
             return this.buildFailMessage("员工更新失败", ResultModal.MESSAGE);
         }
     }
+
     /**
      * 删除用户
+     *
      * @param id
      * @return
      */
@@ -258,7 +259,7 @@ public class UserController extends BaseController {
                     ResultModal.MESSAGE);
         } catch (Exception e) {
             e.printStackTrace();
-            return  this.buildFailMessage("员工删除失败", ResultModal.MESSAGE);
+            return this.buildFailMessage("员工删除失败", ResultModal.MESSAGE);
         }
     }
 }

@@ -15,6 +15,7 @@ public class QRController {
 
     @RequestMapping("/user")
     public ModelAndView testKind(String uid) {
+        System.out.println("你好");
         ModelAndView view = new ModelAndView();
         view.setViewName("admin/user/qr");
         return view;
