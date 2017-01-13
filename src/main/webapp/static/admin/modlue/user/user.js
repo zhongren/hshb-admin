@@ -33,11 +33,11 @@ $(document)
                     "sWidth": "5%",
                     "mRender": function (data, style, obj) {
                         var xgDom = "<a class=\"btn btn-round btn-info btn-xs\" href=\"edit?module=user&action=update&id=" + obj.user_id + "\" >修改</a>";
-                        var qrDom = "<button class=\"btn btn-round btn-primary btn-xs\" onclick=\"showQR('"+obj.qr+"')\" >二维码</button>";
-                        var delDom = "<a class=\"btn btn-round btn-danger btn-xs\" onclick=\"preDel("+obj.user_id+")\" >删除</a>";
-                        return qrDom+
+                        var qrDom = "<button class=\"btn btn-round btn-primary btn-xs\" onclick=\"showQR('" + obj.qr + "')\" >二维码</button>";
+                        var delDom = "<a class=\"btn btn-round btn-danger btn-xs\" onclick=\"preDel(" + obj.user_id + ")\" >删除</a>";
+                        return qrDom +
                             "&nbsp;"
-                            + xgDom+
+                            + xgDom +
                             "&nbsp;"
                             + delDom;
                     }
@@ -84,20 +84,20 @@ function showQR(qr) {
 }
 function preDel(user_id) {
     $("#deleteModal").modal("show").css({
-        'top' : '60px'
+        'top': '60px'
     });
-    $("#deleteButton").attr("onClick","del("+user_id+")");
+    $("#deleteButton").attr("onClick", "del(" + user_id + ")");
 
 }
 function del(user_id) {
     $.ajaxInvoke({
-        url : G_CTX_ROOT+"/user/delete/",
-        type : "post",
-        datatype : "json",
-        data : {
-            id : user_id
+        url: G_CTX_ROOT + "/user/delete/",
+        type: "post",
+        datatype: "json",
+        data: {
+            id: user_id
         },
-        success : function(data) {
+        success: function (data) {
             $("#deleteModal").modal("hide")
             msgBox(data.state, data.msg);
             dataTable.fnDraw();
@@ -141,9 +141,11 @@ function edit(action) {
     }
 }
 function addUser() {
-    var depart=[];
-    $( ".m_depart:checked").each(function(){depart.push(this.value);});
-    var user_image=$("#m_user_image").val();
+    var depart = [];
+    $(".m_depart:checked").each(function () {
+        depart.push(this.value);
+    });
+    var user_image = $("#m_user_image").val();
     var name = $("#m_name").val();
     var sex = $("#m_sex").val();
 
@@ -175,10 +177,12 @@ function addUser() {
     });
 }
 function updateUser() {
-    var depart=[];
-    $( ".m_depart:checked").each(function(){depart.push(this.value);});
-    var id=$("#id").val();
-    var user_image=$("#m_user_image").val();
+    var depart = [];
+    $(".m_depart:checked").each(function () {
+        depart.push(this.value);
+    });
+    var id = $("#id").val();
+    var user_image = $("#m_user_image").val();
     var name = $("#m_name").val();
     var sex = $("#m_sex").val();
     var position = $("#m_position").val();
@@ -192,7 +196,7 @@ function updateUser() {
         type: "post",
         datatype: "json",
         data: {
-            id:id,
+            id: id,
             name: name,
             pic: user_image,
             sex: sex,
