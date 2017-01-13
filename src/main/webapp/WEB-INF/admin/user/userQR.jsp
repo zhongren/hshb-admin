@@ -43,39 +43,42 @@
         <table class="table">
             <tr>
                 <td class="left">头像</td>
-                <td class="right">111</td>
+                <td class="right"><img src="<c:out value="${user.pic}" />" width="80"
+                                       height="80"/>
+                    </td>
             </tr>
             <tr>
                 <td class="left">ID</td>
-                <td class="right">222</td>
-            </tr>
-            <tr>
-                <td class="left">编号</td>
-                <td class="right">333</td>
+                <td class="right"><c:out value="${user.id}" /></td>
             </tr>
             <tr>
                 <td class="left">姓名</td>
-                <td class="right"></td>
+                <td class="right"><c:out value="${user.name}" /></td>
             </tr>
             <tr>
                 <td class="left">性别</td>
-                <td class="right"></td>
+                <td class="right">
+                    <c:if test="${user.sex==1}">男</c:if>
+                    <c:if test="${user.sex==0}">女</c:if>
+                </td>
             </tr>
             <tr>
                 <td class="left">部门</td>
-                <td class="right"></td>
+                <td class="right">  <c:forEach var="depart" items="${user.departmentList}" varStatus="i">
+                    <c:out value="${depart.name}" /> |
+                </c:forEach></td>
             </tr>
             <tr>
                 <td class="left">职位</td>
-                <td class="right"></td>
+                <td class="right"><c:out value="${user.positionValue}" /></td>
             </tr>
             <tr>
                 <td class="left">手机号</td>
-                <td class="right"></td>
+                <td class="right"><c:out value="${user.phone}" /></td>
             </tr>
             <tr>
                 <td class="last left">备注</td>
-                <td class="last right"></td>
+                <td class="last right"><c:out value="${user.remark}" /></td>
             </tr>
         </table>
     </div>

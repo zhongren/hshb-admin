@@ -33,12 +33,12 @@ $(document)
                     "sWidth": "5%",
                     "mRender": function (data, style, obj) {
                         var xgDom = "<a class=\"btn btn-round btn-info btn-xs\" href=\"edit?module=user&action=update&id=" + obj.user_id + "\" >修改</a>";
-                        var qrDom = "<button class=\"btn btn-round btn-info btn-xs\" onclick=\"showQR('"+obj.qr+"')\" >二维码</button>";
+                        var qrDom = "<button class=\"btn btn-round btn-primary btn-xs\" onclick=\"showQR('"+obj.qr+"')\" >二维码</button>";
                         var delDom = "<a class=\"btn btn-round btn-danger btn-xs\" onclick=\"preDel("+obj.user_id+")\" >删除</a>";
-                        return xgDom+
+                        return qrDom+
                             "&nbsp;"
-                            + qrDom+
-                            "&nbsp;&nbsp;&nbsp;"
+                            + xgDom+
+                            "&nbsp;"
                             + delDom;
                     }
                 }];
