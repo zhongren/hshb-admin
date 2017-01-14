@@ -43,8 +43,8 @@
         <table class="table">
             <tr>
                 <td class="left">头像</td>
-                <td class="right"><img src="<c:out value="${user.pic}" />" width="80"
-                                       height="80"/>
+                <td class="right"><img src="<c:out value="${user.pic}" />" width="300"
+                                       height="400"/>
                     </td>
             </tr>
             <tr>
