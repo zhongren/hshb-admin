@@ -16,11 +16,11 @@
     <jsp:include page="../common/css.jsp"/>
     <jsp:include page="../common/js.jsp"/>
     <style type="text/css">
+
         .table {
-            max-width: 100%;
-            max-height: 100%;
-            min-width: 800px;
-            min-height: 600px;
+            width: 100%;
+            height: 100%;
+            font-size:5em;
         }
 
         .table .left {
