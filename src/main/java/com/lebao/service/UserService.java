@@ -64,7 +64,6 @@ public class UserService {
         user.setCreateTime(TimeUtil.str2Date(TimeUtil.now()));
         user.setUpdateTime(TimeUtil.str2Date(TimeUtil.now()));
         return userDao.save(user);
-
     }
 
     public User update(User user) {
