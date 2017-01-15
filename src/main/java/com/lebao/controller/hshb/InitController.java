@@ -2,6 +2,7 @@ package com.lebao.controller.hshb;
 
 import java.util.List;
 
+import com.lebao.common.constant.Hshb;
 import com.lebao.po.Position;
 import com.lebao.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
