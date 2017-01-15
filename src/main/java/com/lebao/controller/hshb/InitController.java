@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lebao.common.beans.AjaxResult;
-import com.lebao.common.constant.Hshb;
 import com.lebao.po.Department;
 import com.lebao.po.EduLevel;
 import com.lebao.service.DepartmentService;
