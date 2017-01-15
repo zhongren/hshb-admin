@@ -15,7 +15,6 @@ import java.util.Map;
  */
 @Component
 public class Hshb {
-
     public List<Department> createDepartment() {
         List<Department> departmentList = new ArrayList<Department>();
         departmentList.add(new Department(1L, "管理层"));
