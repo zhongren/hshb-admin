@@ -274,6 +274,28 @@
     </dependencies>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+
+                    <port>8080</port>
+                    <url>http://192.168.11.5:8080/manager/text</url>
+                    <server>tomcat</server>
+                    <update>true</update>
+                    <username>admin</username>
+                    <password>woyaoxiedaima</password>
+
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
