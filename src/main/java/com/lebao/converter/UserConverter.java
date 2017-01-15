@@ -6,6 +6,7 @@ import com.lebao.po.Department;
 import com.lebao.po.User;
 import com.lebao.po.UserDepartmentRel;
 import com.lebao.service.DepartmentService;
+import com.lebao.service.PositionService;
 import com.lebao.service.UserDepartmentRelService;
 import com.lebao.vo.UserVo;
 import org.springframework.beans.BeanUtils;
@@ -23,7 +24,8 @@ public class UserConverter extends BaseConverter<User, UserVo> {
 
     @Autowired
     DepartmentService departmentService;
-
+    @Autowired
+    PositionService positionService;
     @Override
     public User convert2P(UserVo vo) {
         if (vo == null) {
@@ -51,6 +53,7 @@ public class UserConverter extends BaseConverter<User, UserVo> {
             BeanUtils.copyProperties(po, vo);
             vo.setCreateTime(TimeUtil.format(po.getCreateTime()));
             vo.setUpdateTime(TimeUtil.format(po.getUpdateTime()));
+            vo.setPositionValue(positionService.findOne(vo.getPosition()).getName());
             List<Department> departmentList=departmentService.findByUid(vo.getId());
             vo.setDepartmentList(departmentList);
         } catch (Exception e) {

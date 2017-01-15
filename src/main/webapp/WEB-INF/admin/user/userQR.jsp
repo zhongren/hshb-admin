@@ -12,7 +12,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>Title</title>
+    <title>和顺环保-员工信息</title>
     <jsp:include page="../common/css.jsp"/>
     <jsp:include page="../common/js.jsp"/>
     <style type="text/css">
